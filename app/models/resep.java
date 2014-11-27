@@ -9,19 +9,11 @@ public class resep extends Model {
 	public String namaResep;
 	@ManyToOne
 	public bahan bahannya;
-	
-	public String jumlah;
-	
-	
-	public String toString(){
-		return this.namaResep;
-		
-	}
+	public long jumlah;
 	@ManyToOne
 	public satuan Satuannya;
-	
-
-	
-	
-
+	public long harga ;
+	public String toString(){
+		return this.namaResep;
+	}
 }

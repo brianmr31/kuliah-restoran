@@ -14,21 +14,11 @@ import play.db.jpa.Model;
 public class menu extends Model {
 	public String namaMenu ; 
 	public String keterangan   ;
-	public String harga;
-	
+	public long harga;
 	@ManyToOne
 	public Orang org;
-	
-	
-	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy= "mnu")
-	
 	public List<pesanan> idmenu;
-	
 	@ManyToOne
 	public resep dataresep;
-	
-	
-	
-	
 }

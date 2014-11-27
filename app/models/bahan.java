@@ -11,19 +11,14 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class bahan extends Model {
-	
-	
 	public String namaBahan;
 	public Date date;
-	public int Stock;
-	public int HargaSaatIni;
+	public long Stock;
+	public long HargaSaatIni;
 	
 	@ManyToOne
 	public satuan Satuan;
-
 	public String toString(){
 		return this.namaBahan;
 	}
-	
-
 }

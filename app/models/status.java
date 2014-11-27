@@ -11,13 +11,9 @@ import play.db.jpa.Model;
 @Entity
 public class status extends Model{
 	public String namaStatus;
-	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="sts")
+	public List<pesanan> idstatus;
 	public String toString(){
 		return this.namaStatus;
 	}
-		
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="sts")
-	public List<pesanan> idstatus;
-	
-	
 }

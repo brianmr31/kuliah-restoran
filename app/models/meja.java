@@ -11,13 +11,7 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class meja extends Model {
-	public String no_meja;
-	
-	
+	public long no_meja;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="mja")
 	public List<pesanan> idmeja;
-	
-	public String toString(){
-		return this.no_meja;
-	}
 }

@@ -17,18 +17,12 @@ public class Orang extends Model {
 	public String kontak;
 	@ManyToOne
 	public jenisKelamin jnsKelaminx;
-	
 	@ManyToOne
 	public HakAkses NamaAksesx;
-	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="org")
 	public List<menu> idMenu;
-	
-	
-	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="org")
 	public List<pesanan> idOrang;
-	
 	public String toString(){
 		return this.nama;
 	}
