@@ -14,4 +14,7 @@ public class meja extends Model {
 	public long no_meja;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="mja")
 	public List<pesanan> idmeja;
+	public String toString(){
+		return String.valueOf(no_meja);
+	}
 }
