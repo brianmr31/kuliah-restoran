@@ -11,10 +11,10 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class meja extends Model {
-	public long no_meja;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="mja")
-	public List<pesanan> idmeja;
+	public long No_Meja;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="No_Meja")
+	public List<pesanan> Id_Meja;
 	public String toString(){
-		return String.valueOf(no_meja);
+		return String.valueOf(No_Meja);
 	}
 }

@@ -11,12 +11,13 @@ import play.db.jpa.Model;
 @Entity
 public class pesanan extends Model{
 	@ManyToOne
-	public status sts;
+	public status Status_Pesan;
 	@ManyToOne
-	public menu mnu;
+	public menu Nama_Menu;
 	@ManyToOne
-	public Orang org;
+	public Orang Nama_Orang;
 	@ManyToOne
-	public meja mja;
-	public long harga;
+	public meja No_Meja;
+	
+	public long Harga;
 }

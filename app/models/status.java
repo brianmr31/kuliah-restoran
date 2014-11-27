@@ -10,10 +10,10 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class status extends Model{
-	public String namaStatus;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="sts")
+	public String Nama_Status;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="Status_Pesan")
 	public List<pesanan> idstatus;
 	public String toString(){
-		return this.namaStatus;
+		return this.Nama_Status;
 	}
 }

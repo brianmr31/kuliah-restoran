@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import play.db.jpa.Model;
 @Entity
 public class satuan extends Model {
-	public String satuan;
+	public String Satuan;
 	public String toString(){
-		return this.satuan;
+		return this.Satuan;
 	}
 }

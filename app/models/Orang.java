@@ -12,19 +12,17 @@ import play.db.jpa.Blob;
 import play.db.jpa.Model;
 @Entity
 public class Orang extends Model {
-	public String nama;
-	public String alamat;
-	public String kontak;
+	public String Nama;
+	public String Alamat;
+	public String Kontak;
 	@ManyToOne
-	public jenisKelamin jnsKelaminx;
+	public jenisKelamin Jenis_Kelamin;
 	@ManyToOne
-	public HakAkses NamaAksesx;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="org")
-	public List<menu> idMenu;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="org")
+	public HakAkses Nama_Akses;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_Orang")
 	public List<pesanan> idOrang;
 	public String toString(){
-		return this.nama;
+		return this.Nama;
 	}
 }
 

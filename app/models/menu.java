@@ -12,13 +12,14 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class menu extends Model {
-	public String namaMenu ; 
-	public String keterangan   ;
-	public long harga;
-	@ManyToOne
-	public Orang org;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy= "mnu")
+	public String Nama_Menu ; 
+	public String Keterangan   ;
+	public long Harga;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy= "Nama_Menu")
 	public List<pesanan> idmenu;
 	@ManyToOne
-	public resep dataresep;
+	public realresep Nama_Resep;
+	public String toString(){
+		return Nama_Menu ;
+	}
 }

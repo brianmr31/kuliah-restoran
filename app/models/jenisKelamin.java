@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import play.db.jpa.Model;
 @Entity
 public class jenisKelamin extends Model{
-	public String jenis;
+	public String Nama_Jeniskelamin;
 	public String toString(){
-		return this.jenis;
+		return this.Nama_Jeniskelamin;
 	}
 }
