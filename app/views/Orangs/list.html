@@ -12,7 +12,13 @@
     <div id="crudListTable">
         #{crud.table fields:['Nama', 'Alamat', 'Kontak','Jenis_Kelamin','Nama_Akses'] /}
     </div>
-
+	#{crud.table fields:['id']}
+ 
+   	#{crud.custom 'id'}
+       <a href='@{Orangs.show(object.id)}' > ${object.Nama}</a>
+   	#{/crud.custom}
+ 
+	#{/crud.table}
     <div id="crudListPagination">
         #{crud.pagination /}
     </div>
