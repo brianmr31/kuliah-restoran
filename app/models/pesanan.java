@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ public class pesanan extends Model{
 	public Orang Nama_Orang;
 	@ManyToOne
 	public meja No_Meja;
-	
+	public Date Tanggal_Pesan ;
+	public long Jumlah_Pesan ;
 	public long Harga;
 }
