@@ -15,8 +15,8 @@ public class menu extends Model {
 	public String Nama_Menu ; 
 	public String Keterangan   ;
 	public long Harga;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy= "Nama_Menu")
-	public List<pesanan> idmenu;
+	@ManyToOne
+	public pesanan menu1;
 	@ManyToOne
 	public realresep Nama_Resep;
 	public String toString(){
