@@ -15,7 +15,7 @@ public class pesanan extends Model{
 	@ManyToOne
 	public status Status_Pesan;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="menu1")
-	public List<menu> idMenu1;
+	public List<menu> Nama_Menu;
 	@ManyToOne
 	public Orang Nama_Orang;
 	@ManyToOne
