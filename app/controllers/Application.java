@@ -15,7 +15,4 @@ public class Application extends Controller {
     public static void welcome() {
         render();
     }
-	public static void welcomemin() {
-        render();
-    }
 }
