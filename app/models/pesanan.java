@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class pesanan extends Model{
-	public String namaPesanan;
 	@ManyToOne
 	public status Status_Pesan;
 	@ManyToOne
@@ -28,7 +27,7 @@ public class pesanan extends Model{
 	public long Harga;
 	
 	public String toString(){
-		return this.namaPesanan;
+		return this.Nama_pesanannya.Nama_Pesanan;
 	}
 
 }

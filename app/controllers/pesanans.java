@@ -1,5 +1,6 @@
 package controllers;
 
+import java.lang.reflect.Constructor;
 import java.util.Date;
 import java.util.List;
 
@@ -44,4 +45,16 @@ public class pesanans extends CRUD {
         }
     }
 	*/
+	public static void blank() throws Exception {
+        ObjectType type = ObjectType.get(getControllerClass());
+        notFoundIfNull(type);
+        Constructor<?> constructor = type.entityClass.getDeclaredConstructor();
+        constructor.setAccessible(true);
+        Model object = (Model) constructor.newInstance();
+        try {
+            render(type, object);
+        } catch (TemplateNotFoundException e) {
+            render("CRUD/blank.html", type, object);
+        }
+    }
 }
