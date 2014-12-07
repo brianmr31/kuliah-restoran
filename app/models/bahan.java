@@ -18,7 +18,7 @@ public class bahan extends Model {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_bahan")
 	public List<bahanbeli> id_bahanbeli ;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_bahan")
-	public List<bahanbeli> id_bahanpake ;
+	public List<bahanbeli> id_bahanpakai ;
 	@ManyToOne
 	public satuan Satuan;
 	public String toString(){

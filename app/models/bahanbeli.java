@@ -10,7 +10,7 @@ import play.db.jpa.Model;
 public class bahanbeli extends Model{
 	@ManyToOne
 	public bahan Nama_bahan ;
-	public Date Tanggal_Beli;
 	public long Stock;
 	public long Harga_Persatuan;
+	public Date Tanggal_Beli;
 }
