@@ -16,8 +16,6 @@ public class menu extends Model {
 	public String Keterangan   ;
 	public long Harga;
 	@ManyToOne
-	public pesanan menu1;
-	@ManyToOne
 	public realresep Nama_Resep;
 	public String toString(){
 		return Nama_Menu ;

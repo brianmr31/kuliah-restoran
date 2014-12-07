@@ -14,12 +14,15 @@ public class pesanan extends Model{
 	public String namaPesanan;
 	@ManyToOne
 	public status Status_Pesan;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="menu1")
-	public List<menu> idMenu1;
+	@ManyToOne
+	public menu menu_pesan;
 	@ManyToOne
 	public Orang Nama_Orang;
 	@ManyToOne
 	public meja No_Meja;
+	@ManyToOne
+	public realpesanan Nama_pesanannya ;
+	
 	public Date Tanggal_Pesan ;
 	public long Jumlah_Pesan ;
 	public long Harga;
