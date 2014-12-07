@@ -18,10 +18,6 @@ public class bahan extends Model {
 	
 	@ManyToOne
 	public satuan Satuan;
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="bahan")
-	public List<resep> resep ;
-	
 	public String toString(){
 		return this.Nama_Bahan;
 	}
