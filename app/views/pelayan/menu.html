@@ -1,0 +1,33 @@
+<a href="@{pelayan.index()}"> back </a> 
+#{list items:m,as:'m'}
+<form method="get" action="@{pelayan.dipesan()}">
+<table border="1">
+	<tr>
+		<td>
+		${m.Nama_Menu}
+		<input type="text" name="a.menu_pesan.id" value="${m.id}" >
+		<input type="text" name="a.Nama_pesanannya.id" value="${a}" >
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Harga Awal :${m.Harga}
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Dekripsi Menu:<br>
+		${m.Keterangan}
+		</td>
+	</tr>
+	<tr>
+		<td> Jumlah  <input type="text" name="a.Jumlah_Pesan" > </td>
+	</tr>
+	<tr>
+		<td>
+			<input type="submit" value="pesan" >
+		</td>
+	</tr>
+</table>
+</form>
+#{/list}

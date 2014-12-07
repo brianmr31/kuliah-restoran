@@ -26,7 +26,26 @@ public class pelayan extends Controller {
 	}
 	public static void savePesanan(realpesanan a){
 		a.save();
-		render(a);
-		//savePP(a.id,b);
+		menu(a.id);
+	}
+	public static void menu(long a ){
+		List m = menu.findAll();
+		render(m,a);
+	}
+	public static void lihat(long a){
+		realpesanan x = realpesanan.find("id=?",a).first();
+		List m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		render(m);
+	}
+	public static void hapuspesanan(long a){
+		pesanan.delete("id=?",a);
+		
+	}
+	public static void dipesan(pesanan a){
+		a.save();
+		index();
+	}
+	public static void test(){
+		
 	}
 }
