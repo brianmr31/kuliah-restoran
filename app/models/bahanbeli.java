@@ -8,14 +8,9 @@ import play.db.jpa.Model;
 
 @Entity
 public class bahanbeli extends Model{
-	public String Nama_Bahan;
+	@ManyToOne
+	public bahan Nama_bahan ;
 	public Date Tanggal_Beli;
 	public long Stock;
 	public long Harga_Persatuan;
-	
-	@ManyToOne
-	public satuan Satuan;
-	public String toString(){
-		return this.Nama_Bahan;
-	}
 }

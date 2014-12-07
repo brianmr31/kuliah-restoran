@@ -15,7 +15,8 @@ public class bahan extends Model {
 	public Date Tanggal_Beli;
 	public long Stock;
 	public long Harga_Persatuan;
-	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="bahannya")
+	public List<bahanbeli> id_bahanbeli ;
 	@ManyToOne
 	public satuan Satuan;
 	public String toString(){

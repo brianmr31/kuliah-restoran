@@ -6,5 +6,5 @@ import play.db.jpa.Model;
 
 @Entity
 public class bahanpakai extends Model {
-
+	
 }
