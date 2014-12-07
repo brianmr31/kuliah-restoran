@@ -10,5 +10,5 @@ public class kasir extends Controller {
 		List m = menu.findAll();
 		render(m);
 	}
-
+	
 }
