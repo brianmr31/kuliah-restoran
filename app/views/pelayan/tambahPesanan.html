@@ -1,0 +1,31 @@
+<a href="@{realpesanans.blank()}"> add </a>
+<hr>
+<form method="GET" action="@{pelayan.savePesanan()}">
+<table border=1>
+<tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="a.Nama_Pesanan" > </td> </tr>
+<tr> <td> Status_Pesan </td> <td> : </td> <td> 
+		<select name="a.Status_Pesan.id">
+			<option>Pilih</option>
+			#{list items:sp, as:"x"}
+				<option value="${x.id}">${x.Nama_Status}</option>
+			#{/list}
+		</select> </td> </tr>
+<tr> <td> Nama_Orang </td> <td> : </td> <td>
+			<select name="a.Nama_Orang.id">
+			<option>Pilih</option>
+			#{list items:o, as:"x"}
+				<option value="${x.id}">${x.Nama}</option>
+			#{/list}
+			</select> </td> </tr>
+<tr> <td> No_Meja </td> <td> : </td> <td>
+			<select name="a.No_Meja.id">
+			<option>Pilih</option>
+			#{list items:nm, as:"x"}
+				<option value="${x.id}">${x.No_Meja}</option>
+			#{/list}
+			</select> </td> </tr>
+			
+<tr> <td> <input type="submit" value="save" > </td> </tr> 
+</table> 
+</form> 
+<hr>

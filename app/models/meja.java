@@ -13,7 +13,7 @@ import play.db.jpa.Model;
 public class meja extends Model {
 	public long No_Meja;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="No_Meja")
-	public List<pesanan> Id_Meja;
+	public List<realpesanan> Id_Meja;
 	public String toString(){
 		return String.valueOf(No_Meja);
 	}

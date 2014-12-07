@@ -20,7 +20,7 @@ public class Orang extends Model {
 	@ManyToOne
 	public HakAkses Nama_Akses;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_Orang")
-	public List<pesanan> idOrang;
+	public List<realpesanan> idOrang;
 	public String toString(){
 		return this.Nama;
 	}

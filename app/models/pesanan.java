@@ -12,13 +12,7 @@ import play.db.jpa.Model;
 @Entity
 public class pesanan extends Model{
 	@ManyToOne
-	public status Status_Pesan;
-	@ManyToOne
 	public menu menu_pesan;
-	@ManyToOne
-	public Orang Nama_Orang;
-	@ManyToOne
-	public meja No_Meja;
 	@ManyToOne
 	public realpesanan Nama_pesanannya ;
 	
@@ -26,8 +20,4 @@ public class pesanan extends Model{
 	public long Jumlah_Pesan ;
 	public long Harga;
 	
-	public String toString(){
-		return this.Nama_pesanannya.Nama_Pesanan;
-	}
-
 }

@@ -12,7 +12,7 @@ import play.db.jpa.Model;
 public class status extends Model{
 	public String Nama_Status;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Status_Pesan")
-	public List<pesanan> idstatus;
+	public List<realpesanan> idstatus;
 	public String toString(){
 		return this.Nama_Status;
 	}

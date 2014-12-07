@@ -1,11 +1,11 @@
-<a href="@{realpesanans.blank()}"> add </a>
+<a href="@{pelayan.tambahPesanan()}"> add </a>
 <hr>
 <table border=1>
 <tr> <td> Nama Pesanan </td> <td> Meja </td> <td> Status </td> </tr> 
 #{list items:m,as:'m'}
-	<tr> <td> Nama  : ${m.Nama_pesanannya.Nama_Pesanan} </td>
-	<td> Meja  : ${m.No_Meja.No_Meja} </td> 
-	<td> Status : ${m.Status_Pesan.Nama_Status} </td> 
+	<tr> <td> Nama  : ${m.Status_Pesan.Nama_Status} </td>
+	<td> Meja  : ${m.Nama_Orang.Nama} </td> 
+	<td> Status : ${m.No_Meja.No_Meja} </td> 
 #{/list}
 </table> 
 <hr>

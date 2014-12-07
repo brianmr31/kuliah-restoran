@@ -27,10 +27,7 @@ public class realpesanans extends CRUD {
         object._save();
         flash.success(play.i18n.Messages.get("crud.created", type.modelName));
         if (params.get("_save") != null) {
-            redirect(request.controller + ".list");
-        }
-        if (params.get("_saveAndAddAnother") != null) {
-            redirect(request.controller + ".blank");
+            redirect("/pelayan/index");
         }
         redirect(request.controller + ".show", object._key());
     }
