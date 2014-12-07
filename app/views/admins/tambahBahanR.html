@@ -1,0 +1,20 @@
+<a href="@{admins.lihatResep()}" > back </a> 
+#{list items:m,as:'m'}
+<hr>
+<form method="GET" action="@{admins.saveBahanR()}">
+<table border=1>
+<input type="text"  name="m.id" value="${m.id}">
+<tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="m.Nama_RealResep.id" value="${a}" > </td> </tr>
+<tr> <td> Nama Bahan </td> <td> : </td> <td> 
+		<select name="m.Bahan.id">
+			<option value="${m.Bahan.id}"> ${m.Bahan.Nama_Bahan}</option>
+			#{list items:b, as:"x"}
+				<option value="${x.id}">${x.Nama_Bahan}</option>
+			#{/list}
+		</select> </td> </tr>
+<tr> <td> Jumlah </td> <td> : </td> <td> <input type="text" name="m.Jumlah" value="${m.Jumlah}"> </td> </tr> 
+<tr> <td> <input type="submit" value="save" > </td> </tr> 
+</table> 
+</form> 
+<hr>	
+#{/list}
