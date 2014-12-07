@@ -10,6 +10,7 @@ import play.exceptions.TemplateNotFoundException;
 import controllers.CRUD.ObjectType;
 
 public class pesanans extends CRUD {
+	/*
 	public static void list(int page, String search, String searchFields, String orderBy, String order) {
         ObjectType type = ObjectType.get(getControllerClass());
         notFoundIfNull(type);
@@ -35,11 +36,12 @@ public class pesanans extends CRUD {
          	
          	}
         }
-        */
+     
         try {
             render(type, objects, count, totalCount, page, orderBy, order);
         } catch (TemplateNotFoundException e) {
             render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
         }
     }
+    */
 }

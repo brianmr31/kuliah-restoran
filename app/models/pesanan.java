@@ -11,21 +11,20 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 @Entity
 public class pesanan extends Model{
-	public String namaPesanan;
+	public String nama_Pesanan;
 	@ManyToOne
 	public status Status_Pesan;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="menu1")
-	public List<menu> Nama_Menu;
 	@ManyToOne
 	public Orang Nama_Orang;
 	@ManyToOne
 	public meja No_Meja;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="pesan")
+	public List<menu> menu ;
 	public Date Tanggal_Pesan ;
 	public long Jumlah_Pesan ;
 	public long Harga;
 	
 	public String toString(){
-		return this.namaPesanan;
+		return this.nama_Pesanan;
 	}
-
 }

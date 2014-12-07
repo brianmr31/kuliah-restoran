@@ -3,13 +3,12 @@ package controllers;
 import java.util.List;
 
 import models.menu;
-import models.realresep;
-import models.resep;
 import play.db.Model;
 import play.exceptions.TemplateNotFoundException;
 import controllers.CRUD.ObjectType;
 
 public class menus extends CRUD {
+	/*
 	public static void list(int page, String search, String searchFields, String orderBy, String order) {
         ObjectType type = ObjectType.get(getControllerClass());
         notFoundIfNull(type);
@@ -30,4 +29,5 @@ public class menus extends CRUD {
             render("CRUD/list.html", type, objects, count, totalCount, page, orderBy, order);
         }
     }
+    */
 }

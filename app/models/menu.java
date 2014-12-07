@@ -5,9 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 @Entity
@@ -15,10 +13,12 @@ public class menu extends Model {
 	public String Nama_Menu ; 
 	public String Keterangan   ;
 	public long Harga;
+	
 	@ManyToOne
-	public pesanan menu1;
+	public resep resep ;
 	@ManyToOne
-	public realresep Nama_Resep;
+	public pesanan pesan ;
+	
 	public String toString(){
 		return Nama_Menu ;
 	}
