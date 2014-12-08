@@ -37,9 +37,25 @@ public class admins extends Controller {
 		resep.delete("id=?", id);
 	}
 	public static void tambahBahanR(long a){
-		List m = resep.findAll() ;
-		List b = bahan.findAll();
-		render(m,b,a);
+		// cari langsung dari resep.realresepnya
+		List m = resep.find("Nama_RealResep.id=?", a).fetch();
+		if(m != null ){
+			//List b = bahan.find("Bahan=?", m.Bahan).fetch();
+			//List<bahan> bhsA = null;
+			//long[] arr =null ;
+			//long id= 0 ;
+			//for(resep c : b){
+			//	int i = 0;
+			//	id = c.Bahan.id;
+				//arr[i]=id;
+				//bhsA.add(bhs);
+			//	i++;
+			//}
+			render(m,a);
+		}else{
+			render();
+		}
+		
 	}
 	public static void saveBahanR(resep m){
 		m.save();
