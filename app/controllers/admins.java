@@ -21,7 +21,9 @@ public class admins extends Controller {
 	}
 	public static void hapusResep(long id){
 		//resep.delete("realresep.id=?", id);
+		resep.delete("Nama_RealResep.id=?", id);
 		realresep.delete("id=?",id);
+		lihatResep();
 	}
 	public static void lihatResep(){
 		List m = realresep.findAll();
@@ -35,6 +37,7 @@ public class admins extends Controller {
 	}
 	public static void hapusBahanR(long id){
 		resep.delete("id=?", id);
+		lihatResep();
 	}
 	public static void tambahBahanR(long a){
 		// cari langsung dari resep.realresepnya
@@ -60,5 +63,6 @@ public class admins extends Controller {
 	}
 	public static void saveBahanR(resep m){
 		m.save();
+		lihatResep();
 	}
 }

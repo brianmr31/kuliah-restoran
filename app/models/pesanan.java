@@ -15,7 +15,6 @@ public class pesanan extends Model{
 	public menu menu_pesan;
 	@ManyToOne
 	public realpesanan Nama_pesanannya ;
-	
 	public Date Tanggal_Pesan ;
 	public long Jumlah_Pesan ;
 	public long Harga;
