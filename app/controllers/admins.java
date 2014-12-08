@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import models.bahan;
@@ -25,9 +26,10 @@ public class admins extends Controller {
 	}
 	public static void saveBeliBahan(bahanbeli bb){
 		bahan a = bahan.find("id=?", bb.Nama_bahan.id).first() ;
+		bb.Tanggal_Beli =  new Date();
 		bb.save();
 		a.Harga_Persatuan = bb.Harga_Persatuan;
-		a.Tanggal_Beli = bb.Tanggal_Beli;
+		a.Tanggal_Beli =  new Date() ;
 		a.Stock = a.Stock + bb.Stock;
 		a.Satuan = bb.satuan;
 		a.save();
