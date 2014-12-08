@@ -1,8 +1,8 @@
 <a href="@{admins.lihatResep()}" > back </a> 
 <table border=1>
-<tr> <td> Bahan </td> <td> Harga </td> <td> Jumlah </td> <td> Action </td> </tr>
+<tr> <td> Bahan </td> <td> Harga </td> <td> Jumlah Takaran</td> <td> Action </td> </tr>
 #{list items:m, as:'m'}
-	<tr> <td> ${m.Bahan} </td> <td> ${m.Jumlah} </td> <td> ${m.Harga} </td> <td>
+	<tr> <td> ${m.Bahan} </td> <td> ${m.Harga} </td> <td>  ${m.Jumlah} </td> <td>
 		<a href="@{admins.hapusBahanR(m.id)}"> hapus </a> 
 	</td> </tr>
 #{/list}

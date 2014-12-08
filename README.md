@@ -5,7 +5,7 @@ Misi pokok
 - Hak akses (pitik)
 - belum ada estimasi harga resep. (brianmr31)
 - user admins (brianmr31)
-     - Trigger/controler bahanpakai dan bahanbeli (auto log bahan yang dipakai dan dibeli)
+     - Trigger/controler bahanpakai dan bahanbeli (auto log bahan yang dipakai dan dibeli) -----(1/2)
 - user kasir (brianmr31)
      - bisa mengubah status pesanan dari on proses menjadi finish 
      - auto log table pembelian

@@ -5,6 +5,7 @@
 <form method="GET" action="@{admins.saveBahanR()}">
 <table border=1>
 <input type="text"  name="m.id" value="${m.id}">
+<input type="text"  name="id" value="${a}">
 <tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="m.Nama_RealResep.id" value="${a}" > </td> </tr>
 <tr> <td> Nama Bahan </td> <td> : </td> <td> 
 		<select name="m.Bahan.id">
@@ -19,6 +20,7 @@
 <h1> Tambah Baru </h1>
 <form method="GET" action="@{admins.saveBahanR()}">
 <table border=1>
+<input type="text"  name="id" value="${a}">
 <tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="m.Nama_RealResep.id" value="${a}"> </td> </tr>
 <tr> <td> Nama Bahan </td> <td> : </td> <td> 
 		<select name="m.Bahan.id">

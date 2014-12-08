@@ -42,7 +42,7 @@ public class admins extends Controller {
 	public static void hapusBahan(long id){
 		try{
 			bahan.delete("id=?", id);
-			lihatBahan(null);
+			lihatBahan(" Hello World ");
 		}catch(Exception e){
 			lihatBahan("Bahan dipakai oleh resep");
 		}
@@ -51,7 +51,7 @@ public class admins extends Controller {
 	
 	public static void saveBarang(bahan m){
 		m.save();
-		lihatBahan(null);
+		lihatBahan(" Hello World ");
 	}
 	public static void saveRealResep(realresep a){
 		a.save();
@@ -64,11 +64,25 @@ public class admins extends Controller {
 		lihatResep();
 	}
 	public static void lihatResep(){
+		long totalharga = 0 ;
+		List<realresep> rr = realresep.findAll();
+        for(realresep nn: rr){
+			for(resep n: nn.idresep){
+            	totalharga += n.Harga;
+        	}
+        	nn.Harga_menu = totalharga ;
+        	nn.save();
+        }
 		List m = realresep.findAll();
 		render(m);
 	}
 	public static void lihatBahanR(long id){
 		realresep a;
+		List<resep> r = resep.findAll();
+        for(resep n : r){
+  	  		n.Harga = n.Jumlah * n.Bahan.Harga_Persatuan ;
+  	  		n.save();
+  	    }
 		a = realresep.find("id=?", id).first();
 		List m = resep.find("Nama_RealResep=?", a).fetch();
 		render(m);
@@ -99,8 +113,8 @@ public class admins extends Controller {
 		}
 		
 	}
-	public static void saveBahanR(resep m){
+	public static void saveBahanR(resep m,long id){
 		m.save();
-		lihatResep();
+		lihatBahanR(id);
 	}
 }

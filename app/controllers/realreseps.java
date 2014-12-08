@@ -20,7 +20,7 @@ public class realreseps extends CRUD {
         List<Model> objects = type.findPage(page, search, searchFields, orderBy, order, (String) request.args.get("where"));
         Long count = type.count(search, searchFields, (String) request.args.get("where"));
         Long totalCount = type.count(null, null, (String) request.args.get("where"));
-        long totalharga = 0 ;
+        
         List<realresep> rr = realresep.findAll();
         for(realresep nn: rr){
         	for(resep n: nn.idresep){
