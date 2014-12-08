@@ -25,7 +25,7 @@ public class admins extends Controller {
 		render(m,b,s);
 	}
 	public static void saveBeliBahan(bahanbeli bb){
-		bahan a = bahan.find("id=?", bb.Nama_bahan.id).first() ;
+		bahan a = bahan.find("Nama_bahan=?", bb.Nama_bahan).first() ;
 		bb.Tanggal_Beli =  new Date();
 		bb.save();
 		a.Harga_Persatuan = bb.Harga_Persatuan;

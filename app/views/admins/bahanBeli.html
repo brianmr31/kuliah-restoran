@@ -3,10 +3,10 @@
 <table border=1>
 	<form method="GET" action="@{admins.saveBeliBahan()}" >
 	<tr> <td> Nama Bahan </td> <td> : </td> <td> 
-		<select name="bb.Nama_bahan.id">
+		<select name="bb.Nama_bahan">
 			<option>Pilih</option>
 			#{list items:b, as:"x"}
-				<option value="${x.id}">${x.Nama_Bahan}</option>
+				<option value="${x.Nama_Bahan}">${x.Nama_Bahan}</option>
 			#{/list}
 		</select> </td> </tr>
 	</td> </tr>
