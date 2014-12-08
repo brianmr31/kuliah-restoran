@@ -1,11 +1,12 @@
 <a href="@{pelayan.tambahPesanan()}"> add </a>
 <hr>
 <table border=1>
-<tr> <td> Nama Pesanan </td> <td> Nama Status </td> <td> Orang </td> <td> Meja </td> <td> action </td> </tr> 
+<tr> <td> Nama Pesanan </td> <td> Nama Status </td> <td> Orang </td> <td> Tagihan </td> <td> Meja </td> <td> action </td> </tr> 
 #{list items:m,as:'m'}
 	<tr> <td>&nbsp ${m.Nama_Pesanan} &nbsp </td>
     <td> &nbsp ${m.Status_Pesan.Nama_Status} &nbsp </td>
 	<td> &nbsp ${m.Nama_Orang.Nama} &nbsp </td> 
+	<td> &nbsp ${m.tagihan} &nbsp </td>
 	<td> &nbsp ${m.No_Meja.No_Meja} &nbsp </td> 
 	<td> &nbsp <a href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
 		&nbsp <a href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 

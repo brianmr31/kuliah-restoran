@@ -3,17 +3,53 @@ package controllers;
 import java.util.List;
 
 import models.bahan;
+import models.bahanbeli;
 import models.realresep;
 import models.resep;
+import models.satuan;
 import play.mvc.Controller;
 
 public class admins extends Controller {
-	public static void lihatBahan(){
+	public static void lihatBahan(String mesg){
 		List m = bahan.findAll();
-		render(m);
+		render(m,mesg);
 	}
 	public static void tambahResep(){
 		render();
+	}
+	public static void bahanBeli(){
+		List b = bahan.findAll();
+		List s = satuan.findAll();
+		List m = bahanbeli.findAll();
+		render(m,b,s);
+	}
+	public static void saveBeliBahan(bahanbeli bb){
+		bahan a = bahan.find("id=?", bb.Nama_bahan.id).first() ;
+		bb.save();
+		a.Harga_Persatuan = bb.Harga_Persatuan;
+		a.Tanggal_Beli = bb.Tanggal_Beli;
+		a.Stock = a.Stock + bb.Stock;
+		a.Satuan = bb.satuan;
+		a.save();
+		bahanBeli();
+	}
+	public static void hapusBeliBahanLog(long id){
+		bahanbeli.delete("id=?", id);
+		bahanBeli();
+	}
+	public static void hapusBahan(long id){
+		try{
+			bahan.delete("id=?", id);
+			lihatBahan(null);
+		}catch(Exception e){
+			lihatBahan("Bahan dipakai oleh resep");
+		}
+		
+	}
+	
+	public static void saveBarang(bahan m){
+		m.save();
+		lihatBahan(null);
 	}
 	public static void saveRealResep(realresep a){
 		a.save();

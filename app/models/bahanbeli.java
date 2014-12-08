@@ -13,4 +13,6 @@ public class bahanbeli extends Model{
 	public long Stock;
 	public long Harga_Persatuan;
 	public Date Tanggal_Beli;
+	@ManyToOne
+	public satuan satuan;
 }

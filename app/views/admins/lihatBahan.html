@@ -1,6 +1,21 @@
+<h1> Tambah Barang </h1>
+<td> <a href="@{admins.bahanBeli()}"> Beli Bahan </a></td></tr>
+<form method="get" action="@{admins.saveBarang()}">
+	<table border=1>
+		<tr> <td> Nama Barang </td> <td> : </td> <td> <input type="text" name="m.Nama_Bahan"> </td> </tr>
+		<tr> <td> <input type="submit" > </td> </tr>
+	</table>
+</form> 
+<h1> Daftar Stok Barang </h1> 
 <table border=1>
-<tr> <td> Nama_Menu </td> <td> Keterangan</td> <td> stok </td> </tr>
+<tr><td>Nama_Menu</td><td>stok</td><td>harga/Satuan</td><td>tanggal update</td><td>Action</td></tr>
 #{list items:m, as:'m'}
-	<tr> <td> ${m.Nama_Bahan} </td> <td> ${m.Harga_Persatuan}</td> <td> ${m.Stock}</td>  </tr>
+	<tr> <td> ${m.Nama_Bahan} </td>
+	<td> ${m.Stock}</td> 
+	<td> Rp ${m.Harga_Persatuan},00 / ${m.Satuan}</td> 
+	<td> ${m.Tanggal_Beli}</td>
+	<td> <a href="@{admins.hapusBahan(m.id)}"> hapus </a></td></tr>
 #{/list}
 </table>
+<h1> Pesan </h1>
+${mesg}

@@ -16,6 +16,7 @@ import play.mvc.Controller;
 public class pelayan extends Controller {
 	public static void index(){
 		List m = realpesanan.findAll();
+		
 		render(m);
 	}
 	public static void tambahPesanan(){
