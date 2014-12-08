@@ -40,6 +40,7 @@ public class admins extends Controller {
 		// cari langsung dari resep.realresepnya
 		List m = resep.find("Nama_RealResep.id=?", a).fetch();
 		if(m != null ){
+			List b = bahan.findAll() ;
 			//List b = bahan.find("Bahan=?", m.Bahan).fetch();
 			//List<bahan> bhsA = null;
 			//long[] arr =null ;
@@ -51,7 +52,7 @@ public class admins extends Controller {
 				//bhsA.add(bhs);
 			//	i++;
 			//}
-			render(m,a);
+			render(m,b,a);
 		}else{
 			render();
 		}
@@ -59,6 +60,5 @@ public class admins extends Controller {
 	}
 	public static void saveBahanR(resep m){
 		m.save();
-		
 	}
 }
