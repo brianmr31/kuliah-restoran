@@ -11,7 +11,7 @@ Misi pokok
      - auto log table pembelian
      
 - user pelayan (brianmr31)
-    - yang pesan belum dihapus
+    - yang pesan belum dihapus ------------(sudah)
     - gambar menu masuk ke databases
 - user pemilik (brianmr31)
     - menerima laporan pembelian bahan, pembayaran menu peberupa email / pdf;
