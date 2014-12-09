@@ -5,6 +5,9 @@ import java.util.List;
 
 import models.bahan;
 import models.bahanbeli;
+import models.menu;
+import models.pesanan;
+import models.realpesanan;
 import models.realresep;
 import models.resep;
 import models.satuan;
@@ -72,6 +75,7 @@ public class admins extends Controller {
         	}
         	nn.Harga_menu = totalharga ;
         	nn.save();
+        	totalharga=0;
         }
 		List m = realresep.findAll();
 		render(m);
@@ -116,5 +120,20 @@ public class admins extends Controller {
 	public static void saveBahanR(resep m,long id){
 		m.save();
 		lihatBahanR(id);
+	}
+	public static void lihatMenu(){
+		List<realresep> aa = realresep.findAll();
+		List m = menu.findAll();
+		long totalharga = 0 ;
+		List<menu> menua = menu.findAll();
+		for(menu a: menua){
+			 a.Harga =a.Nama_Resep.Harga_menu ;
+			 a.save();
+		}
+		render(aa,m);
+	}
+	public static void saveMenu(menu c){
+		c.save();
+		lihatMenu();
 	}
 }

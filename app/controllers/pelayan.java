@@ -59,18 +59,18 @@ public class pelayan extends Controller {
 		x.save();
 		render(m,a);
 	}
-	public static void hapuspesanan(long a){
+	public static void hapuspesanan(long a,long la){
 		pesanan.delete("id=?",a);
-		lihat(a);
+		lihat(la);
 	}
 	public static void hapusrealpesanan(long id){
 		pesanan.delete("Nama_pesanannya.id=?", id);
 		realpesanan.delete("id=?",id);
 		index();
 	}
-	public static void dipesan(pesanan a){
+	public static void dipesan(pesanan a,long id){
 		a.save();
-		index();
+		lihat(id);
 	}
 	public static void test(){
 		

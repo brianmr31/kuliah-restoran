@@ -1,0 +1,28 @@
+<h1> Tambah Menu </h1>
+<form method="GET" action="@{admins.saveMenu()}">
+<table border=1>
+<tr> <td> Nama Menu </td> <td> : </td> <td> <input type="text" name="c.Nama_Menu" > </td> </tr>
+<tr> <td> Keterang </td> <td> : </td> <td> <input type="text" name="c.Keterangan" > </td> </tr>
+<tr> <td> Resep yang digunakan </td> <td> : </td> <td>
+		<select name="c.Nama_Resep.id">
+		#{list items:aa,as:'x'}
+			<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
+		#{/list}
+		</select>
+		</td> </tr>
+<tr> <td> Harga Jual </td> <td> : </td> <td> <input type="text" name="c.HargaUntung" > </td> </tr>
+<tr> <td> <input type="submit" value="save" > </td> </tr> 
+</table> 
+</form> 
+ 
+<table border=1> 
+<tr> <td> Id </td> <td> Nama_Menu </td> <td> Keterangan </td> <td> Harga E </td><td> Harga Jual </td><td> Nama_Resep</td><td> aksi</td> </tr>  
+#{list items:m, as:"m"}
+	<tr> <td> ${m.id} </td> 
+	<td> ${m.Nama_Menu} </td>
+	<td> ${m.Keterangan} </td>  
+	<td> ${m.Harga} </td> 
+	<td> ${m.HargaUntung} </td>
+	<td> ${m.Nama_Resep} </td>  
+	<td> <a href="@{pelayan.hapuspesanan(m.id,a)}"> hapus </a> </td></tr>
+#{/list}
