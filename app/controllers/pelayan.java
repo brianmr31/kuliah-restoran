@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.Orang;
+import models.bahan;
 import models.bahanpakai;
 import models.meja;
 import models.menu;
@@ -50,7 +51,6 @@ public class pelayan extends Controller {
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
 		long harga = 0;
-		
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
@@ -64,21 +64,11 @@ public class pelayan extends Controller {
         	 	bpki.Nama_Bahan = n.Bahan;
         	 	bpki.Stock = n.Jumlah * p.Jumlah_Pesan;
         	 	bpki.Tanggal_Pakai = new Date();
+        	 	bpki.oleh = x.Nama_Pesanan;
         	 	bpki.save();
         	  }
 			  p.cek = 1;
 			}
-			//resep xx = resep.find("id=?", p.menu_pesan.Nama_Resep.id).first();
-			//bpki.Stock = xx.Jumlah;
-			//bpki.Nama_Bahan.id = xx.Bahan.id;
-			///bpki.Tanggal_Pakai = new Date();
-			//bpki.save();
-			//for(resep y:xx){
-			//	bpki.Stock = 0;
-			//	bpki.Nama_Bahan.id = y.Bahan.id;
-			//	bpki.Tanggal_Pakai = new Date();
-			//	bpki.save();
-			//}
 			p.save();
 			harga = harga+ p.Harga;
 		}
@@ -87,6 +77,20 @@ public class pelayan extends Controller {
 		render(m,a);
 	}
 	public static void hapuspesanan(long a,long la){
+		long harga = 0;
+		realpesanan x = realpesanan.find("id=?",la).first();
+		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		for(pesanan p : m){
+			if(p.cek == 1){
+			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
+				bahanpakai.delete("oleh=?", x.Nama_Pesanan);
+        		n.Bahan.Stock += n.Jumlah * p.Jumlah_Pesan ; 
+        	 	n.Bahan.save();
+        	  }
+			}
+			p.save();
+			harga = harga+ p.Harga;
+		}
 		pesanan.delete("id=?",a);
 		lihat(la);
 	}

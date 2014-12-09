@@ -13,4 +13,5 @@ public class bahanpakai extends Model {
 	public bahan Nama_Bahan;
 	public long Stock;
 	public Date Tanggal_Pakai;
+	public String oleh;
 }
