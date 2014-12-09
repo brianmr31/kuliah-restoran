@@ -1,5 +1,7 @@
 package models;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
