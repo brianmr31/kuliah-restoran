@@ -115,7 +115,6 @@ public class admins extends Controller {
 		}else{
 			render();
 		}
-		
 	}
 	public static void saveBahanR(resep m,long id){
 		m.save();
@@ -124,13 +123,22 @@ public class admins extends Controller {
 	public static void lihatMenu(){
 		List<realresep> aa = realresep.findAll();
 		List m = menu.findAll();
-		long totalharga = 0 ;
 		List<menu> menua = menu.findAll();
 		for(menu a: menua){
 			 a.Harga =a.Nama_Resep.Harga_menu ;
 			 a.save();
 		}
 		render(aa,m);
+	}
+	public static void editMenu(long id){
+		List aa = realresep.findAll(); 
+		menu m = menu.find("id=?", id).first();
+		render(m,aa);
+	}
+	public static void hapusMenu(long id){
+		
+		menu.delete("id=?", id);
+		lihatMenu();
 	}
 	public static void saveMenu(menu c){
 		c.save();

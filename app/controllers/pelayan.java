@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import models.Orang;
+import models.bahanpakai;
 import models.meja;
 import models.menu;
 import models.pesanan;
@@ -12,6 +13,7 @@ import models.realresep;
 import models.resep;
 import models.status;
 
+import play.db.jpa.GenericModel.JPAQuery;
 import play.mvc.Controller;
 
 public class pelayan extends Controller {
@@ -48,10 +50,35 @@ public class pelayan extends Controller {
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
 		long harga = 0;
+		
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
-			p.Harga = p.Jumlah_Pesan * p.menu_pesan.Harga;
+			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung;
+			Date current = new Date();
+			if(p.cek == 0){
+			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
+				bahanpakai bpki = new bahanpakai() ;
+        		n.Bahan.Stock -= n.Jumlah * p.Jumlah_Pesan ; 
+        	 	n.Bahan.save();
+        	 	bpki.Nama_Bahan = n.Bahan;
+        	 	bpki.Stock = n.Jumlah * p.Jumlah_Pesan;
+        	 	bpki.Tanggal_Pakai = new Date();
+        	 	bpki.save();
+        	  }
+			  p.cek = 1;
+			}
+			//resep xx = resep.find("id=?", p.menu_pesan.Nama_Resep.id).first();
+			//bpki.Stock = xx.Jumlah;
+			//bpki.Nama_Bahan.id = xx.Bahan.id;
+			///bpki.Tanggal_Pakai = new Date();
+			//bpki.save();
+			//for(resep y:xx){
+			//	bpki.Stock = 0;
+			//	bpki.Nama_Bahan.id = y.Bahan.id;
+			//	bpki.Tanggal_Pakai = new Date();
+			//	bpki.save();
+			//}
 			p.save();
 			harga = harga+ p.Harga;
 		}
@@ -69,6 +96,8 @@ public class pelayan extends Controller {
 		index();
 	}
 	public static void dipesan(pesanan a,long id){
+		a.Tanggal_Pesan=new Date();
+		a.cek = 0;
 		a.save();
 		lihat(id);
 	}
