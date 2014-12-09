@@ -3,6 +3,7 @@ package controllers;
 import java.util.Date;
 import java.util.List;
 
+import models.HakAkses;
 import models.bahan;
 import models.bahanbeli;
 import models.menu;
@@ -11,6 +12,7 @@ import models.realpesanan;
 import models.realresep;
 import models.resep;
 import models.satuan;
+import models.staff;
 import play.mvc.Controller;
 
 public class admins extends Controller {
@@ -143,5 +145,18 @@ public class admins extends Controller {
 	public static void saveMenu(menu c){
 		c.save();
 		lihatMenu();
+	}
+	public static void lihatstaff(){
+		List<HakAkses> aa = HakAkses.findAll();
+		List s = staff.findAll();
+		render(aa,s);
+	}
+	public static void saveStaff(staff m){
+		m.save();
+		lihatstaff();
+	}
+	public static void hapusStaff(long id){
+		staff.delete("id=?", id);
+		lihatstaff();
 	}
 }
