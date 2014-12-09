@@ -55,7 +55,6 @@ public class pelayan extends Controller {
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
 			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung;
-			Date current = new Date();
 			if(p.cek == 0){
 			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
 				bahanpakai bpki = new bahanpakai() ;
@@ -95,6 +94,20 @@ public class pelayan extends Controller {
 		lihat(la);
 	}
 	public static void hapusrealpesanan(long id){
+		long harga = 0;
+		realpesanan x = realpesanan.find("id=?",id).first();
+		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		for(pesanan p : m){
+			if(p.cek == 1){
+			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
+				bahanpakai.delete("oleh=?", x.Nama_Pesanan);
+        		n.Bahan.Stock += n.Jumlah * p.Jumlah_Pesan ; 
+        	 	n.Bahan.save();
+        	  }
+			}
+			p.save();
+			harga = harga+ p.Harga;
+		}
 		pesanan.delete("Nama_pesanannya.id=?", id);
 		realpesanan.delete("id=?",id);
 		index();
