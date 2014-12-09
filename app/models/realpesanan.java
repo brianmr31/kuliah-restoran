@@ -13,7 +13,6 @@ import play.db.jpa.Model;
 @Entity
 public class realpesanan extends Model {
 	public String Nama_Pesanan ;
-
 	@ManyToOne
 	public status Status_Pesan;
 	@ManyToOne

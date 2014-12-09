@@ -1,20 +1,12 @@
-#{list items:m,as:'a'}
 <table border="1">
-	<tr>
-		<td>
-		${a.Nama_Menu}
-		</td>
-	</tr>
-	<tr>
-		<td>
-		Harga Awal :${a.Harga}
-		</td>
-	</tr>
-	<tr>
-		<td colspan="1">
-		Dekripsi Menu:<br>
-		${a.Keterangan}
-		</td>
-	</tr>
-</table>
+<tr><td>Nama_Pesanan</td><td>Status_Pesan</td><td> Nama_Orang</td><td>No_Meja </td><td> tanggal</td><td>tagihan</td><td>action</td></tr>
+#{list items:m,as:'a'}
+	<tr> <td>${a.Nama_Pesanan}</td>
+	<td>${a.Status_Pesan}</td>
+	<td>${a.Nama_Orang}</td>
+	<td>${a.No_Meja}</td>
+	<td>${a.tanggal}</td>
+	<td>${a.tagihan}</td> 
+	<td> <a href="@{kasir.bayar(a.id)}"> bayar </a> </td> </tr>
 #{/list}
+</table>
