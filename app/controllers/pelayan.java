@@ -16,7 +16,13 @@ import play.mvc.Controller;
 
 public class pelayan extends Controller {
 	public static void index(){
-		List m = realpesanan.findAll();
+		List<realpesanan> m = realpesanan.findAll();
+		//List<pesanan> n = pesanan.
+		//pesanan
+		for(realpesanan a:m){
+			//a.tagihan = m.
+			a.save();
+		}
 		render(m);
 	}
 	public static void tambahPesanan(){
@@ -41,8 +47,16 @@ public class pelayan extends Controller {
 	}
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
+		long harga = 0;
 		realpesanan x = realpesanan.find("id=?",a).first();
-		List m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		for(pesanan p : m){
+			p.Harga = p.Jumlah_Pesan * p.menu_pesan.Harga;
+			p.save();
+			harga = harga+ p.Harga;
+		}
+		x.tagihan = harga ;
+		x.save();
 		render(m,a);
 	}
 	public static void hapuspesanan(long a){

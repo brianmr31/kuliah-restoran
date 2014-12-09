@@ -18,5 +18,4 @@ public class pesanan extends Model{
 	public Date Tanggal_Pesan ;
 	public long Jumlah_Pesan ;
 	public long Harga;
-	
 }
