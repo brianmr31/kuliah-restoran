@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import models.Orang;
@@ -16,7 +17,6 @@ import play.mvc.Controller;
 public class pelayan extends Controller {
 	public static void index(){
 		List m = realpesanan.findAll();
-		
 		render(m);
 	}
 	public static void tambahPesanan(){
@@ -31,10 +31,16 @@ public class pelayan extends Controller {
 		menu(a.id);
 	}
 	public static void menu(long a ){
+		List<menu> r = menu.findAll();
+        for(menu n : r){
+  	  		n.Harga = n.Nama_Resep.Harga_menu ;
+  	  		n.save();
+  	    }
 		List m = menu.findAll();
 		render(m,a);
 	}
 	public static void lihat(long a){
+		// Looping list pesanan terus ditambah harga menu 
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		render(m,a);
