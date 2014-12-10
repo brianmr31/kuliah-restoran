@@ -1,11 +1,15 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import models.HakAkses;
 import models.bahan;
 import models.bahanbeli;
+import models.bahanpakai;
 import models.menu;
 import models.pesanan;
 import models.realpesanan;
@@ -16,6 +20,7 @@ import models.staff;
 import play.mvc.Controller;
 
 public class admins extends Controller {
+	private static final String String = null;
 	public static void lihatBahan(String mesg){
 		List m = bahan.findAll();
 		render(m,mesg);
@@ -138,7 +143,6 @@ public class admins extends Controller {
 		render(m,aa);
 	}
 	public static void hapusMenu(long id){
-		
 		menu.delete("id=?", id);
 		lihatMenu();
 	}
@@ -158,5 +162,49 @@ public class admins extends Controller {
 	public static void hapusStaff(long id){
 		staff.delete("id=?", id);
 		lihatstaff();
+	}
+	public static void lihatBahanPakai(){
+		long totalPemakaian = 0;
+		long totalper = 0 ;
+		String total = null ;
+		int i =0 ;
+		List<bahanpakai> m = bahanpakai.findAll();
+		String nm = null;
+		List<String> nm_bhn = new ArrayList<String>();
+		List<String> jml_bhn = new ArrayList<String>();
+		//List<String> bhn = new ArrayList<String>();
+		Map<String, String> bhn =new HashMap<String, String>();
+		for(bahanpakai x: m){
+			if(i==0){
+				nm_bhn.add(i, x.Nama_Bahan.Nama_Bahan);
+				//bhn.add(x.Nama_Bahan.Nama_Bahan);
+			    List<bahanpakai> jml = bahanpakai.find("Nama_Bahan=?", x.Nama_Bahan).fetch();
+			    for(bahanpakai xx : jml){
+			    	totalper += xx.Stock;
+			    }
+			    total = Long.toString(totalper);
+			    jml_bhn.add(i, total);
+			    bhn.put(x.Nama_Bahan.Nama_Bahan,total);
+				nm=x.Nama_Bahan.Nama_Bahan;
+			}else{
+				if(nm != x.Nama_Bahan.Nama_Bahan ){
+					nm_bhn.add(i, x.Nama_Bahan.Nama_Bahan);
+					nm = x.Nama_Bahan.Nama_Bahan;
+					//bhn.add(x.Nama_Bahan.Nama_Bahan);
+					List<bahanpakai> jml = bahanpakai.find("Nama_Bahan=?", x.Nama_Bahan).fetch();
+					    for(bahanpakai xx : jml){
+					    	totalper += xx.Stock;
+					    }
+					total = Long.toString(totalper);
+					jml_bhn.add(i, total);
+					//bhn.add(total);
+					bhn.put(x.Nama_Bahan.Nama_Bahan,total);
+				}
+			}
+			totalPemakaian += x.Stock;
+			i++;
+		}
+		//String a = nm_bhn.toString();
+		render(m,totalPemakaian,nm_bhn,jml_bhn,bhn);
 	}
 }

@@ -1,0 +1,21 @@
+<a href=""> add </a>
+<hr>
+<table border=1>
+Bahan Terpakai Sebanyak : ${totalPemakaian}
+<tr> <td> Bahan </td> <td> jumlah </td> </tr>
+#{list items:bhn, as:'a'}
+	<tr> <td> ${a.key} </td> <td> ${a.value} </td> <br>
+#{/list}
+</table>
+<hr>
+<table border=1>
+<tr> <td> Nama_Bahan </td><td>oleh</td><td>Stock</td> <td> Tanggal_Pakai </td></tr> 
+#{list items:m,as:'m'}
+	<tr> <td>&nbsp ${m.Nama_Bahan} &nbsp </td>
+    <td> &nbsp ${m.oleh} &nbsp </td>
+	<td> &nbsp ${m.Stock} &nbsp </td>
+	<td> &nbsp ${m.Tanggal_Pakai} &nbsp </td> 
+	</tr>
+#{/list}
+</table> 
+<hr>
