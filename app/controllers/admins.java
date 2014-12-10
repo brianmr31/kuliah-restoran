@@ -20,7 +20,6 @@ import models.staff;
 import play.mvc.Controller;
 
 public class admins extends Controller {
-	private static final String String = null;
 	public static void lihatBahan(String mesg){
 		List m = bahan.findAll();
 		render(m,mesg);
@@ -158,6 +157,11 @@ public class admins extends Controller {
 	public static void saveStaff(staff m){
 		m.save();
 		lihatstaff();
+	}
+	public static void editstaff(long id){
+		staff z= staff.find("id=?",id).first();
+		List s= HakAkses.findAll();
+		render(z,s);
 	}
 	public static void hapusStaff(long id){
 		staff.delete("id=?", id);
