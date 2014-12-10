@@ -1,7 +1,9 @@
-<a href="@{pelayan.index()}"> back </a> 
+#{extends 'temapelayan.html' /}
+
+<a href="@{pelayan.index()}"> Back </a> 
 <hr>
 <form method="GET" action="@{pelayan.savePesanan()}">
-<table border=1>
+<table border=0>
 <tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="a.Nama_Pesanan" > </td> </tr>
 <tr> <td> Status_Pesan </td> <td> : </td> <td> 
 		<select name="a.Status_Pesan.id">
@@ -25,7 +27,7 @@
 			#{/list}
 			</select> </td> </tr>
 			
-<tr> <td> <input type="submit" value="save" > </td> </tr> 
+<tr> <td> <input type="submit" value="Save" > </td> </tr> 
 </table> 
 </form> 
 <hr>

@@ -1,7 +1,8 @@
-<a href="@{pelayan.tambahPesanan()}"> add </a>
+#{extends 'temapelayan.html' /}
+<a href="@{pelayan.tambahPesanan()}"> Add </a>
 <hr>
 <table border=1>
-<tr> <td> Nama Pesanan </td> <td> Nama Status </td> <td> Orang </td> <td> Tagihan </td> <td> Meja </td> <td> action </td> </tr> 
+<tr> <td> Nama Pesanan </td> <td> Status </td> <td> Orang </td> <td> Tagihan </td> <td> Meja </td> <td> Action </td> </tr> 
 #{list items:m,as:'m'}
 	<tr> <td>&nbsp ${m.Nama_Pesanan} &nbsp </td>
     <td> &nbsp ${m.Status_Pesan.Nama_Status} &nbsp </td>
@@ -14,4 +15,4 @@
 	</tr>
 #{/list}
 </table> 
-<hr>
+
