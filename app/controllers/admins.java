@@ -30,7 +30,15 @@ public class admins extends Controller {
 		List m = bahan.findAll();
 		render(m,mesg);
 	}
+	public static void awal(){
+		
+		render();
+	}
 	public static void tambahResep(){
+		render();
+	}
+	public static void tambahMenu(){
+		
 		render();
 	}
 	public static void bahanBeli(){
