@@ -1,8 +1,9 @@
+#{extends 'tema.html' /}
+
 <h1> Tambah Edit Menu</h1>
-<a href="@{admins.lihatMenu()}" > back </a>
 <form method="post" action="@{admins.saveMenu()}" enctype="multipart/form-data">
 <table border=1>
-<input type="text" name="c.id" value="${m.id}">
+<input type="hidden" name="c.id" value="${m.id}">
 <tr> <td> Nama Menu </td> <td> : </td> <td> <input type="text" name="c.Nama_Menu" value="${m.Nama_Menu}" > </td> </tr>
 <tr> <td> Keterang </td> <td> : </td> <td> <input type="text" name="c.Keterangan" value="${m.Keterangan}" > </td> </tr>
 <tr> <td> Resep yang digunakan </td> <td> : </td> <td>
