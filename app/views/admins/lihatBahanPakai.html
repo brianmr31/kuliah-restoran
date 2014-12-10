@@ -1,7 +1,8 @@
-<a href=""> add </a>
-<hr>
+<form method="get" action="@{admins.sendmail()}" >
+<input type="text" name="a" value="${pesan}">
+<input type="submit" value="send">
+</form>
 <table border=1>
-Bahan Terpakai Sebanyak : ${totalPemakaian}
 <tr> <td> Bahan </td> <td> jumlah </td> </tr>
 #{list items:bhn, as:'a'}
 	<tr> <td> ${a.key} </td> <td> ${a.value} </td> <br>
