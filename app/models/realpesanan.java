@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
-
 @Entity
 public class realpesanan extends Model {
 	public String Nama_Pesanan ;
