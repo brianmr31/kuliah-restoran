@@ -3,13 +3,10 @@
 #{list items:m,as:'m'}
 <form method="get" action="@{pelayan.dipesan()}">
 <table border="1">
-	<tr>
-		<td>
-		${m.Nama_Menu}
-		<input type="text" name="a.menu_pesan.id" value="${m.id}" >
-		<input type="text" name="a.Nama_pesanannya.id" value="${a}" >
-		</td>
-	</tr>
+	${m.Nama_Menu}
+	<input type="hidden" name="id" value="${a}" >
+	<input type="hidden" name="a.menu_pesan.id" value="${m.id}" >
+	<input type="hidden" name="a.Nama_pesanannya.id" value="${a}" >
 	<tr>
 		<td>
 		Harga Awal :${m.Harga}

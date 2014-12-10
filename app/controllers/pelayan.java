@@ -22,10 +22,10 @@ public class pelayan extends Controller {
 		List<realpesanan> m = realpesanan.findAll();
 		//List<pesanan> n = pesanan.
 		//pesanan
-		//for(realpesanan a:m){
+		for(realpesanan a:m){
 			//a.tagihan = m.
-			//a.save();
-		//}
+			a.save();
+		}
 		render(m);
 	}
 	public static void tambahPesanan(){
