@@ -32,9 +32,12 @@ public class kasir extends Controller {
 		mn = menu.find("Nama_Menu=?", p.menu_pesan.Nama_Menu).first();
 		rsp = resep.find("Nama_RealResep=?", mn.Nama_Resep).fetch();
 			for(resep y : rsp){
-				pesan += y.Bahan.Nama_Bahan + " : ";
-				pesan += y.Jumlah+"\n";
+				pesan += " " ;
+				pesan += y.Bahan.Nama_Bahan + " ; Jumlah : ";
+				pesan += y.Jumlah+" ; Harga :  ";
+				pesan += y.Harga+"  ";
 				Totaljumlah += y.Harga;
+				pesan += "; Harga Total : "+Totaljumlah+"";
 			}
 		}
 		//x.delete();
