@@ -1,30 +1,120 @@
-<h1> Tambah Menu </h1>
-<form method="post" action="@{admins.saveMenu()}" enctype="multipart/form-data">
-<table border=1>
-<tr> <td> Nama Menu </td> <td> : </td> <td> <input type="text" name="c.Nama_Menu" > </td> </tr>
-<tr> <td> Keterangan </td> <td> : </td> <td> <input type="text" name="c.Keterangan" > </td> </tr>
-<tr> <td> Resep yang digunakan </td> <td> : </td> <td>
-		<select name="c.Nama_Resep.id">
-		#{list items:aa,as:'x'}
+#{extends 'tema.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.lihatMenu()}">Lihat Menu</a>
+        </li>
+    </ul>
+</div>
+<div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Tambah Menu </h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="GET" action="@{admins.saveMenu()}">
+                <div class="control-group">
+                    
+
+                   
+                </div>
+                    <div class="form-group">
+                        <label >Nama Menu</label>
+                        <input type="text" class="form-control"  name="c.Nama_Menu" placeholder="Nama Menu">
+                    </div>
+                    <div class="form-group">
+                        <label >Keterangan</label>
+                        <input type="text" class="form-control" name="c.Keterangan" placeholder="Keterangan">
+                    </div>
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label >Resep :</label>
+                        <select name="c.Nama_Resep.id" data-rel="chosen">
+                           #{list items:aa,as:'x'}
 			<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
 		#{/list}
-		</select>
-		</td> </tr>
-<tr> <td> Harga Jual </td> <td> : </td> <td> <input type="text" name="c.HargaUntung" > </td> </tr>
-<tr> <td> File </td> <td> : </td> <td><input type="file" name="c.gambar" /></td></td></tr>
-<tr> <td> <input type="submit" value="save" > </td> </tr> 
-</table> 
-</form> 
- 
-<table border=1> 
-<tr> <td> Id </td> <td>Gambar </td> <td> Nama_Menu </td> <td> Keterangan </td> <td> Harga E </td><td> Harga Jual </td><td> Nama_Resep</td><td> aksi</td> </tr>  
-#{list items:m, as:"m"}
-	<tr> <td> ${m.id} </td>
-	<td> <img src="@{admins.getPicture(m.id)}" width="100px" height="100px"/> </td>
-	<td> <a href="@{admins.editMenu(m.id)}" > ${m.Nama_Menu} </a> </td>
+		
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >Harga Jual</label>
+                        <input type="text" class="form-control" name="c.HargaUntung" placeholder="Harga Jual">
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="Save">simpan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+<div class="box col-md-9">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Log Menu</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nama Menu</th>
+        <th>Keterangan</th>
+        <th>Harga Estimasi</th>
+        <th>Harga Jual</th>
+        <th>Nama Resep</th>
+        <th>aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   
+   
+       #{list items:m, as:"m"}
+	<tr> <td> ${m.id} </td> 
+	<td>  ${m.Nama_Menu} </a> </td>
 	<td> ${m.Keterangan} </td>  
 	<td> ${m.Harga} </td> 
 	<td> ${m.HargaUntung} </td>
 	<td> ${m.Nama_Resep} </td>  
-	<td> <a href="@{admins.hapusMenu(m.id)}"> hapus </a> </td></tr>
+	<td> <a class="btn btn-danger"  
+	href="@{admins.hapusMenu(m.id)}">
+	<i class="glyphicon glyphicon-trash icon-white"></i>hapus </a>
+	<a class="btn btn-default"  
+	 href="@{admins.editMenu(m.id)}" >
+	<i class=" glyphicon glyphicon-pencil icon-white"></i>edit </a> </td></tr>
 #{/list}
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+ 
+ 
+

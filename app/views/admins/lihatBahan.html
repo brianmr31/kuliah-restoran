@@ -1,21 +1,97 @@
-<h1> Tambah Barang </h1>
-<td> <a href="@{admins.bahanBeli()}"> Beli Bahan </a></td></tr>
-<form method="get" action="@{admins.saveBarang()}">
-	<table border=1>
-		<tr> <td> Nama Barang </td> <td> : </td> <td> <input type="text" name="m.Nama_Bahan"> </td> </tr>
-		<tr> <td> <input type="submit" > </td> </tr>
-	</table>
-</form> 
-<h1> Daftar Stok Barang </h1> 
-<table border=1>
-<tr><td>Nama_Menu</td><td>stok</td><td>harga/Satuan</td><td>tanggal update</td><td>Action</td></tr>
-#{list items:m, as:'m'}
+#{extends 'tema.html' /}
+
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.lihatBahan()}">Kelola Bahan</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+  <div class="box col-md-4">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> Tambah Bahan</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+                            class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form role="form" method="get" action="@{admins.saveBarang()}">
+                    <div class="form-group">
+                        <label >Nama Bahan</label>
+                        <input type="text" class="form-control"  name="m.Nama_Bahan" placeholder="Masukkan Nama Bahan">
+                    </div>
+                  
+                    <button type="submit" class="btn btn-default">Tambah</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+<div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Bahan</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Nama Menu</th>
+        <th>Jumlah Beli</th>
+        <th>harga/Satuan</th>
+        <th>tanggal update</th>
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   
+   
+     #{list items:m, as:'m'}
 	<tr> <td> ${m.Nama_Bahan} </td>
 	<td> ${m.Stock}</td> 
 	<td> Rp ${m.Harga_Persatuan},00 / ${m.Satuan}</td> 
 	<td> ${m.Tanggal_Beli}</td>
-	<td> <a href="@{admins.hapusBahan(m.id)}"> hapus </a></td></tr>
-#{/list}
-</table>
-<h1> Pesan </h1>
-${mesg}
+	<td class="center">
+           
+            <a class="btn btn-danger" href="@{admins.hapusBahan(m.id)}">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+               Hapus
+            </a>
+
+        </td></tr>
+
+    #{/list}
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+</div>
+
+
+</div>
