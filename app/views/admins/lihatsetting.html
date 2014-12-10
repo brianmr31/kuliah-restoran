@@ -1,13 +1,56 @@
-<hr>
-<form method="Get" action="@{admins.savesetting()}" >
-<table border=1>
-<input type="text" name="m.id" value="${sa.id}" >
-<tr> <td> Nama_setting </td> <td> : </td> <td> <input type="text" name="m.Nama_setting" value="${sa.Nama_setting}" ></td> </tr>
-<tr> <td> Email </td> <td> : </td> <td> <input type="text" name="m.email" value="${sa.email}" ></td> <tr> 
-<tr> <td> Nama_printKasir </td> <td> : </td> <td> <input type="text" name="m.printKasir" value="${sa.printKasir}" > </td> </tr>
-<tr> <td> Nama_printadmin </td> <td> : </td> <td><input type="text" name="m.printadmin" value="${sa.printadmin}" </td> </tr>
-<td> <input type="submit" value="Save" </td>  
-</tr>
-</table> 
-<form>
+#{extends 'tema.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="#">Konfigurasi Sistem</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+  <div class="box col-md-8">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> Konfigurasi Sistem</h2>
+
+                <div class="box-icon">
+                    
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                   
+                </div>
+            </div>
+            <div class="box-content">
+                <form role="form" method="Get" action="@{admins.savesetting()}">
+                <input type="hidden" name="m.id" value="${sa.id}" >
+                    <div class="form-group">
+                        <label >Nama Setting</label>
+                        <input type="text" class="form-control"  name="m.Nama_setting" value="${sa.Nama_setting}" placeholder="Masukkan Nama Bahan">
+                    </div>
+                    <div class="form-group">
+                        <label >Email</label>
+                        <input type="email" class="form-control"  name="m.email" value="${sa.email}" placeholder="Masukkan Nama Bahan">
+                    </div>
+                    <div class="form-group">
+                        <label >Nama print kasir</label>
+                        <input type="text" class="form-control"   name="m.printKasir" value="${sa.printKasir}" placeholder="Masukkan Nama Bahan">
+                    </div>
+                    <div class="form-group">
+                        <label >Nama Print admin</label>
+                        <input type="text" class="form-control"  name="m.printadmin" value="${sa.printadmin}" placeholder="Masukkan Nama Bahan">
+                    </div>
+                    
+                    
+                  
+                    <button type="submit" class="btn btn-default" value="save">ubah</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
 <hr>
