@@ -95,14 +95,14 @@
                         <i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
                         </li>
                         <li class="nav-header">Konfigurasi</li>
-                        <li><a href="#"><i class="glyphicon glyphicon-wrench"></i><span> Konfigurasi Sistem</span></a>
+                        <li><a href="@{admins.lihatsetting()}"><i class="glyphicon glyphicon-wrench"></i><span> Konfigurasi Sistem</span></a>
                         </li>
                         <li class="nav-header hidden-md">Bahan Baku</li>
                          <li><a class="ajax-link" href="@{admins.bahanBeli()}"><i
                                     class="glyphicon glyphicon-shopping-cart"></i><span> Pembelian Bahan</span></a></li>
                         <li><a href="@{admins.lihatBahan()}"><i class="glyphicon glyphicon-tasks"></i><span> Kelola Bahan</span></a>
                         </li>
-                        <li><a href="#"><i class="glyphicon glyphicon-share"></i><span> Penggunaan Bahan</span></a>
+                        <li><a href="@{admins.lihatBahanPakai()}"><i class="glyphicon glyphicon-share"></i><span> Penggunaan Bahan</span></a>
                         </li>
                          <li class="nav-header hidden-md">RESEP</li>
                          <li><a class="ajax-link" href="@{admins.lihatResep()}"><i
@@ -136,7 +136,7 @@
         
 
  #{doLayout /}
-	
+    
  
     </div>
     <!--/span-->
