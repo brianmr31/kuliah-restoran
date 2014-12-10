@@ -1,5 +1,5 @@
 <h1> Tambah Staff </h1>
-<form method="get" action="@{admins.saveStaff()}">
+<form method="post" action="@{admins.saveStaff()}">
 	<table border=1>
 		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="m.nama"> </td> </tr>
 		<tr> <td> E-mail </td> <td> : </td> <td> <input type="email" name="m.email"> </td> </tr>
@@ -20,6 +20,6 @@
 	<tr> <td> ${m.nama} </td>
 	<td> ${m.email}</td> 
 	<td> ${m.sebagai}</td> 
-	<td> <a href="@{admins.hapusStaff(m.id)}"> hapus </a></td></tr>
+	<td> <a href="@{admins.editstaff(m.id)}">edit</a> | <a href="@{admins.hapusStaff(m.id)}"> hapus </a></td></tr>
 #{/list}
 </table>

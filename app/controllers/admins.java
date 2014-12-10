@@ -25,7 +25,6 @@ import play.libs.Mail;
 import play.mvc.Controller;
 
 public class admins extends Controller {
-	private static final String String = null;
 	public static final Map<String, String> bhn =new HashMap<String, String>();
 	public static void lihatBahan(String mesg){
 		List m = bahan.findAll();
@@ -164,6 +163,11 @@ public class admins extends Controller {
 	public static void saveStaff(staff m){
 		m.save();
 		lihatstaff();
+	}
+	public static void editstaff(long id){
+		staff z= staff.find("id=?",id).first();
+		List s= HakAkses.findAll();
+		render(z,s);
 	}
 	public static void hapusStaff(long id){
 		staff.delete("id=?", id);

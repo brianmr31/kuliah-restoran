@@ -1,0 +1,21 @@
+<h1> Edit Staff </h1>
+<form method="post" action="@{admins.saveStaff()}">
+	<table border=1>
+		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="m.nama" value="${z.nama}"> </td> </tr>
+		<tr> <td> E-mail </td> <td> : </td> <td> <input type="email" name="m.email" value="${z.email}"> </td> </tr>
+		<tr> <td> Sebagai </td> <td> : </td> <td>
+		<select name="m.sebagai.id" >
+		#{list items:s, as:"x"}
+			#{if x.Nama_Akses == z.sebagai.Nama_Akses }
+			    <option value="${x.id}" selected>${x.Nama_Akses}</option>
+			#{/if}
+			#{else}
+			    <option value="${x.id}">${x.Nama_Akses}</option>
+			#{/else}
+		#{/list}
+		</select>
+		</td> </tr>
+		<input type="hidden" name="m.id" value="${z.id}"/>
+		<tr> <td> <input type="submit" > </td> </tr>
+	</table>
+</form> 
