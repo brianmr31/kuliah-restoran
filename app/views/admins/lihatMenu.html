@@ -27,7 +27,7 @@
               
                  <div class="box-content">
                 <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
-                <form role="form" method="GET" action="@{admins.saveMenu()}">
+                <form role="form" method="POST" action="@{admins.saveMenu()}" enctype="multipart/form-data">
                 <div class="control-group">
                     
 
@@ -56,6 +56,11 @@
                         <label >Harga Jual</label>
                         <input type="text" class="form-control" name="c.HargaUntung" placeholder="Harga Jual">
                     </div>
+					<div class="form-group">
+                        <label >File</label>
+                        <input type="file" class="form-control" name="c.gambar">
+                    </div>
+		
                 </div>
                   
                     <button type="submit" class="btn btn-default" value="Save">simpan</button>
@@ -82,6 +87,7 @@
     <thead>
     <tr>
         <th>Id</th>
+		<th>Gambar</th>
         <th>Nama Menu</th>
         <th>Keterangan</th>
         <th>Harga Estimasi</th>
@@ -96,7 +102,8 @@
    
    
        #{list items:m, as:"m"}
-	<tr> <td> ${m.id} </td> 
+	<tr> <td> ${m.id} </td>
+	<td> <img src="@{admins.getPicture(m.id)}" width="100px" height="100px"/> </td>	
 	<td>  ${m.Nama_Menu} </a> </td>
 	<td> ${m.Keterangan} </td>  
 	<td> ${m.Harga} </td> 
