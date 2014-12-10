@@ -1,0 +1,11 @@
+<a href="@{kasir.index()}"> back </a>
+<hr>
+<table border="1">
+<tr><td>kode_pembelian</td><td>Pemesan</td><td>Harga </td><td> tgl_bayar</td></tr>
+#{list items:p,as:'a'}
+	<tr> <td>${a.kode_pembelian}</td>
+	<td>${a.Pemesan}</td>
+	<td>${a.Harga}</td>
+	<td>${a.tgl_bayar}</td></tr>
+#{/list}
+</table>

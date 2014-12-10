@@ -1,0 +1,66 @@
+<a href="@{kasir.index()}"> back </a>
+#{if id != 0 }
+	<h4> Menu Edit Orang </h4>
+	<a href="@{kasir.tambahorang()}"> add Orang </a>
+  	<form method="get" action="@{kasir.simpanorang()}">
+	<table border=1>
+		<input type="text" name="o.id" value="${id}">
+		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="o.Nama" value="${x.Nama}"> </td></tr>
+		<tr> <td> Alamat </td> <td> : </td> <td> <input type="text" name="o.Alamat" value="${x.Alamat}"> </td></tr>
+		<tr> <td> Kontak </td> <td> : </td> <td> <input type="text" name="o.Kontak" value="${x.Kontak}"> </td></tr>
+		<tr> <td> Jenis_Kelamin </td> <td> : </td> <td>
+		    <select name="o.Jenis_Kelamin.id"" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+		</td></tr>
+		<tr> <td> Nama_Akses </td> <td> : </td> <td> 
+		    <select name="o.Nama_Akses.id" >
+			#{list items:h, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Akses} </option>
+			#{/list}
+			</select> 
+		</td></tr>
+		<tr> <td> <input type="submit" value="pesan"> </td></tr>
+	</table>
+	</form>
+#{/if}
+#{else}
+	<h4> Menu Tambah Orang </h4>
+  	<form method="get" action="@{kasir.simpanorang()}">
+	<table border=1>
+		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="o.Nama" > </td></tr>
+		<tr> <td> Alamat </td> <td> : </td> <td> <input type="text" name="o.Alamat" > </td></tr>
+		<tr> <td> Kontak </td> <td> : </td> <td> <input type="text" name="o.Kontak" > </td></tr>
+		<tr> <td> Jenis_Kelamin </td> <td> : </td> <td>
+		    <select name="o.Jenis_Kelamin.id"" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+		</td></tr>
+		<tr> <td> Nama_Akses </td> <td> : </td> <td> 
+		    <select name="o.Nama_Akses.id" >
+			#{list items:h, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Akses} </option>
+			#{/list}
+			</select> 
+		</td></tr>
+		<tr> <td> <input type="submit" value="pesan"> </td></tr>
+	</table>
+	</form>
+#{/else} 
+
+<hr>
+<table border="1">
+<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis_Kelamin</td><td>tagihan</td><td>action</td></tr>
+#{list items:o,as:'a'}
+	<tr> <td>${a.Nama}</td>
+	<td>${a.Alamat}</td>
+	<td>${a.Kontak}</td>
+	<td>${a.Jenis_Kelamin}</td>
+	<td>${a.Nama_Akses}</td> 
+	<td> <a href="@{kasir.hapusorang(a.id)}"> hapus </a> <a href="@{kasir.editorang(a.id)}"> Edit </a></td> </tr>
+#{/list}
+</table>

@@ -3,7 +3,9 @@ package controllers;
 import java.util.Date;
 import java.util.List;
 
+import models.HakAkses;
 import models.Orang;
+import models.jenisKelamin;
 import models.meja;
 import models.menu;
 import models.pembelian;
@@ -28,7 +30,7 @@ public class kasir extends Controller {
 		pbl.tgl_bayar= x.tanggal;
 		pbl.Pemesan = x.Nama_Pesanan;
 		pbl.kode_pembelian = "KodePem"+String.valueOf(x.id)+"_"+pbl.Pemesan;
-		//pbl.save();
+		pbl.save();
 		menu mn;
 		List<resep> rsp = null;
 		List<pesanan> psn = pesanan.find("Nama_pesanannya=?", x).fetch();
@@ -53,5 +55,29 @@ public class kasir extends Controller {
 		c.No_Meja  = meja.findById((long)4);
 		c.tanggal = new Date();
 		c.save();
+		index();
+	}
+	public static void tambahorang(Orang x,long id){
+		List<Orang> o= Orang.findAll();
+		List j= jenisKelamin.findAll();
+		List h= HakAkses.findAll();
+		render(o,j,h,x,id);
+	}
+	public static void simpanorang(Orang o,long id){
+		o.save();
+		tambahorang(null,0);
+	}
+	public static void hapusorang(long id){
+		Orang.delete("id=?", id);
+		tambahorang(null,0);
+	}
+	public static void editorang(long id){
+		Orang o = Orang.findById(id);
+		tambahorang(o,id);
+	}
+	public static void lihatpembelian(){
+		List<pembelian> p = pembelian.findAll();
+		render(p);
+		
 	}
 }
