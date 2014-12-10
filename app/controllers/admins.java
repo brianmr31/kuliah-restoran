@@ -215,13 +215,13 @@ public class admins extends Controller {
 		render(m,bhn,pesan);
 		
 	}
-	public static void sendmail(Map<String, String> a){
+	public static void sendmail(String a){
 		SimpleEmail email = new SimpleEmail();
     	try {
 			email.setFrom("brian@localhost");
 			email.addTo("brian@localhost");
-	    	email.setSubject("Test From Play Frameworks");
-	    	email.setMsg(a.toString());
+	    	email.setSubject("Mail Pemakaian bahan ");
+	    	email.setMsg(a);
 	    	Mail.send(email);
 		} catch (EmailException e) {
 			e.printStackTrace();
