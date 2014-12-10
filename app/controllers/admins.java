@@ -217,9 +217,11 @@ public class admins extends Controller {
 	}
 	public static void sendmail(String a){
 		SimpleEmail email = new SimpleEmail();
+		setting Nemail = setting.findById((long)13);
+		String Nama = Nemail.email ;
     	try {
 			email.setFrom("brian@localhost");
-			email.addTo("brian@localhost");
+			email.addTo(Nama);
 	    	email.setSubject("Mail Pemakaian bahan ");
 	    	email.setMsg(a);
 	    	Mail.send(email);
@@ -233,14 +235,13 @@ public class admins extends Controller {
 			e.printStackTrace();
 		}
 	    email = null ;
-	    render(a);
+	    lihatBahanPakai();
 	}
 	public static void  lihatsetting(){
-		setting s = setting.find("id=?",(long)1).first();
-		render(s);
+		setting sa = setting.findById((long)13);
+		render(sa);
 	}
 	public static void savesetting(setting m){
 		m.save();
-		lihatsetting();
 	}
 }
