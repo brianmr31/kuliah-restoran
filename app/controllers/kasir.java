@@ -5,6 +5,7 @@ import java.util.List;
 import models.pembelian;
 import models.pesanan;
 import models.realpesanan;
+import models.resep;
 import play.mvc.Controller;
 
 public class kasir extends Controller {
@@ -20,14 +21,8 @@ public class kasir extends Controller {
 		pbl.Pemesan = x.Nama_Pesanan;
 		pbl.kode_pembelian = "KodePem"+String.valueOf(x.id)+"_"+pbl.Pemesan;
 		pbl.save();
-		x = null ;
-		//x.delete();
-		//x._delete();
-		//delete(id);
-	}
-	public static void delete(long id){
-		//pesanan.delete("Nama_pesanannya.id=?", id);
-		///realpesanan.delete("id=?",id);
-		//index();
+		List<resep> rsp = resep.find("Nama_RealResep=?", x).fetch();
+		x.delete();
+		render(rsp);
 	}
 }

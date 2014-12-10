@@ -244,5 +244,6 @@ public class admins extends Controller {
 	}
 	public static void savesetting(setting m){
 		m.save();
+		lihatsetting();
 	}
 }
