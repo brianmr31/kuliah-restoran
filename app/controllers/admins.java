@@ -238,6 +238,7 @@ public class admins extends Controller {
 	    lihatBahanPakai();
 	}
 	public static void  lihatsetting(){
+		//Ganti 13 dengan id setting yang dimasukan
 		setting sa = setting.findById((long)13);
 		render(sa);
 	}
