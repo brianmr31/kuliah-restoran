@@ -3,17 +3,21 @@ package controllers;
 import java.util.Date;
 import java.util.List;
 
+import models.Orang;
+import models.meja;
 import models.menu;
 import models.pembelian;
 import models.pesanan;
 import models.realpesanan;
 import models.resep;
+import models.status;
 import play.mvc.Controller;
 
 public class kasir extends Controller {
 	public static void index(){
 		List m = realpesanan.findAll();
-		render(m);
+		List o = Orang.findAll();
+		render(m,o);
 	}
 	public static void bayar(long id){
 		long Totaljumlah = 0 ;
@@ -40,7 +44,14 @@ public class kasir extends Controller {
 				pesan += "; Harga Total : "+Totaljumlah+"";
 			}
 		}
-		//x.delete();
-		render(rsp,pesan);
+		x.delete();
+		index();
+		//render(rsp,pesan);
+	}
+	public static void antarsave(realpesanan c){
+		c.Status_Pesan = status.findById((long)1);;
+		c.No_Meja  = meja.findById((long)4);
+		c.tanggal = new Date();
+		c.save();
 	}
 }

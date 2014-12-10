@@ -1,3 +1,18 @@
+<h4> <a href="@{kasir.antarsave()}"> tambah Orang </a> </h4>
+<form method="get" action="@{kasir.antarsave()}">
+<table border=1>
+	<tr> <td> Nama Pemesan </td> <td> : </td> <td> <input type="text" name="c.Nama_Pesanan" > </td></tr>
+	<tr> <td> Nama_Orang </td> <td> : </td> <td>
+		<select name="c.Nama" >
+		#{list items:o, as:'x'}
+			<option value="${x.id}}"> ${x.Nama} </option>
+		</select>
+		#{/list}
+	</td></tr>
+	<tr> <td> <input type="submit" value="pesan"> </td></tr>
+</table>
+</form>
+<hr>
 <table border="1">
 <tr><td>Nama_Pesanan</td><td>Status_Pesan</td><td> Nama_Orang</td><td>No_Meja </td><td> tanggal</td><td>tagihan</td><td>action</td></tr>
 #{list items:m,as:'a'}

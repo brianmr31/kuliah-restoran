@@ -28,10 +28,7 @@
                  <div class="box-content">
                 <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
                 <form role="form" method="GET" action="@{admins.saveMenu()}">
-                <div class="control-group">
-                    
-
-                   
+                <div class="control-group"> 
                 </div>
                     <div class="form-group">
                         <label >Nama Menu</label>
@@ -47,9 +44,8 @@
                     <div class="controls"><label >Resep :</label>
                         <select name="c.Nama_Resep.id" data-rel="chosen">
                            #{list items:aa,as:'x'}
-			<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
-		#{/list}
-		
+								<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
+							#{/list}
                         </select>
                     </div>
                     <div class="form-group">
