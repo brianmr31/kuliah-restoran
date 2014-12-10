@@ -155,6 +155,12 @@ public class admins extends Controller {
 		c.save();
 		lihatMenu();
 	}
+	public static void getPicture(Long id) {
+	    menu Menu = menu.findById(id);
+	    notFoundIfNull(Menu);
+	    response.setContentTypeIfNotSet(Menu.gambar.type());
+	    renderBinary(Menu.gambar.get());
+	}
 	public static void lihatstaff(){
 		List<HakAkses> aa = HakAkses.findAll();
 		List s = staff.findAll();
