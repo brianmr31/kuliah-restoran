@@ -1,0 +1,12 @@
+<a href="@{admins.index()}"> back </a>
+<hr>
+<table border="1">
+<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis_Kelamin</td><td>tagihan</td>/tr>
+#{list items:o,as:'a'}
+	<tr> <td>${a.Nama}</td>
+	<td>${a.Alamat}</td>
+	<td>${a.Kontak}</td>
+	<td>${a.Jenis_Kelamin}</td>
+	<td>${a.Nama_Akses}</td> </tr>
+#{/list}
+</table>

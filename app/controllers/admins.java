@@ -10,10 +10,13 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
 import models.HakAkses;
+import models.Orang;
 import models.bahan;
 import models.bahanbeli;
 import models.bahanpakai;
+import models.jenisKelamin;
 import models.menu;
+import models.pembelian;
 import models.pesanan;
 import models.realpesanan;
 import models.realresep;
@@ -285,5 +288,24 @@ public class admins extends Controller {
 	public static void savesetting(setting m){
 		m.save();
 		lihatsetting();
+	}
+	public static void index(){
+		List<realpesanan> m = realpesanan.findAll();
+		List o = Orang.findAll();
+		for(realpesanan a:m){
+			//a.tagihan = m.
+			a.save();
+		}
+		render(m,o);
+	}
+	public static void tambahorang(){
+		List<Orang> o= Orang.findAll();
+		List j= jenisKelamin.findAll();
+		List h= HakAkses.findAll();
+		render(o,j,h);
+	}
+	public static void lihatpembelian(){
+		List<pembelian> p = pembelian.findAll();
+		render(p);
 	}
 }
