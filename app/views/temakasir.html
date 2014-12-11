@@ -20,18 +20,18 @@
     <link href="@{'public/temarestoran/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/jquery.noty.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/noty_theme_default.css'}" rel='stylesheet'>
-    <link href="@{'public/temarestoran/css/elfinder.min.css'}" rel='stylesheet'> 
+    <link href="@{'public/temarestoran/css/elfinder.min.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/elfinder.theme.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/jquery.iphone.toggle.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/uploadify.css'}" rel='stylesheet'>
     <link href="@{'public/temarestoran/css/animate.min.css'}" rel='stylesheet'>
 
     <!-- jQuery -->
-    <script src="@{'public/temarestoran/bower_components/jquery/jquery.min.js'}"></script> 
+    <script src="@{'public/temarestoran/bower_components/jquery/jquery.min.js'}"></script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> 
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <!-- The fav icon -->
@@ -51,12 +51,12 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="@{admins.awal()}"> <img alt="Charisma Logo" src="@{'public/images/splash.png'}" class="hidden-xs"/>
-                <span>RESTORAN</span></a>
+               Dapur Mommy</a>
 
             <!-- user dropdown starts -->
             <div class="btn-group pull-right">
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Pelayan</span>
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> Kasir</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
@@ -90,16 +90,25 @@
 
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
-                        <li class="nav-header">Menu Restoran</li>
-                        <li><a class="ajax-link" href="@{pelayan.awal()}">
-                        <i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
-                        </li>
-                        <li class="nav-header">Pemesanan</li>
-                        <li><a href="@{pelayan.menu()}"><i class="glyphicon glyphicon-glass"></i><span> Pilih Menu</span></a>
-                        <li><a href="@{pelayan.index()}"><i class="glyphicon glyphicon-shopping-cart"></i><span> Lihat Pesanan</span></a>
-                        </li>
+                       
+                             <li class="nav-header hidden-md">KASIR</li>
+                         <li><a class="ajax-link" href="@{kasir.index()}"><i
+                                    class="glyphicon glyphicon-print"></i><span> Kelola kasir</span></a></li>
+                                 <li><a class="ajax-link" href="@{kasir.lihatpembelian()}"><i
+                                    class=" glyphicon glyphicon-eye-open"></i><span> Lihat Pembayaran</span></a></li>
+                                     <li><a class="ajax-link" href="@{kasir.tambahorang()}"><i
+                                    class="glyphicon glyphicon-plus-sign"></i><span> Tambah Orang</span></a></li>
+                                       <li><a class="ajax-link" href="@{kasir.menu()}"><i
+                                    class="glyphicon glyphicon-book"></i><span> Lihat Menu</span></a></li>
+                                            
+                                     
+                        
+                        
                     </ul>
-                    
+                     <li class="nav-header hidden-md">Powered By : Team Pro-Party</li>
+
+        
+            
                 </div>
             </div>
             
@@ -107,12 +116,22 @@
         <!--/span-->
         <!-- left menu ends -->
 
-        
-        
+       
 
+        
 
  #{doLayout /}
 	
+ 
+    </div>
+    <!--/span-->
+</div><!--/row-->
+    <!-- content ends -->
+
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+   
 
 
     <hr>
@@ -138,11 +157,7 @@
     </div>
 
 
-    <!-- footer -->
-    <footer>
-        <p class="col-md-6 col-sm-3 col-xs-12 powered-by">Copyright&copy; 2014 by Pro-Party Team</p>
-	</footer>
-
+   
 </div><!--/.fluid-container-->
 
 <!-- external javascript -->

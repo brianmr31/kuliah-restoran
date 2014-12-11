@@ -1,30 +1,86 @@
+<<<<<<< HEAD
+#{extends 'temakasir.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{kasir.index()}">Home</a>
+        </li>
+        <li>
+            <a href="@{kasir.menu()}">Lihat menu</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+
+
+        #{list items:m,as:'m'}
+        <div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-glass"></i> ${m.Nama_Menu}</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="get" action="@{kasir.dipesan()}">
+                <div class="control-group">
+                    <input type="hidden" name="id" value="${a}" >
+=======
 <h4> Daftar Menu </h4>
 #{list items:m,as:'m'}
 <form method="get" action="@{kasir.dipesan()}">
 <table border="1">
 	<tr> <td> <h5> ${m.Nama_Menu} </h5> </td> </tr>
 	<input type="hidden" name="id" value="${a}" >
+>>>>>>> origin/master
 	<input type="hidden" name="a.menu_pesan.id" value="${m.id}" >
 	<input type="hidden" name="a.Nama_pesanannya.id" value="${a}" >
-	<tr>
-		<td>
-		Harga Awal :${m.Harga}
-		</td>
-	</tr>
-	<tr>
-		<td>
-		Dekripsi Menu:<br>
-		${m.Keterangan}
-		</td>
-	</tr>
-	<tr>
-		<td> Jumlah  <input type="text" name="a.Jumlah_Pesan" > </td>
-	</tr>
-	<tr>
-		<td>
-			<input type="submit" value="pesan" >
-		</td>
-	</tr>
-</table>
-</form>
+ 					<div id="image-1" class="thumbnail" > <img src="@{admins.getPicture(m.id)}" width="100px" height="100px"/> </div>
+                    <div class="controls"><label >Harga :&nbsp ${m.HargaUntung}</label>&nbsp
+                        
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label >Dekripsi Menu:</label>
+                        <input type="text" class="form-control"  value="${m.Keterangan}" readonly="readonly">
+                    </div>
+                   
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label >Jumlah:</label>
+                        <input type="text" class="form-control" name="a.Jumlah_Pesan" placeholder="jumlah pesanan">
+                    </div>
+                </div>
+                  <hr>
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <!--/span-->
 #{/list}
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--/span-->
+
+
+    </div>

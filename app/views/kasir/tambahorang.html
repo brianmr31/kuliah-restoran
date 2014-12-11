@@ -1,66 +1,201 @@
-<a href="@{kasir.index()}"> back </a>
+#{extends 'temakasir.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{kasir.index()}">Home</a>
+        </li>
+        <li>
+            <a href="@{kasir.tambahorang()}">Tambah Orang</a>
+        </li>
+    </ul>
+</div>
 #{if id != 0 }
-	<h4> Menu Edit Orang </h4>
-	<a href="@{kasir.tambahorang()}"> add Orang </a>
-  	<form method="get" action="@{kasir.simpanorang()}">
-	<table border=1>
-		<input type="text" name="o.id" value="${id}">
-		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="o.Nama" value="${x.Nama}"> </td></tr>
-		<tr> <td> Alamat </td> <td> : </td> <td> <input type="text" name="o.Alamat" value="${x.Alamat}"> </td></tr>
-		<tr> <td> Kontak </td> <td> : </td> <td> <input type="text" name="o.Kontak" value="${x.Kontak}"> </td></tr>
-		<tr> <td> Jenis_Kelamin </td> <td> : </td> <td>
-		    <select name="o.Jenis_Kelamin.id"" >
-			#{list items:j, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
-			#{/list}
-			</select> 
-		</td></tr>
-		<tr> <td> Nama_Akses </td> <td> : </td> <td> 
-		    <select name="o.Nama_Akses.id" >
-			#{list items:h, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Akses} </option>
-			#{/list}
-			</select> 
-		</td></tr>
-		<tr> <td> <input type="submit" value="pesan"> </td></tr>
-	</table>
-	</form>
-#{/if}
-#{else}
-	<h4> Menu Tambah Orang </h4>
-  	<form method="get" action="@{kasir.simpanorang()}">
-	<table border=1>
-		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="o.Nama" > </td></tr>
-		<tr> <td> Alamat </td> <td> : </td> <td> <input type="text" name="o.Alamat" > </td></tr>
-		<tr> <td> Kontak </td> <td> : </td> <td> <input type="text" name="o.Kontak" > </td></tr>
-		<tr> <td> Jenis_Kelamin </td> <td> : </td> <td>
-		    <select name="o.Jenis_Kelamin.id"" >
-			#{list items:j, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
-			#{/list}
-			</select> 
-		</td></tr>
-		<tr> <td> Nama_Akses </td> <td> : </td> <td> 
-		    <select name="o.Nama_Akses.id" >
-			#{list items:h, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Akses} </option>
-			#{/list}
-			</select> 
-		</td></tr>
-		<tr> <td> <input type="submit" value="pesan"> </td></tr>
-	</table>
-	</form>
-#{/else} 
+<a href="@{kasir.tambahorang()}"> add Orang </a>
 
-<hr>
-<table border="1">
-<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis_Kelamin</td><td>tagihan</td><td>action</td></tr>
-#{list items:o,as:'a'}
+<div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Menu Edit Orang</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form"  method="get" action="@{kasir.simpanorang()}">
+                <input type="hidden" name="o.id" value="${id}">
+               
+                    <div class="form-group">
+                        <label >Nama </label>
+                        <input type="text" class="form-control"  name="o.Nama" value="${x.Nama}" >
+                    </div>
+                     <div class="form-group">
+                        <label >Alamat </label>
+                        <input type="text" class="form-control"  name="o.Alamat" value="${x.Alamat}" >
+                    </div>
+                     <div class="form-group">
+                        <label >Kontak </label>
+                        <input type="text" class="form-control"  name="o.Kontak" value="${x.Kontak}" >
+                    </div>
+                    
+                  
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label > Jenis Kelamin :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+                        
+                    </div>
+                </div>
+                <div class="control-group">
+                    
+
+                    <div class="controls"><label > Hak Akses :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+                        
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <!--/span-->
+       #{/if}
+#{else} 
+        <div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Menu Tambah Orang</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="get" action="@{kasir.simpanorang()}">
+               
+                    <div class="form-group">
+                        <label >Nama </label>
+                        <input type="text" class="form-control"  name="o.Nama"  >
+                    </div>
+                     <div class="form-group">
+                        <label >Alamat </label>
+                        <input type="text" class="form-control"  name="o.Alamat"  >
+                    </div>
+                     <div class="form-group">
+                        <label >Kontak </label>
+                        <input type="text" class="form-control"  name="o.Kontak"  >
+                    </div>
+                    
+                  
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label > Jenis Kelamin :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+                        
+                    </div>
+                </div>
+                <div class="control-group">
+                    
+
+                    <div class="controls"><label > Hak Akses :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
+                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
+			#{list items:j, as:'x'}
+				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
+			#{/list}
+			</select> 
+                        
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <!--/span-->
+        #{/else} 
+<div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Orang</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Nama </th>
+        <th>Alamat</th>
+        <th>kontak</th>
+        <th>jenis kelamin</th>
+        <th>tagihan</th>       
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   #{list items:o,as:'a'}
 	<tr> <td>${a.Nama}</td>
 	<td>${a.Alamat}</td>
 	<td>${a.Kontak}</td>
 	<td>${a.Jenis_Kelamin}</td>
 	<td>${a.Nama_Akses}</td> 
-	<td> <a href="@{kasir.hapusorang(a.id)}"> hapus </a> <a href="@{kasir.editorang(a.id)}"> Edit </a></td> </tr>
+	<td> <a class="btn btn-default" href="@{kasir.hapusorang(a.id)}"> hapus </a> <a href="@{kasir.editorang(a.id)}"> Edit </a></td> </tr>
 #{/list}
-</table>
+   
+      
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    
+    
+    
+    
+
+	
+  	
+
+	
+
+
+</div>
