@@ -1,12 +1,43 @@
-<a href="@{admins.index()}"> back </a>
-<form method="get" action="@{admins.sendmail()}" >  
-	<input type="hidden" name="a" value="${pesan}" >
-	<input type="hidden" name="b" value="${subject}" >
-	<input type="submit" value="send mail" >
-</form>
-<hr>
-<table border="1">
-<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis_Kelamin</td><td>tagihan</td>/tr>
+#{extends 'tema.html' /}
+
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.tambahorang()}">Lihat Pelanggan</a>
+        </li>
+    </ul>
+</div>
+
+<!-- <a class="btn btn-default" href="@{admins.index()}">
+                <i class="glyphicon glyphicon-chevron-left icon-white"></i>
+               Back
+               </a>
+<br/> -->
+<div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-user"></i> Daftar Pelanggan</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+	<form method="get" action="@{admins.sendmail()}" >  
+		<input type="hidden" name="a" value="${pesan}" >
+		<input type="hidden" name="b" value="${subject}" >
+		<input type="submit" value="send mail" >
+	</form>
+<table border="1" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis Kelamin</td><td>tagihan</td></tr>
 #{list items:o,as:'a'}
 	<tr> <td>${a.Nama}</td>
 	<td>${a.Alamat}</td>
@@ -15,3 +46,9 @@
 	<td>${a.Nama_Akses}</td> </tr>
 #{/list}
 </table>
+
+</div>
+    </div>
+    </div>
+
+</div>
