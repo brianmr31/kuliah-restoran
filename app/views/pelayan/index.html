@@ -17,7 +17,7 @@
 	#{/else}
 	</td> 
 	<td> 
-	#{if m.Status_Pesan.id == 1 }
+	#{if m.Status_Pesan.id != 1 }
 		&nbsp <a href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
 	#{/if}
 	&nbsp <a href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 

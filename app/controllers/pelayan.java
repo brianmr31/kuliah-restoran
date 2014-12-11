@@ -20,6 +20,9 @@ import play.mvc.With;
 @With(Secure.class)
 @Check("pelayan")
 public class pelayan extends Controller {
+	public static void awal(){
+		render();
+	}
 	public static void index(){
 		List<realpesanan> m = realpesanan.findAll();
 		//List<pesanan> n = pesanan.
