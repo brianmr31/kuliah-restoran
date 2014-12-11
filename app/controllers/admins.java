@@ -23,7 +23,10 @@ import models.setting;
 import models.staff;
 import play.libs.Mail;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
+@Check("admin")
 public class admins extends Controller {
 	public static final Map<String, String> bhn =new HashMap<String, String>();
 	public static void lihatBahan(String mesg){
@@ -31,7 +34,6 @@ public class admins extends Controller {
 		render(m,mesg);
 	}
 	public static void awal(){
-		
 		render();
 	}
 	public static void tambahResep(){
