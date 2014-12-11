@@ -1,16 +1,61 @@
-<a href="@{kasir.index()}"> back </a>
-<form method="get" action="@{admins.sendmail()}" >  
-	<input type="hidden" name="a" value="${pesan}" >
-	<input type="hidden" name="b" value="${subject}" >
-	<input type="submit" value="send mail" >
-</form>
-<hr>
-<table border="1">
-<tr><td>kode_pembelian</td><td>Pemesan</td><td>Harga </td><td> tgl_bayar</td></tr>
-#{list items:p,as:'a'}
+#{extends 'tema.html' /}
+
+
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.bahanBeli()}">Pembelian Bahan</a>
+        </li>
+    </ul>
+    
+</div>
+<div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i>Transaksi Penjualan</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+
+    <div class="box-content">
+  	<form method="get" action="@{admins.sendmail()}" >  
+		<input type="hidden" name="a" value="${pesan}" >
+		<input type="hidden" name="b" value="${subject}" >
+		<input class="btn btn-default" type="submit" value="send mail" ><br>
+	</form> 
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Kode Pembelian</th>
+        <th>Pemesesan</th>
+        <th>Harga</th>
+        <th>Tanggal Bayar</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   #{list items:p,as:'a'}
 	<tr> <td>${a.kode_pembelian}</td>
 	<td>${a.Pemesan}</td>
 	<td>${a.Harga}</td>
 	<td>${a.tgl_bayar}</td></tr>
 #{/list}
-</table>
+   
+      
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

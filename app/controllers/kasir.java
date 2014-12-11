@@ -166,4 +166,10 @@ public class kasir extends Controller {
 		a.save();
 		lihat(id);
 	}
+	public static void getPicture(Long id) {
+	    menu Menu = menu.findById(id);
+	    notFoundIfNull(Menu);
+	    response.setContentTypeIfNotSet(Menu.gambar.type());
+	    renderBinary(Menu.gambar.get());
+	}
 }

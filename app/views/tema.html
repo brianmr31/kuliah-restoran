@@ -27,7 +27,7 @@
     <link href="@{'public/temarestoran/css/animate.min.css'}" rel='stylesheet'>
 
     <!-- jQuery -->
-    <script src="@{'public/temarestoran/bower_components/jquery/jquery.min.js'}"></script> 
+    <script src="@{'public/temarestoran/bower_components/jquery/jquery.min.js'}"></script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -62,7 +62,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">Profile</a></li>
                     <li class="divider"></li>
-                    <li><a href="login.html">Logout</a></li>
+                    <li><a href="@{secure.logout()}">Logout</a></li>
                 </ul>
             </div>
             <!-- user dropdown ends -->
@@ -114,9 +114,9 @@
                                      
                         
                         <li class="nav-header hidden-md">Transaksi</li>
-                         <li><a class="ajax-link" href="form.html"><i
+                         <li><a class="ajax-link" href="@{admins.lihatpembelian()}"><i
                                     class="glyphicon glyphicon-briefcase"></i><span> Transaksi Penjualan</span></a></li>
-                        <li><a href="error.html"><i class="glyphicon glyphicon-plane"></i><span> Delivery Order</span></a>
+                        <li><a href="@{admins.index()}"><i class="glyphicon glyphicon-plane"></i><span> Delivery Order</span></a>
                         </li>
                         <li><a href="login.html"><i class="glyphicon glyphicon-hdd"></i><span> Data Pelanggan</span></a>
                         </li>
