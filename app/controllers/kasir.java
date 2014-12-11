@@ -15,7 +15,10 @@ import models.realpesanan;
 import models.resep;
 import models.status;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
+@Check("kasir")
 public class kasir extends Controller {
 	public static void index(){
 		List<realpesanan> m = realpesanan.findAll();

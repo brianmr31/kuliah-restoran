@@ -13,10 +13,12 @@ import models.realpesanan;
 import models.realresep;
 import models.resep;
 import models.status;
-
 import play.db.jpa.GenericModel.JPAQuery;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
+@Check("pelayan")
 public class pelayan extends Controller {
 	public static void index(){
 		List<realpesanan> m = realpesanan.findAll();
@@ -37,9 +39,6 @@ public class pelayan extends Controller {
 	}
 	public static void savePesanan(realpesanan a){
 		a.tanggal = new Date();
-		if(a.Nama_Orang.id == 7 ){
-			a.No_Meja.id = (long) 4;
-		}
 		a.save();
 		menu(a.id);
 	}
@@ -124,5 +123,11 @@ public class pelayan extends Controller {
 	}
 	public static void test(){
 		
+	}
+	public static void getPicture(Long id) {
+	    menu Menu = menu.findById(id);
+	    notFoundIfNull(Menu);
+	    response.setContentTypeIfNotSet(Menu.gambar.type());
+	    renderBinary(Menu.gambar.get());
 	}
 }
