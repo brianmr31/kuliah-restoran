@@ -1,3 +1,8 @@
+<form method="get" action="@{admins.sendmail()}" >  
+	<input type="hidden" name="a" value="${pesan}" >
+	<input type="hidden" name="b" value="${subject}" >
+	<input type="submit" value="send mail" >
+</form>
 <table border="1">
 <tr><td>Nama_Pesanan</td><td>Status_Pesan</td><td> Nama_Orang</td><td>No_Meja </td><td> tanggal</td><td>tagihan</td><td>action</td></tr>
 #{list items:m,as:'a'}

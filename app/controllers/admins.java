@@ -290,6 +290,7 @@ public class admins extends Controller {
 		lihatsetting();
 	}
 	public static void index(){
+		
 		List<realpesanan> m = realpesanan.findAll();
 		List o = Orang.findAll();
 		for(realpesanan a:m){
