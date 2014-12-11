@@ -1,98 +1,69 @@
 #{extends 'temapelayan.html' /}
-
-#{list items:m,as:'m'}
-<form method="get" action="@{pelayan.dipesan()}">
-<table border="1">
-	${m.Nama_Menu}
-	<input type="hidden" name="id" value="${a}" >
-	<input type="hidden" name="a.menu_pesan.id" value="${m.id}" >
-	<input type="hidden" name="a.Nama_pesanannya.id" value="${a}" >
-	<tr>
-		<td>
-		Harga Awal :${m.Harga}
-		</td>
-	</tr>
-	<tr>
-		<td>
-		Dekripsi Menu:<br>
-		${m.Keterangan}
-		</td>
-	</tr>
-	<tr>
-		<td> Jumlah  <input type="text" name="a.Jumlah_Pesan" > </td>
-	</tr>
-	<tr>
-		<td>
-			<input type="submit" value="pesan" >
-		</td>
-	</tr>
-</table>
-</form>
-#{/list}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{pelayan.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{pelayan.menu()}">menu</a>
+        </li>
+    </ul>
+</div>
 <div class="row">
 
-        <div class="box col-md-12">
 
+        #{list items:m,as:'m'}
+        <div class="box col-md-3">
             <div class="box-inner">
-
                 <div class="box-header well" data-original-title="">
-
-                    <h2><i class="glyphicon glyphicon-glass"></i> Pilihan Menu</h2>
-
+                    <h2><i class="glyphicon glyphicon-glass"></i> ${m.Nama_Menu}</h2>
 
                     <div class="box-icon">
-
-                        <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-up"></i></a>
-
-                        <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
                     </div>
-
                 </div>
-
-                <div class="box-content">
-
-                    <br>
-                    <center>
-                    <ul class="thumbnails box col-md-12">
-
-                                                    <li id="image-1" class="thumbnail">
-Nama Menu
-                                <a class="cboxElement" style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg)" title="Sample Image 1" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/1.jpg"><img style="display: block;" class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/1.jpg" alt="Sample Image 1"></a>
-Rp 1000,00<br>
-<input type="text" placeholder="Jumlah Porsi" size="10"><br>
-<button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-shopping-cart"> Order</i></button>
-                            </li>
-
-                                                    <li id="image-2" class="thumbnail">
-Nama Menu
-                                <a class="cboxElement" style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg)" title="Sample Image 2" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/2.jpg"><img style="display: block;" class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/2.jpg" alt="Sample Image 2"></a>
-Rp 1000,00<br>
-<input type="text" placeholder="Jumlah Porsi" size="10"><br>
-<button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-shopping-cart"> Order</i></button>
-                            </li>
-
-                                                    <li id="image-3" class="thumbnail">
-Nama Menu
-                                <a class="cboxElement" style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg)" title="Sample Image 3" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/3.jpg"><img style="display: block;" class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/3.jpg" alt="Sample Image 3"></a>
-Rp 1000,00<br>
-<input type="text" placeholder="Jumlah Porsi" size="10"><br>
-<button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-shopping-cart"> Order</i></button>
-                            </li>
-
-                                                    <li id="image-4" class="thumbnail">
-Nama Menu
-                                <a class="cboxElement" style="background:url(https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg)" title="Sample Image 4" href="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/4.jpg"><img style="display: block;" class="grayscale" src="https://raw.githubusercontent.com/usmanhalalit/charisma/1.x/img/gallery/thumbs/4.jpg" alt="Sample Image 4"></a>
-Rp 1000,00<br>
-<input type="text" placeholder="Jumlah Porsi" size="10"><br>
-<button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-shopping-cart"> Order</i></button>
-                            </li>
-
-                                                    
-
-                                            </ul>
-</center>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="get" action="@{pelayan.dipesan()}">
+                <div class="control-group">
+                    <input type="hidden" name="id" value="${a}" >
+	<input type="hidden" name="a.menu_pesan.id" value="${m.id}" >
+	<input type="hidden" name="a.Nama_pesanannya.id" value="${a}" >
+ 					<div id="image-1" class="thumbnail" > <img src="@{pelayan.getPicture(m.id)}" width="100px" height="100px"/> </div>
+                    <div class="controls"><label >Harga :&nbsp Rp. ${m.HargaUntung}</label>&nbsp
+                        
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label >Dekripsi Menu:</label>
+                        <input type="text" class="form-control"  value="${m.Keterangan}" readonly="readonly">
+                    </div>
+                   
+                    <div class="control-group">
                     
+
+                    <div class="controls"><label >Jumlah:</label>
+                        <input type="text" class="form-control" name="a.Jumlah_Pesan" placeholder="jumlah pesanan">
+                    </div>
+                </div>
+                 <br>
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <!--/span-->
+#{/list}
+
+
+
 
                 </div>
 

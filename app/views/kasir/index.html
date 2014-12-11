@@ -93,11 +93,16 @@
 	<td>${a.Nama_Orang}</td>
 	<td>${a.No_Meja}</td>
 	<td>${a.tanggal}</td>
+<<<<<<< HEAD
+	<td>${a.tagihan}</td> 
+	<td class="center"> <a class="btn btn-default"  href="@{kasir.menu(a.id)}"> Pesanan </a> 
+=======
 	<td>${a.tagihan}</td>
 	<td class="center">
 	#{if a.Status_Pesan.id == 1 } 
 		<a class="btn btn-default"  href="@{kasir.menu(a.id)}"> Pesanan </a>
 	#{/if} 
+>>>>>>> origin/master
 		<a class="btn btn-default" href="@{kasir.lihat(a.id)}"> Lihat </a>
 	 	<a class="btn btn-default" href="@{kasir.bayar(a.id)}"> bayar </a> </td> </tr>
 #{/list}

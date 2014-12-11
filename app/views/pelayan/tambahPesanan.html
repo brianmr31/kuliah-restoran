@@ -1,4 +1,4 @@
-<!-- #{extends 'temapelayan.html' /} -->
+#{extends 'temapelayan.html' /}
 
 <a href="@{pelayan.index()}"> Back </a> 
 <hr>
@@ -11,28 +11,19 @@
 			#{list items:sp, as:"x"}
 				<option value="${x.id}">${x.Nama_Status}</option>
 			#{/list}
-			</select> </td> </tr>
-			<tr> <td> Nama_Orang </td> <td> : </td> <td>
+		</select> </td> </tr>
+<tr> <td> Nama_Orang </td> <td> : </td> <td>
 			<select name="a.Nama_Orang.id">
+			<option>Pilih</option>
 			#{list items:o, as:"x"}
-				#{if x.id == 1 || x.id == 7 }
-					<!-- 1 =  bawa pulang dan 7 = makan ditempat --> 
-					<option value="${x.id}">${x.Nama}</option>
-				#{/if}
-				#{else}
-					<!-- option value="${x.id}">${x.Nama}</option> -->
-				#{/else}
+				<option value="${x.id}">${x.Nama}</option>
 			#{/list}
 			</select> </td> </tr>
-			<tr> <td> No_Meja </td> <td> : </td> <td>
+<tr> <td> No_Meja </td> <td> : </td> <td>
 			<select name="a.No_Meja.id">
+			<option>Pilih</option>
 			#{list items:nm, as:"x"}
-			 	#{if x.id == 4 }
-			 		<option value="${x.id}"> Bawa </option>
-			 	#{/if}
-			 	#{else} 
-					<option value="${x.id}">${x.No_Meja}</option>
-				#{/else}
+				<option value="${x.id}">${x.No_Meja}</option>
 			#{/list}
 			</select> </td> </tr>
 			

@@ -33,6 +33,10 @@ public class pelayan extends Controller {
 		}
 		render(m);
 	}
+	public static void awal(){
+		render();
+		
+	}
 	public static void tambahPesanan(){
 		List sp = status.findAll();
 		List mp = menu.findAll();

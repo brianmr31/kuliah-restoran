@@ -1,13 +1,55 @@
 #{extends 'temapelayan.html' /}
-<a href="@{pelayan.tambahPesanan()}"> Add </a>
-<hr>
-<table border=1>
-<tr> <td> Nama Pesanan </td> <td> Status </td> <td> Orang </td> <td> Tagihan </td> <td> Meja </td> <td> Action </td> </tr> 
-#{list items:m,as:'m'}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{kasir.index()}">Home</a>
+        </li>
+        <li>
+            <a href="@{kasir.menu()}">Lihat menu</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+<div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Lihat Pesanan</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Nama Pesanan</th>
+        <th>Status</th>
+        <th> Orang</th>
+        <th>Tagihan</th>
+        <th>meja</th>
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   #{list items:m,as:'m'}
 	<tr> <td>&nbsp ${m.Nama_Pesanan} &nbsp </td>
     <td> &nbsp ${m.Status_Pesan.Nama_Status} &nbsp </td>
 	<td> &nbsp ${m.Nama_Orang.Nama} &nbsp </td> 
 	<td> &nbsp ${m.tagihan} &nbsp </td>
+<<<<<<< HEAD
+	<td> &nbsp ${m.No_Meja.No_Meja} &nbsp </td> 
+	<td> &nbsp <a class="btn btn-success"  href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
+		&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
+		&nbsp <a class="btn btn-danger" href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
+=======
 	<td>
 	#{if  m.No_Meja.No_Meja > 0 }
 		&nbsp ${m.No_Meja.No_Meja} &nbsp
@@ -22,7 +64,17 @@
 	#{/if}
 	&nbsp <a href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
 	&nbsp <a href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
+>>>>>>> origin/master
 	</tr>
 #{/list}
-</table> 
+   
+   
+   
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+        
+</div></div>
 
