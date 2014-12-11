@@ -13,9 +13,12 @@
             <a href="@{admins.bahanBeli()}">Pembelian Bahan</a>
         </li>
     </ul>
+    <form method="get" action="@{admins.sendmail()}" >  
+    <input type="text" name="a" value="${pesan}" >
+    <input type="text" name="b" value="${subject}" >
+    <input type="submit" value="send mail" >
+    </form>
 </div>
-
-
         <div class="box col-md-4">
             <div class="box-inner">
                 <div class="box-header well" data-original-title="">

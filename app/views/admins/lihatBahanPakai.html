@@ -25,9 +25,10 @@
         </div>
     </div>
     <div class="box-content">
-   <form method="get" action="@{admins.sendmail()}" >
-<input type="text" name="a" value="${pesan}">
-<input type="submit" value="send">
+   	<form method="get" action="@{admins.sendmail()}" >
+	<input type="hidden" name="a" value="${pesan}">
+	<input type="hidden" name="b" value="${subject}">
+	<input type="submit" value="send mail">
 </form> <br>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
