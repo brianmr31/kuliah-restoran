@@ -1,4 +1,9 @@
 <a href="@{admins.index()}"> back </a>
+<form method="get" action="@{admins.sendmail()}" >  
+	<input type="hidden" name="a" value="${pesan}" >
+	<input type="hidden" name="b" value="${subject}" >
+	<input type="submit" value="send mail" >
+</form>
 <hr>
 <table border="1">
 <tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis_Kelamin</td><td>tagihan</td>/tr>

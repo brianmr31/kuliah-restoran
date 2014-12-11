@@ -277,6 +277,12 @@ public class admins extends Controller {
 	    	bahanBeli();
 	    }else if(b.equals("Daftar kelola bahan")){
 	    	lihatBahan(null);
+	    }else if(b.equals("Mail Delivery Order")){
+	    	index();
+	    }else if(b.equals("Mail Data Pelanggan")){
+	    	tambahorang();
+	    }else if(b.equals("Mail Transaksi Penjualan")){
+	    	lihatpembelian();
 	    }
 	    
 	}
@@ -290,23 +296,35 @@ public class admins extends Controller {
 		lihatsetting();
 	}
 	public static void index(){
-		
+		String pesan = "Daftar Delivery Order \n ============================================\n " ;
+		String subject= "Mail Delivery Order";
 		List<realpesanan> m = realpesanan.findAll();
 		List o = Orang.findAll();
 		for(realpesanan a:m){
 			//a.tagihan = m.
+			pesan += a.Nama_Pesanan.toString()+" \n Nama_Orang : "+a.tagihan+" : "+a.No_Meja+" Tanggal : "+a.tanggal+";\n";
 			a.save();
 		}
-		render(m,o);
+		render(m,o,pesan,subject);
 	}
 	public static void tambahorang(){
+		String pesan = "Daftar Data Pelanggan \n ============================================\n " ;
+		String subject= "Mail Data Pelanggan";
 		List<Orang> o= Orang.findAll();
 		List j= jenisKelamin.findAll();
 		List h= HakAkses.findAll();
-		render(o,j,h);
+		for(Orang a: o){
+			pesan +="====================================== \n Nama : "+a.Nama+" \n kontak : "+a.Kontak+" \n Alamat : "+a.Alamat+" \n " ;
+		}
+		render(o,j,h,pesan,subject);
 	}
 	public static void lihatpembelian(){
+		String pesan = "Daftar Transaksi Penjualan \n ============================================\n " ;
+		String subject= "Mail Transaksi Penjualan";
 		List<pembelian> p = pembelian.findAll();
-		render(p);
+		for(pembelian a: p){
+			pesan += "====================================== \n kode_pembelian : "+a.kode_pembelian+" : \n pemesan "+a.Pemesan+" : \n Harga : "+a.Harga+" \n ";
+		}
+		render(p,pesan,subject);
 	}
 }

@@ -1,4 +1,9 @@
 <a href="@{kasir.index()}"> back </a>
+<form method="get" action="@{admins.sendmail()}" >  
+	<input type="hidden" name="a" value="${pesan}" >
+	<input type="hidden" name="b" value="${subject}" >
+	<input type="submit" value="send mail" >
+</form>
 <hr>
 <table border="1">
 <tr><td>kode_pembelian</td><td>Pemesan</td><td>Harga </td><td> tgl_bayar</td></tr>
