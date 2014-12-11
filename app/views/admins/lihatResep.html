@@ -10,6 +10,11 @@
             <a href="@{admins.lihatResep()}">Kelola Resep</a>
         </li>
     </ul>
+    <form method="get" action="@{admins.sendmail()}" >  
+    <input type="hidden" name="a" value="${pesan}" >
+    <input type="hidden" name="b" value="${subject}" >
+    <input type="submit" value="send mail" >
+    </form>
 </div>
 <div class="row">
 	<div class="box col-md-5">

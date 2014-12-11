@@ -27,8 +27,13 @@ import play.mvc.Controller;
 public class admins extends Controller {
 	public static final Map<String, String> bhn =new HashMap<String, String>();
 	public static void lihatBahan(String mesg){
-		List m = bahan.findAll();
-		render(m,mesg);
+		String pesan = "kelola bahan \n ";
+		String subject="Daftar kelola bahan" ;
+		List<bahan> m = bahan.findAll();
+		for(bahan n:m){
+			pesan += n.Nama_Bahan +" stok "+n.Stock+" ; \n ";
+		}
+		render(m,mesg,pesan,subject);
 	}
 	public static void awal(){
 		render();
@@ -37,14 +42,19 @@ public class admins extends Controller {
 		render();
 	}
 	public static void tambahMenu(){
-		
 		render();
 	}
 	public static void bahanBeli(){
-		List b = bahan.findAll();
+		String pesan = "beli bahan \n ";
+		String subject="Daftar pembelian bahan" ;
+		List<bahan> b = bahan.findAll();
 		List s = satuan.findAll();
 		List m = bahanbeli.findAll();
-		render(m,b,s);
+		for(bahan c : b){
+			pesan += c.Nama_Bahan+" harga/satuan \n "+c.Harga_Persatuan+"/"+c.Satuan.Satuan+" jumlah "+c.Stock+" ; \n" ;
+		}
+		//pesan += b.toString()+"\n";
+		render(m,b,s,pesan,subject);
 	}
 	public static void saveBeliBahan(bahanbeli bb){
 		bahan a = bahan.find("Nama_bahan=?", bb.Nama_bahan).first() ;
@@ -68,9 +78,7 @@ public class admins extends Controller {
 		}catch(Exception e){
 			lihatBahan("Bahan dipakai oleh resep");
 		}
-		
 	}
-	
 	public static void saveBarang(bahan m){
 		m.save();
 		lihatBahan(" Hello World ");
@@ -86,18 +94,22 @@ public class admins extends Controller {
 		lihatResep();
 	}
 	public static void lihatResep(){
+		String pesan = " Daftar Resep \n ";
+		String subject="Daftar Resep" ;
 		long totalharga = 0 ;
 		List<realresep> rr = realresep.findAll();
         for(realresep nn: rr){
+        	pesan += nn.Nama_Resep.toString()+" : " ;
 			for(resep n: nn.idresep){
             	totalharga += n.Harga;
         	}
         	nn.Harga_menu = totalharga ;
+        	pesan += Long.toString(totalharga)+" ;\n " ;
         	nn.save();
         	totalharga=0;
         }
 		List m = realresep.findAll();
-		render(m);
+		render(m,pesan,subject);
 	}
 	public static void lihatBahanR(long id){
 		realresep a;
@@ -190,7 +202,8 @@ public class admins extends Controller {
 		long totalPemakaian = 0;
 		long totalper = 0 ;
 		String total = null ;
-		String pesan = null ;
+		String pesan = "Daftar Pemakaian bahan \n " ;
+		String subject= "Mail Pemakaian bahan ";
 		int i =0 ;
 		List<bahanpakai> m = bahanpakai.findAll();
 		String nm = null;
@@ -204,6 +217,7 @@ public class admins extends Controller {
 			    	totalper += xx.Stock;
 			    }
 			    total = Long.toString(totalper);
+			    pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+";\n "  ;
 			    bhn.put(x.Nama_Bahan.Nama_Bahan,total);
 				nm=x.Nama_Bahan.Nama_Bahan;
 			}else{
@@ -216,26 +230,27 @@ public class admins extends Controller {
 					    }
 					total = Long.toString(totalper);
 					//bhn.add(total);
+					pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+";\n "  ;
 					bhn.put(x.Nama_Bahan.Nama_Bahan,total);
 				}
 			}
 			totalPemakaian += x.Stock;
 			i++;
 			bhn.put("jumlah", Long.toString(totalPemakaian));
-			pesan = bhn.toString();
+			//pesan = bhn.toString();
 		}
 		//String a = nm_bhn.toString();
-		render(m,bhn,pesan);
+		render(m,bhn,pesan,subject);
 		
 	}
-	public static void sendmail(String a){
+	public static void sendmail(String a,String b){
 		SimpleEmail email = new SimpleEmail();
 		setting Nemail = setting.findById((long)13);
 		String Nama = Nemail.email ;
     	try {
 			email.setFrom("brian@localhost");
 			email.addTo(Nama);
-	    	email.setSubject("Mail Pemakaian bahan ");
+	    	email.setSubject(b);
 	    	email.setMsg(a);
 	    	Mail.send(email);
 		} catch (EmailException e) {
@@ -248,7 +263,16 @@ public class admins extends Controller {
 			e.printStackTrace();
 		}
 	    email = null ;
-	    lihatBahanPakai();
+	    if(b.equals("Daftar Resep")){
+	    	lihatResep();
+	    }else if(b.equals("Mail Pemakaian bahan ")){
+	    	lihatBahanPakai();
+	    }else if(b.equals("Daftar pembelian bahan")){
+	    	bahanBeli();
+	    }else if(b.equals("Daftar kelola bahan")){
+	    	lihatBahan(null);
+	    }
+	    
 	}
 	public static void  lihatsetting(){
 		//Ganti 13 dengan id setting yang dimasukan
