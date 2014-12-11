@@ -37,6 +37,9 @@ public class pelayan extends Controller {
 	}
 	public static void savePesanan(realpesanan a){
 		a.tanggal = new Date();
+		if(a.Nama_Orang.id == 7 ){
+			a.No_Meja.id = (long) 4;
+		}
 		a.save();
 		menu(a.id);
 	}

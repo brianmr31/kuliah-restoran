@@ -1,7 +1,8 @@
+<h4> Daftar Menu </h4>
 #{list items:m,as:'m'}
 <form method="get" action="@{kasir.dipesan()}">
 <table border="1">
-	${m.Nama_Menu}
+	<tr> <td> <h5> ${m.Nama_Menu} </h5> </td> </tr>
 	<input type="hidden" name="id" value="${a}" >
 	<input type="hidden" name="a.menu_pesan.id" value="${m.id}" >
 	<input type="hidden" name="a.Nama_pesanannya.id" value="${a}" >

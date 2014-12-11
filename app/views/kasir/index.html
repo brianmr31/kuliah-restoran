@@ -27,7 +27,10 @@
 	<td>${a.No_Meja}</td>
 	<td>${a.tanggal}</td>
 	<td>${a.tagihan}</td> 
-	<td> <a href="@{kasir.menu(a.id)}"> Pesanan </a> 
+	<td> 
+	#{if a.Status_Pesan.id == 1 }
+		<a href="@{kasir.menu(a.id)}"> Pesanan </a> 
+	#{/if}
 		<a href="@{kasir.lihat(a.id)}"> Lihat </a>
 	 	<a href="@{kasir.bayar(a.id)}"> bayar </a> </td> </tr>
 #{/list}

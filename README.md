@@ -13,10 +13,10 @@ Misi pokok
      
 - user pelayan (brianmr31)
     - yang pesan belum dihapus ------------(sudah)
-    - gambar menu masuk ke databases
+    - gambar menu masuk ke databases ------(sudah)
 - user pemilik (pitik)
     - menerima laporan pembelian bahan, pembayaran menu peberupa email / pdf;
-    - model configurasi yang berisi mail pemilik, 
+    - model configurasi yang berisi mail pemilik, --(sudah )
 	 
 Misi tambahan 
 - mencari resep, harga dll sebenarnya dari menu :v 
