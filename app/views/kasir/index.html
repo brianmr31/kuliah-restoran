@@ -74,35 +74,33 @@
    
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
-    <tr>
-        <th>Nama Pesanan</th>
-        <th>Status Pesan</th>
-        <th>Nama Orang</th>
-        <th>no meja</th>
-        <th>tanggal</th>
-        <th>tagihan</th>       
-        <th>Aksi</th>
-    </tr>
+	    <tr>
+	        <th>Nama Pesanan</th>
+	        <th>Status Pesan</th>
+	        <th>Nama Orang</th>
+	        <th>no meja</th>
+	        <th>tanggal</th>
+	        <th>&nbsp&nbsp&nbsp&nbsptagihan&nbsp&nbsp&nbsp&nbsp</th>       
+	        <th>Aksi</th>
+	    </tr>
     </thead>
     <tbody>
-   
-   
-   #{list items:m,as:'a'}
-	<tr> <td>${a.Nama_Pesanan}</td>
-	<td>${a.Status_Pesan}</td>
-	<td>${a.Nama_Orang}</td>
-	<td>${a.No_Meja}</td>
-	<td>${a.tanggal}</td>
-	<td>${a.tagihan}</td>
-	<td class="center">
-	#{if a.Status_Pesan.id == 1 } 
-		<a class="btn btn-default"  href="@{kasir.menu(a.id)}"> Pesanan </a>
-	#{/if} 
-		<a class="btn btn-default" href="@{kasir.lihat(a.id)}"> Lihat </a>
-	 	<a class="btn btn-default" href="@{kasir.bayar(a.id)}"> bayar </a> </td> </tr>
-#{/list}
-   
-      
+   	#{list items:m,as:'a'}
+		<tr> 
+			<td>${a.Nama_Pesanan}</td>
+			<td>${a.Status_Pesan}</td>
+			<td>${a.Nama_Orang}</td>
+			<td>${a.No_Meja}</td>
+			<td>${a.tanggal}</td>
+			<td>Rp ${a.tagihan} ,-- </td>
+			<td class="center">
+			#{if a.Status_Pesan.id == 1 } 
+				<a class="btn btn-default"  href="@{kasir.menu(a.id)}"> Pesanan </a> <br>
+			#{/if} 
+				<a class="btn btn-default" href="@{kasir.lihat(a.id)}"> Lihat </a> <br>
+			 	<a class="btn btn-default" href="@{kasir.bayar(a.id)}"> bayar </a> </td> 
+		</tr>
+	#{/list}
     </tbody>
     </table>
     </div>
