@@ -20,5 +20,3 @@ Misi pokok
 	 
 Misi tambahan 
 - mencari resep, harga dll sebenarnya dari menu :v 
-    
-Bantuin brian T,T
