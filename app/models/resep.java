@@ -8,10 +8,10 @@ import play.db.jpa.Model;
 public class resep extends Model {
 	@ManyToOne
 	public bahan Bahan;
-	public long Jumlah;
+	public double Jumlah;
 	@ManyToOne
 	public satuan Satuan;
-	public long Harga ;
+	public double Harga ;
 	@ManyToOne
 	public realresep Nama_RealResep;
 }

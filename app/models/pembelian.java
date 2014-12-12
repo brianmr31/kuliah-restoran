@@ -10,7 +10,7 @@ import play.db.jpa.Model;
 public class pembelian extends Model{
 	public String kode_pembelian ;
 	public String Pemesan ;
-	public long Harga;
+	public double Harga;
 	public Date tgl_bayar;
 	public String toString(){
 		return kode_pembelian;

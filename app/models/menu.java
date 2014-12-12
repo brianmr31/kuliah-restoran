@@ -15,7 +15,7 @@ import play.db.jpa.Model;
 public class menu extends Model {
 	public String Nama_Menu ; 
 	public String Keterangan   ;
-	public long Harga;
+	public double Harga;
 	public long HargaUntung;
 	@ManyToOne
 	public realresep Nama_Resep;

@@ -37,7 +37,7 @@ public class admins extends Controller {
 		String subject="Daftar kelola bahan" ;
 		List<bahan> m = bahan.findAll();
 		for(bahan n:m){
-			pesan += n.Nama_Bahan +" stok "+n.Stock+" ; \n ";
+			pesan += n.Nama_Bahan +" stok "+String.valueOf(n.Stock)+" ; \n ";
 		}
 		render(m,mesg,pesan,subject);
 	}
@@ -57,7 +57,11 @@ public class admins extends Controller {
 		List s = satuan.findAll();
 		List m = bahanbeli.findAll();
 		for(bahan c : b){
-			pesan += c.Nama_Bahan+" harga/satuan \n "+c.Harga_Persatuan+"/"+c.Satuan.Satuan+" jumlah "+c.Stock+" ; \n" ;
+			if(c.Harga_Persatuan == 0){
+				
+			}else{
+				pesan += c.Nama_Bahan+" harga/satuan \n "+c.Harga_Persatuan+"/"+c.Satuan.Satuan+" jumlah "+c.Stock+" ; \n" ;
+			}
 		}
 		//pesan += b.toString()+"\n";
 		render(m,b,s,pesan,subject);
@@ -125,8 +129,8 @@ public class admins extends Controller {
   	  		n.save();
   	    }
 		a = realresep.find("id=?", id).first();
-		List m = resep.find("Nama_RealResep=?", a).fetch();
-		render(m);
+		List<resep> m = resep.find("Nama_RealResep=?", a).fetch();
+		render(m,id);
 	}
 	public static void hapusBahanR(long id){
 		resep.delete("id=?", id);
@@ -137,6 +141,7 @@ public class admins extends Controller {
 		List m = resep.find("Nama_RealResep.id=?", a).fetch();
 		if(m != null ){
 			List b = bahan.findAll() ;
+			List s = satuan.findAll();
 			//List b = bahan.find("Bahan=?", m.Bahan).fetch();
 			//List<bahan> bhsA = null;
 			//long[] arr =null ;
@@ -148,12 +153,22 @@ public class admins extends Controller {
 				//bhsA.add(bhs);
 			//	i++;
 			//}
-			render(m,b,a);
+			render(m,b,a,s);
 		}else{
 			render();
 		}
 	}
 	public static void saveBahanR(resep m,long id){
+		resep x = resep.find("Bahan=? and Nama_RealResep.id=?", m.Bahan,id).first();
+		if(x == null ){
+			m.save();
+		}else{
+			x.Jumlah += m.Jumlah ;
+			x.save();
+		}
+		lihatBahanR(id);
+	}
+	public static void saveBahan(resep m,long id){
 		m.save();
 		lihatBahanR(id);
 	}
@@ -288,7 +303,7 @@ public class admins extends Controller {
 	}
 	public static void  lihatsetting(){
 		//Ganti 13 dengan id setting yang dimasukan
-		setting sa = setting.findById((long)13);
+		setting sa = setting.findById((long)1);
 		render(sa);
 	}
 	public static void savesetting(setting m){

@@ -53,7 +53,7 @@ public class pemilik extends Controller{
 	}
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
-		long harga = 0;
+		double harga = 0;
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){

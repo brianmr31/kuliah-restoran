@@ -11,7 +11,7 @@ import play.db.jpa.Model;
 @Entity
 public class realresep extends Model{
 	public String Nama_Resep ;
-	public long Harga_menu ;
+	public double Harga_menu ;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_Resep")
 	public List<menu> idmenu;
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_RealResep")

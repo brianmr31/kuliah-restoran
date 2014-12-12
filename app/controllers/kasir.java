@@ -98,7 +98,7 @@ public class kasir extends Controller {
 	}
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
-		long harga = 0;
+		double harga = 0;
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
@@ -124,7 +124,7 @@ public class kasir extends Controller {
 		render(m,a);
 	}
 	public static void hapuspesanan(long a,long la){
-		long harga = 0;
+		double harga = 0;
 		realpesanan x = realpesanan.find("id=?",la).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
@@ -142,7 +142,7 @@ public class kasir extends Controller {
 		lihat(la);
 	}
 	public static void hapusrealpesanan(long id){
-		long harga = 0;
+		double harga = 0;
 		realpesanan x = realpesanan.find("id=?",id).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
