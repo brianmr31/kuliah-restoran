@@ -1,6 +1,4 @@
 #{extends 'tema.html' /}
-
-
 <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
             <div>
@@ -12,7 +10,13 @@
             <a href="@{admins.bahanBeli()}">Pembelian Bahan</a>
         </li>
     </ul>
-    
+	    <div  style="padding:5px 10px 5px 5px;">
+			<form method="get" action="@{admins.sendmail()}" >  
+			   <input type="hidden" name="a" value="${pesan}" >
+			   <input type="hidden" name="b" value="${subject}" >
+			   <input class="btn  btn-default" type="submit" value="send mail" >
+			</form>  
+		</div>
 </div>
 <div class="box col-md-8">
     <div class="box-inner">
@@ -27,11 +31,6 @@
         </div>
     </div>
     <div class="box-content">
-   	<form method="get" action="@{admins.sendmail()}" >  
-		<input type="hidden" name="a" value="${pesan}" >
-		<input type="hidden" name="b" value="${subject}" >
-		<input type="submit" value="send mail" >
-	</form>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>

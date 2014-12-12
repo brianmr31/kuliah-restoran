@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
 import org.apache.commons.mail.SimpleEmail;
 
 import models.HakAkses;
@@ -51,7 +52,7 @@ public class admins extends Controller {
 		render();
 	}
 	public static void bahanBeli(){
-		String pesan = "beli bahan \n ";
+		String pesan = "<h1> beli bahan </h1> <hr> ";
 		String subject="Daftar pembelian bahan" ;
 		List<bahan> b = bahan.findAll();
 		List s = satuan.findAll();
@@ -60,7 +61,7 @@ public class admins extends Controller {
 			if(c.Harga_Persatuan == 0){
 				
 			}else{
-				pesan += c.Nama_Bahan+" harga/satuan \n "+c.Harga_Persatuan+"/"+c.Satuan.Satuan+" jumlah "+c.Stock+" ; \n" ;
+				pesan += c.Nama_Bahan+" harga/satuan <br> "+c.Harga_Persatuan+"/"+c.Satuan.Satuan+" jumlah "+c.Stock+" <br>" ;
 			}
 		}
 		//pesan += b.toString()+"\n";
@@ -104,7 +105,7 @@ public class admins extends Controller {
 		lihatResep();
 	}
 	public static void lihatResep(){
-		String pesan = " Daftar Resep \n ";
+		String pesan = "<h1> Daftar Resep</h1> <hr> ";
 		String subject="Daftar Resep" ;
 		long totalharga = 0 ;
 		List<realresep> rr = realresep.findAll();
@@ -114,7 +115,7 @@ public class admins extends Controller {
             	totalharga += n.Harga;
         	}
         	nn.Harga_menu = totalharga ;
-        	pesan += Long.toString(totalharga)+" ;\n " ;
+        	pesan += "<h6> Rp "+Long.toString(totalharga)+",-- </h6> <br> " ;
         	nn.save();
         	totalharga=0;
         }
@@ -223,7 +224,7 @@ public class admins extends Controller {
 		long totalPemakaian = 0;
 		long totalper = 0 ;
 		String total = null ;
-		String pesan = "Daftar Pemakaian bahan \n " ;
+		String pesan = "<h1> Daftar Pemakaian bahan </h1> <hr> " ;
 		String subject= "Mail Pemakaian bahan ";
 		int i =0 ;
 		List<bahanpakai> m = bahanpakai.findAll();
@@ -238,7 +239,7 @@ public class admins extends Controller {
 			    	totalper += xx.Stock;
 			    }
 			    total = Long.toString(totalper);
-			    pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+";\n "  ;
+			    pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+" <br> "  ;
 			    bhn.put(x.Nama_Bahan.Nama_Bahan,total);
 				nm=x.Nama_Bahan.Nama_Bahan;
 			}else{
@@ -251,7 +252,7 @@ public class admins extends Controller {
 					    }
 					total = Long.toString(totalper);
 					//bhn.add(total);
-					pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+";\n "  ;
+					pesan += x.Nama_Bahan.Nama_Bahan + " : "+ total+" <br> "  ;
 					bhn.put(x.Nama_Bahan.Nama_Bahan,total);
 				}
 			}
@@ -265,12 +266,12 @@ public class admins extends Controller {
 		
 	}
 	public static void sendmail(String a,String b){
-		SimpleEmail email = new SimpleEmail();
-		setting Nemail = setting.findById((long)13);
+    	HtmlEmail email = new HtmlEmail();
+		setting Nemail = setting.findById((long)1);
 		String Nama = Nemail.email ;
     	try {
-			email.setFrom("brian@localhost");
-			email.addTo(Nama);
+    		email.addTo("brianmr31@gmail.com");
+    		email.setFrom(Nama);
 	    	email.setSubject(b);
 	    	email.setMsg(a);
 	    	Mail.send(email);
@@ -311,34 +312,34 @@ public class admins extends Controller {
 		lihatsetting();
 	}
 	public static void index(){
-		String pesan = "Daftar Delivery Order \n ============================================\n " ;
+		String pesan = "<h1> Daftar Delivery Order </h1> <hr> " ;
 		String subject= "Mail Delivery Order";
 		List<realpesanan> m = realpesanan.findAll();
 		List o = Orang.findAll();
 		for(realpesanan a:m){
 			//a.tagihan = m.
-			pesan += a.Nama_Pesanan.toString()+" \n Nama_Orang : "+a.tagihan+" : "+a.No_Meja+" Tanggal : "+a.tanggal+";\n";
+			pesan += a.Nama_Pesanan.toString()+" <br> Nama_Orang : "+a.tagihan+" : "+a.No_Meja+" Tanggal : "+a.tanggal+" ";
 			a.save();
 		}
 		render(m,o,pesan,subject);
 	}
 	public static void tambahorang(){
-		String pesan = "Daftar Data Pelanggan \n ============================================\n " ;
+		String pesan = "<h1> Daftar Data Pelanggan </h1> <hr> " ;
 		String subject= "Mail Data Pelanggan";
 		List<Orang> o= Orang.findAll();
 		List j= jenisKelamin.findAll();
 		List h= HakAkses.findAll();
 		for(Orang a: o){
-			pesan +="====================================== \n Nama : "+a.Nama+" \n kontak : "+a.Kontak+" \n Alamat : "+a.Alamat+" \n " ;
+			pesan +="<br> Nama : "+a.Nama+"<br> kontak : "+a.Kontak+"<br> Alamat : "+a.Alamat+"  " ;
 		}
 		render(o,j,h,pesan,subject);
 	}
 	public static void lihatpembelian(){
-		String pesan = "Daftar Transaksi Penjualan \n ============================================\n " ;
+		String pesan = "<h1> Daftar Transaksi Penjualan </h1> <hr> " ;
 		String subject= "Mail Transaksi Penjualan";
 		List<pembelian> p = pembelian.findAll();
 		for(pembelian a: p){
-			pesan += "====================================== \n kode_pembelian : "+a.kode_pembelian+" : \n pemesan "+a.Pemesan+" : \n Harga : "+a.Harga+" \n ";
+			pesan += "<br> kode_pembelian : "+a.kode_pembelian+" : <br> pemesan "+a.Pemesan+" : <br> Harga : "+a.Harga+" <br> ";
 		}
 		render(p,pesan,subject);
 	}

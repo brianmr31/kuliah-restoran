@@ -14,6 +14,13 @@
     </ul>
     
 </div>
+	    <div  style="padding:5px 10px 5px 5px;">
+			<form method="get" action="@{admins.sendmail()}" >  
+			   <input type="hidden" name="a" value="${pesan}" >
+			   <input type="hidden" name="b" value="${subject}" >
+			   <input class="btn  btn-default" type="submit" value="send mail" >
+			</form>  
+		</div>
 <div class="box col-md-8">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
@@ -28,11 +35,6 @@
     </div>
 
     <div class="box-content">
-  	<form method="get" action="@{admins.sendmail()}" >  
-		<input type="hidden" name="a" value="${pesan}" >
-		<input type="hidden" name="b" value="${subject}" >
-		<input class="btn btn-default" type="submit" value="send mail" ><br>
-	</form> 
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
