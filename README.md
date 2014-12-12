@@ -1,8 +1,8 @@
 Restoran
 ==============================================================================
 
-Misi Pokok 
-  Nyaris Terakhir :v
+<h1> Misi Pokok </h1> <hr>
+<h5>  Nyaris Terakhir :v </h5>
 
 - Tampilan dashboarddan tiap menu (wkwkwkwk)
 - Hak akses (pitik)
@@ -22,8 +22,8 @@ Misi Pokok
     - menerima laporan pembelian bahan, pembayaran menu peberupa email / pdf;
     - model configurasi yang berisi mail pemilik, --(sudah )
 
-Misi Pokok
-  Terakhir benget :v 
+<h1> Misi Pokok  </h1> <hr>
+<h5>  Terakhir benget :v </h5>
 
 - pendapatan bersih, pendapatan kotor dan keuntungan per hari, bulan, dan tahun dibuat Grafik
 - Menu favorit 
