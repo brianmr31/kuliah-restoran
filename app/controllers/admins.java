@@ -174,14 +174,17 @@ public class admins extends Controller {
 		lihatBahanR(id);
 	}
 	public static void lihatMenu(){
+		String pesan = "<h1> Daftar Daftar Menu </h1> <hr> " ;
+		String subject= "Mail Daftar Menu";
 		List<realresep> aa = realresep.findAll();
 		List m = menu.findAll();
 		List<menu> menua = menu.findAll();
 		for(menu a: menua){
+			 pesan += "<h3> Nama Menu : "+a.Nama_Menu+" </br> Keterangan : <br> "+a.Keterangan+" <br> Harga : Rp "+a.Harga+",-- <br> </h3>" ;
 			 a.Harga =a.Nama_Resep.Harga_menu ;
 			 a.save();
 		}
-		render(aa,m);
+		render(aa,m,pesan,subject);
 	}
 	public static void editMenu(long id){
 		List aa = realresep.findAll(); 
@@ -299,6 +302,8 @@ public class admins extends Controller {
 	    	tambahorang();
 	    }else if(b.equals("Mail Transaksi Penjualan")){
 	    	lihatpembelian();
+	    }else if(b.equals("Mail Daftar Menu")){
+	    	lihatMenu();
 	    }
 	    
 	}
