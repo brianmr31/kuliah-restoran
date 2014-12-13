@@ -37,6 +37,7 @@ public class kasir extends Controller {
 		pbl.Harga = x.tagihan ;
 		pbl.tgl_bayar= x.tanggal;
 		pbl.Pemesan = x.Nama_Pesanan;
+		pbl.Untung = x.Untung;
 		pbl.kode_pembelian = "KodePem"+String.valueOf(x.id)+"_"+pbl.Pemesan;
 		pbl.save();
 		menu mn;
@@ -60,7 +61,7 @@ public class kasir extends Controller {
 	}
 	public static void antarsave(realpesanan c){
 		c.Status_Pesan = status.findById((long)1);;
-		c.No_Meja  = meja.findById((long)4);
+		c.No_Meja  = meja.findById((long)1);
 		c.tanggal = new Date();
 		c.save();
 		index();
@@ -99,10 +100,12 @@ public class kasir extends Controller {
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
 		double harga = 0;
+		double untung= 0;
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
-			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung;
+			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung ;
+			p.Untung= p.Jumlah_Pesan * p.menu_pesan.Untung;
 			if(p.cek == 0){
 			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
 				bahanpakai bpki = new bahanpakai() ;
@@ -117,9 +120,11 @@ public class kasir extends Controller {
 			  p.cek = 1;
 			}
 			p.save();
-			harga = harga+ p.Harga;
+			untung += p.Untung;
+			harga += p.Harga;
 		}
 		x.tagihan = harga ;
+		x.Untung = untung;
 		x.save();
 		render(m,a);
 	}

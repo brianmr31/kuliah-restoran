@@ -17,6 +17,7 @@ public class pesanan extends Model{
 	public realpesanan Nama_pesanannya ;
 	public Date Tanggal_Pesan ;
 	public double Jumlah_Pesan ;
+	public double Untung ;
 	public double Harga;
 	public int cek ;
 }

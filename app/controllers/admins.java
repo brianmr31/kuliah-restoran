@@ -196,6 +196,7 @@ public class admins extends Controller {
 		lihatMenu();
 	}
 	public static void saveMenu(menu c){
+		c.Untung = c.HargaUntung - c.Nama_Resep.Harga_menu ;
 		c.save();
 		lihatMenu();
 	}

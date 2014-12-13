@@ -95,6 +95,7 @@
         <th>Keterangan</th>
         <th>Harga Estimasi</th>
         <th>Harga Jual</th>
+        <th>Untung</td>
         <th>Nama Resep</th>
         <th>aksi</th>
     </tr>
@@ -111,9 +112,9 @@
 	<td> ${m.Keterangan} </td>  
 	<td> ${m.Harga} </td> 
 	<td> ${m.HargaUntung} </td>
+	<td> ${m.Untung} </td>
 	<td> ${m.Nama_Resep} </td>  
-	<td> <a class="btn btn-danger"  
-	href="@{admins.hapusMenu(m.id)}">
+	<td> <a class="btn btn-danger" href="@{admins.hapusMenu(m.id)}">
 	<i class="glyphicon glyphicon-trash icon-white"></i>hapus </a>
 	<a class="btn btn-default"  
 	 href="@{admins.editMenu(m.id)}" >

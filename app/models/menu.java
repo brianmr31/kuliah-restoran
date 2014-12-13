@@ -16,7 +16,8 @@ public class menu extends Model {
 	public String Nama_Menu ; 
 	public String Keterangan   ;
 	public double Harga;
-	public long HargaUntung;
+	public double HargaUntung;
+	public double Untung ;
 	@ManyToOne
 	public realresep Nama_Resep;
 	public Blob gambar;

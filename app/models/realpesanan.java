@@ -22,6 +22,7 @@ public class realpesanan extends Model {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="Nama_pesanannya")
 	public List<pesanan> id_pesanan;
 	public double tagihan ;
+	public double Untung ;
 	//@OneToMany(cascade=CascadeType.ALL, mappedBy="Pesanan")
 	//public List<pembelian> id_pembelian;
 	public String toString(){

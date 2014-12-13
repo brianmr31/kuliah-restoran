@@ -43,7 +43,6 @@
 			#{if x.Nama == "makan ditempat" }
 			#{/if}
 			#{else}
-			<option>Pilih</option>
 				<option value="${x.id}"> ${x.Nama} </option>
 			#{/else}
 		#{/list}
@@ -90,7 +89,19 @@
 			<td>${a.Nama_Pesanan}</td>
 			<td>${a.Status_Pesan}</td>
 			<td>${a.Nama_Orang}</td>
-			<td>${a.No_Meja}</td>
+			<td>
+			#{if a.No_Meja.id == 1}
+				Diantar 
+			#{/if}
+			#{else}
+				#{if a.No_Meja.id == 6}
+					Dibawa
+				#{/if}
+				#{else}
+					${a.No_Meja}
+				#{/else}
+			#{/else}
+			</td>
 			<td>${a.tanggal}</td>
 			<td>Rp ${a.tagihan} ,-- </td>
 			<td class="center">
