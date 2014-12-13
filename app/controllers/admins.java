@@ -1,5 +1,12 @@
 package controllers;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -348,5 +355,30 @@ public class admins extends Controller {
 			pesan += "<br> kode_pembelian : "+a.kode_pembelian+" : <br> pemesan "+a.Pemesan+" : <br> Harga : "+a.Harga+" <br> ";
 		}
 		render(p,pesan,subject);
+	}
+	public static void toFileJam(){
+		List<pembelian> pmb =  pembelian.find("").fetch();
+		SimpleDateFormat aa = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
+		//aa.getDateFormatSymbols();
+		try {
+			PrintStream a = new PrintStream("./public/data/dataUntungJam.tsv");
+			a.print("date\t");
+			a.print("close\n");
+			for(pembelian p:pmb){
+				a.print(aa.format(p.tgl_bayar));
+				a.print("\t");
+				a.print(p.Harga+"\n");
+			}
+			a.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		chartline();
+	}
+	public static void chartline(){
+		render();
 	}
 }
