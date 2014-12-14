@@ -25,7 +25,8 @@ Restoran
 <h1> Misi Pokok  </h1> <hr>
 <h5>  Terakhir benget :v </h5>
 
-- pendapatan bersih, pendapatan kotor dan keuntungan per hari, bulan, dan tahun dibuat Grafik
+- keuntungan per hari, bulan, dan tahun dibuat Grafik --(sudah)
+- Pendapatan kotor dan Pendapatan Bersih 
 - Menu favorit 
 - percantik tampilan sesuai IMK :v 
 - kelola data pegawai tinggal tempelin
