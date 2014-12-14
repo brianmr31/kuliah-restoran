@@ -27,7 +27,7 @@ Restoran
 
 - keuntungan per hari, bulan, dan tahun dibuat Grafik --(sudah)
 - Pendapatan kotor per hari, bulan dan tahun dibuat Grafik --(sudah)
-- Menu favorit 
+- Menu favorit ----(sudah tp blom bagus ) 
 - percantik tampilan sesuai IMK :v 
 - kelola data pegawai tinggal tempelin
 	 
