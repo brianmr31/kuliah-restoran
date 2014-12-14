@@ -356,29 +356,56 @@ public class admins extends Controller {
 		}
 		render(p,pesan,subject);
 	}
-	public static void toFileJam(){
-		List<pembelian> pmb =  pembelian.find("").fetch();
-		SimpleDateFormat aa = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-		//aa.getDateFormatSymbols();
+	public static void TotalSekarang(Date tgl,int t){
+		List<pembelian> p = pembelian.findAll();
+		SimpleDateFormat aa = new SimpleDateFormat();
+		SimpleDateFormat bb = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
+		PrintStream a;
 		try {
-			PrintStream a = new PrintStream("./public/data/dataUntungJam.tsv");
+			a = new PrintStream("./public/data/dataUntungJam.tsv");
 			a.print("date\t");
 			a.print("close\n");
-			for(pembelian p:pmb){
-				a.print(aa.format(p.tgl_bayar));
-				a.print("\t");
-				a.print(p.Harga+"\n");
+			Date awal = new Date();
+			double UTS = 0 ;
+			double UBS = 0 ;
+			double UDS = 0 ;
+			String Semua = null ;
+			String thn= null,bln = null,day =null ;
+			if(t == 1){
+				awal = tgl;
+				for(pembelian c : p){
+					aa =  new SimpleDateFormat("yyyy");
+					thn = aa.format(awal);
+					if(c.tgl_bayar.getYear() == awal.getYear() ){
+						aa =  new SimpleDateFormat("MMM");
+						bln = aa.format(awal);
+						UTS += c.Untung ;
+						if(c.tgl_bayar.getMonth() == awal.getMonth()){
+							aa =  new SimpleDateFormat("d");
+							day = aa.format(awal);
+							UBS += c.Untung ;
+							if(c.tgl_bayar.getDay() == awal.getDay()){
+								UDS += c.Untung ;
+								a.print(bb.format(c.tgl_bayar));
+								a.print("\t");
+								a.print(c.Untung+"\n");
+							}
+						}
+					}
+				}
+				render(awal,thn,bln,day,UTS,UBS,UDS);
+			}else{
+				for(pembelian c: p){
+					Semua = "Semua";
+					UTS += c.Untung ;
+					UBS += c.Untung  ;
+					UDS += c.Untung ;
+				}
+				render(UTS,UBS,UDS,Semua);
 			}
-			a.close();
-			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		chartline();
-	}
-	public static void chartline(){
-		render();
 	}
 }

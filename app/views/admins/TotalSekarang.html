@@ -1,3 +1,27 @@
+#{if Semua == null }
+	<h3> Keuntungan Di Waktu ${awal}</h3> <hr>
+	<table >
+	<tr> <td> Tahun ${thn} </td> <td> = </td> <td>Rp ${UTS} ,-- </td> <tr>
+	<tr> <td> Bulan ${bln} </td> <td> = </td> <td>Rp ${UBS} ,-- </td> <tr>
+	<tr> <td> Hari  ${day} </td> <td> = </td> <td>Rp ${UDS} ,-- </td> <tr>
+	<table>
+#{/if}
+#{else}
+	<h3>Keuntungan </h3> <hr>
+	${Semua} Tahun  = Rp ${UTS} ,-- <br>
+	${Semua} Bulan  = Rp ${UBS} ,-- <br>
+	${Semua} Hari   = Rp ${UDS} ,-- <br>
+#{/else}
+<form method="get" action="@{admins.TotalSekarang()}">
+<hr>
+<h3> Keuntungan </h3> 
+<table >
+	<tr> <td> <input type="radio" name="t" value=1> </td> <td> Pada Tanggal &nbsp<input type="date" name="tgl" > </td> <tr>
+	<tr> <td> <input type="radio" name="t" value=2> </td> <td> Semua </td> <tr>
+	<tr> <td> <input type="submit" value="cek" > </td> <tr>
+<table>
+</form>
+#{if Semua == null }
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
@@ -29,8 +53,8 @@ body {
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var parseDate = d3.time.format("%Y-%b-%d %H:%M:%S").parse;
 
@@ -89,8 +113,7 @@ d3.tsv("@{'/public/data/dataUntungJam.tsv'}", function(error, data) {
 });
 
 </script>
-
-<form method="" action="">
-
-
+<hr>
+<h3 > Keuntungan Per Jam </h3> 
 </body>
+#{/if}
