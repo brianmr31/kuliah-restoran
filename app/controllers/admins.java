@@ -601,7 +601,7 @@ public class admins extends Controller {
 	public static void pendapatanHari(Date awal){
 		render(awal);
 	}
-	public static void menufavorit(){
+	public static void menufavorit(){ 
 		List<pembelian> pbl = pembelian.findAll();
 		List<realresep> rr	= realresep.findAll();
 		String[] daftar = new String[rr.size()];
