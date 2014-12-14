@@ -38,13 +38,14 @@ public class kasir extends Controller {
 		pbl.tgl_bayar= x.tanggal;
 		pbl.Pemesan = x.Nama_Pesanan;
 		pbl.Untung = x.Untung;
+		pbl.pesanannya = "";
 		pbl.kode_pembelian = "KodePem"+String.valueOf(x.id)+"_"+pbl.Pemesan;
-		pbl.save();
 		menu mn;
 		List<resep> rsp = null;
 		List<pesanan> psn = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p: psn){
 		mn = menu.find("Nama_Menu=?", p.menu_pesan.Nama_Menu).first();
+			pbl.pesanannya +=p.menu_pesan.Nama_Menu+",";
 		rsp = resep.find("Nama_RealResep=?", mn.Nama_Resep).fetch();
 			for(resep y : rsp){
 				pesan += " " ;
@@ -55,6 +56,7 @@ public class kasir extends Controller {
 				pesan += "; Harga Total : "+Totaljumlah+"";
 			}
 		}
+		pbl.save();
 		x.delete();
 		index();
 		//render(rsp,pesan);
