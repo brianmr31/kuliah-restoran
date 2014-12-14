@@ -1,0 +1,30 @@
+#{if Semua == null }
+	<h3> Pendapatan Di Waktu ${awal}</h3> <hr>
+	<table >
+	<tr> <td> Tahun ${thn} </td> <td> = </td> <td>Rp ${UTS} ,-- </td> <tr>
+	<tr> <td> Bulan ${bln} </td> <td> = </td> <td>Rp ${UBS} ,-- </td> <tr>
+	<tr> <td> Hari  ${day} </td> <td> = </td> <td>Rp ${UDS} ,-- </td> <tr>
+	<table> 
+	<hr>
+		<a href="@{admins.pendapatanJam(awal)}" > Jam </a> &nbsp &nbsp &nbsp
+		<a href="@{admins.pendapatanHari(awal)}" > Hari </a>  &nbsp &nbsp &nbsp
+		<a href="@{admins.pendapatanBulan(awal)}" > Bulan </a> &nbsp &nbsp &nbsp
+		<a href="@{admins.sendmail(pesan,subject)}" > Send Mail </a> &nbsp &nbsp &nbsp
+	<hr>
+#{/if}
+#{else}
+	<h3>Pendapatan Semua </h3> <hr>
+	${Semua} Tahun  = Rp ${UTS} ,-- <br>
+	${Semua} Bulan  = Rp ${UTS} ,-- <br>
+	${Semua} Hari   = Rp ${UTS} ,-- <br>
+	<hr>
+#{/else}
+<form method="get" action="@{admins.pendapatanSekarang()}">
+<h3> Pendapatan </h3> 
+<table >
+	<tr> <td> <input type="radio" name="t" value=1> </td> <td> Pada Tanggal &nbsp<input type="date" name="tgl" > </td> <tr>
+	<tr> <td> <input type="radio" name="t" value=2> </td> <td> Semua </td> <tr>
+	<tr> <td> <input type="submit" value="cek" > </td> <tr>
+<table>
+</form>
+<hr>
