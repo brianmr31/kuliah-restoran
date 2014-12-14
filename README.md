@@ -30,6 +30,7 @@ Restoran
 - Menu favorit ----(sudah tp blom bagus ) 
 - percantik tampilan sesuai IMK :v 
 - kelola data pegawai tinggal tempelin
+- keuntungan dan pendapatan kotor tinggal tempel 
 	 
 Misi tambahan 
 - mencari resep, harga dll sebenarnya dari menu :v 
