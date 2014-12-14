@@ -292,7 +292,6 @@ public class admins extends Controller {
 	    try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    email = null ;
@@ -312,6 +311,8 @@ public class admins extends Controller {
 	    	lihatpembelian();
 	    }else if(b.equals("Mail Daftar Menu")){
 	    	lihatMenu();
+	    }else if(b.equals("keuntungan")){
+	    	TotalSekarang(null,0);
 	    }
 	    
 	}
@@ -357,18 +358,33 @@ public class admins extends Controller {
 		render(p,pesan,subject);
 	}
 	public static void TotalSekarang(Date tgl,int t){
+		String pesan = "<h1> KeUntungan </h1> <hr> ";
+		String subject="keuntungan";
 		List<pembelian> p = pembelian.findAll();
 		SimpleDateFormat aa = new SimpleDateFormat();
 		SimpleDateFormat bb = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
-		PrintStream a;
+		SimpleDateFormat cc = new SimpleDateFormat("yyyy-MMM-dd ");
+		SimpleDateFormat dd = new SimpleDateFormat("yyyy-MMM");
+		SimpleDateFormat ff = new SimpleDateFormat("yyyy");
+		PrintStream a,b,d,f;
+		long bulan = 0,tahun=0, hari = 0;
 		try {
 			a = new PrintStream("./public/data/dataUntungJam.tsv");
+			b = new PrintStream("./public/data/dataUntungHari.tsv");
+			d = new PrintStream("./public/data/dataUntungBulan.tsv");
+			f = new PrintStream("./public/data/dataUntungTahun.tsv");
 			a.print("date\t");
 			a.print("close\n");
+			b.print("date\t");
+			b.print("close\n");
+			d.print("date\t");
+			d.print("close\n");
+			f.print("date\t");
+			f.print("close\n");
 			Date awal = new Date();
-			double UTS = 0 ;
-			double UBS = 0 ;
-			double UDS = 0 ;
+			double UTS = 0 ,cUTS = 0;
+			double UBS = 0 ,cUBS = 0;
+			double UDS = 0 ,cUDS = 0;
 			String Semua = null ;
 			String thn= null,bln = null,day =null ;
 			if(t == 1){
@@ -376,14 +392,56 @@ public class admins extends Controller {
 				for(pembelian c : p){
 					aa =  new SimpleDateFormat("yyyy");
 					thn = aa.format(awal);
+					if(tahun != awal.getYear()){
+						f.print(ff.format(c.tgl_bayar));
+						f.print("\t");
+						tahun = c.tgl_bayar.getYear();
+						for(pembelian cc2:p){
+							if(c.tgl_bayar.getYear() == awal.getYear()){
+								cUTS += cc2.Untung ;
+							}
+						}
+						f.print(cUTS+"\n");
+						cUTS = 0;
+					}
 					if(c.tgl_bayar.getYear() == awal.getYear() ){
 						aa =  new SimpleDateFormat("MMM");
 						bln = aa.format(awal);
 						UTS += c.Untung ;
+						if(bulan != c.tgl_bayar.getMonth()){
+							d.print(dd.format(c.tgl_bayar));
+							d.print("\t");
+							bulan= c.tgl_bayar.getMonth();
+							for(pembelian cc1 : p){
+								if(c.tgl_bayar.getYear() == awal.getYear()){
+									if(c.tgl_bayar.getMonth() == awal.getMonth()){
+										cUBS += cc1.Untung ;
+									}
+								}
+							}
+							d.print(cUBS+"\n");
+							cUBS = 0;
+						}
 						if(c.tgl_bayar.getMonth() == awal.getMonth()){
 							aa =  new SimpleDateFormat("d");
 							day = aa.format(awal);
 							UBS += c.Untung ;
+							if(hari != c.tgl_bayar.getDay() ){
+								b.print(cc.format(c.tgl_bayar));
+								b.print("\t");
+								hari = c.tgl_bayar.getDay();
+								for(pembelian ccc: p){
+									if(c.tgl_bayar.getYear() == awal.getYear()){
+										if(c.tgl_bayar.getMonth() == awal.getMonth()){
+											if(ccc.tgl_bayar.getDay() == hari){
+												cUDS += ccc.Untung;
+											}
+										}
+									}
+								}
+								b.print(cUDS+"\n");
+								cUDS = 0 ;
+							}
 							if(c.tgl_bayar.getDay() == awal.getDay()){
 								UDS += c.Untung ;
 								a.print(bb.format(c.tgl_bayar));
@@ -393,19 +451,31 @@ public class admins extends Controller {
 						}
 					}
 				}
-				render(awal,thn,bln,day,UTS,UBS,UDS);
+				a.close();
+				b.close();
+				d.close();
+				f.close();
+				pesan += "<hr> Tahun "+thn+" = "+UTS+",-- <br> Bulan "+bln+" = Rp "+UBS+",-- <br>Hari"+UDS+",-- <br>";
+				render(awal,thn,bln,day,UTS,UBS,UDS,pesan,subject);
 			}else{
 				for(pembelian c: p){
 					Semua = "Semua";
 					UTS += c.Untung ;
-					UBS += c.Untung  ;
-					UDS += c.Untung ;
 				}
-				render(UTS,UBS,UDS,Semua);
+				pesan += "<hr> Total Semua Keuntungan dari pembayaran adalah Rp"+UTS+",-- <hr>";
+				render(UTS,Semua,pesan,subject);
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static void keuntunganJam(Date awal){
+		render(awal);
+	}
+	public static void keuntunganBulan(Date awal){
+		render(awal);
+	}
+	public static void keuntunganHari(Date awal){
+		render(awal);
 	}
 }
