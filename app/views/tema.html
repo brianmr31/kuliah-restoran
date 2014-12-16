@@ -60,7 +60,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Profile</a></li>
+                    
                     <li class="divider"></li>
                     <li><a href="@{secure.logout()}">Logout</a></li>
                 </ul>
@@ -98,12 +98,14 @@
                         <li><a href="@{admins.lihatsetting()}"><i class="glyphicon glyphicon-wrench"></i><span> Konfigurasi Sistem</span></a>
                         </li>
                         <li class="nav-header hidden-md">Bahan Baku</li>
-                         <li><a class="ajax-link" href="@{admins.bahanBeli()}"><i
-                                    class="glyphicon glyphicon-shopping-cart"></i><span> Pembelian Bahan</span></a></li>
+                         
                         <li><a href="@{admins.lihatBahan()}"><i class="glyphicon glyphicon-tasks"></i><span> Kelola Bahan</span></a>
                         </li>
+                        
                         <li><a href="@{admins.lihatBahanPakai()}"><i class="glyphicon glyphicon-share"></i><span> Penggunaan Bahan</span></a>
                         </li>
+                        <li><a class="ajax-link" href="@{admins.bahanBeli()}"><i
+                                    class="glyphicon glyphicon-shopping-cart"></i><span> Pembelian Bahan</span></a></li>
                          <li class="nav-header hidden-md">RESEP</li>
                          <li><a class="ajax-link" href="@{admins.lihatResep()}"><i
                                     class="glyphicon glyphicon-pencil"></i><span> Kelola resep</span></a></li>
@@ -111,7 +113,10 @@
                          <li><a class="ajax-link" href="@{admins.lihatMenu()}"><i
                                     class="glyphicon glyphicon-book"></i><span> Lihat Menu</span></a></li>
                              
-                                     
+                                    <li class="nav-header hidden-md">Koki</li>
+                         <li><a class="ajax-link" href="@{admins.lihatstaff()}"><i
+                                    class="glyphicon glyphicon-briefcase"></i><span> Kelola Koki</span></a></li>
+                         
                         
                         <li class="nav-header hidden-md">Transaksi</li>
                          <li><a class="ajax-link" href="@{admins.lihatpembelian()}"><i
@@ -120,6 +125,7 @@
                         </li>
                         <li><a href="@{admins.tambahorang()}"><i class="glyphicon glyphicon-hdd"></i><span> Data Pelanggan</span></a>
                         </li>
+                        
                     </ul>
                      <li class="nav-header hidden-md">Powered By : Team Pro-Party</li>
 
