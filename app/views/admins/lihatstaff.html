@@ -1,25 +1,94 @@
-<h1> Tambah Staff </h1>
-<form method="post" action="@{admins.saveStaff()}">
-	<table border=1>
-		<tr> <td> Nama </td> <td> : </td> <td> <input type="text" name="m.nama"> </td> </tr>
-		<tr> <td> E-mail </td> <td> : </td> <td> <input type="email" name="m.email"> </td> </tr>
-		<tr> <td> Sebagai </td> <td> : </td> <td>
-		<select name="m.sebagai.id">
-		#{list items:aa,as:'x'}
-			<option value="${x.id}"> ${x.Nama_Akses}</option>
-		#{/list}
-		</select>
-		</td> </tr>
-		<tr> <td> <input type="submit" > </td> </tr>
-	</table>
-</form> 
-<h1> Daftar Staff </h1> 
-<table border=1>
-<tr><td>Nama</td><td>E-mail</td><td>Sebagai</td><td>Action</td></tr>
-#{list items:s, as:'m'}
+#{extends 'tema.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.lihatStaff()}">Kelola Koki</a>
+        </li>
+    </ul>
+    </div>
+    <div class="row">
+    <div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Tambah Koki</h2>
+
+                    <div class="box-icon">
+                        
+                        
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="post" action="@{admins.saveStaff()}">
+                
+                   
+                    <div class="form-group">
+                        <label >Nama</label>
+                        <input type="text" class="form-control" name="m.nama" placeholder="Nama">
+                    </div>
+                    <div class="form-group">
+                        <label> Email</label>
+                        <input type="email" class="form-control" name="m.email" placeholder="Email">
+                    </div>
+                    <div class="control-group">
+                    
+
+                   
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="simpan">Simpan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <div class="box col-md-8">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Koki</h2>
+
+        <div class="box-icon">
+           
+            
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Nama</th>
+        <th>e-mail</th>
+       
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   
+   
+       #{list items:s, as:'m'}
 	<tr> <td> ${m.nama} </td>
 	<td> ${m.email}</td> 
-	<td> ${m.sebagai}</td> 
-	<td> <a href="@{admins.editstaff(m.id)}">edit</a> | <a href="@{admins.hapusStaff(m.id)}"> hapus </a></td></tr>
+	
+	<td> <a class="btn btn-default" href="@{admins.editstaff(m.id)}">edit</a> | <a class="btn btn-danger" href="@{admins.hapusStaff(m.id)}"> hapus </a></td></tr>
 #{/list}
-</table>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+        
+
+
+</div></div>
