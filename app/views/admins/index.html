@@ -66,11 +66,7 @@
 	</td>
 	<td>${a.tanggal}</td>
 	<td> Rp ${a.tagihan},-- </td> 
-	<td> 
-	#{if a.Status_Pesan.id == 1 }
-		<a class="btn btn-success"  href="@{kasir.menu(a.id)}"> Pesanan </a> 
-	#{/if}
-		<a class="btn btn-info"  href="@{kasir.lihat(a.id)}"> Lihat </a> </tr>
+	<td> <a class="btn btn-info"  href="@{admins.lihat(a.id)}"> Lihat </a> </td> </tr>
 #{/list}
    
       

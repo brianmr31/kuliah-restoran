@@ -649,4 +649,35 @@ public class admins extends Controller {
 		}
 		render(b);
 	}
+	public static void lihat(long a){
+		// Looping list pesanan terus ditambah harga menu 
+		double harga = 0;
+		double untung= 0;
+		realpesanan x = realpesanan.find("id=?",a).first();
+		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
+		for(pesanan p : m){
+			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung ;
+			p.Untung= p.Jumlah_Pesan * p.menu_pesan.Untung;
+			if(p.cek == 0){
+			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
+				bahanpakai bpki = new bahanpakai() ;
+        		n.Bahan.Stock -= n.Jumlah * p.Jumlah_Pesan ; 
+        	 	n.Bahan.save();
+        	 	bpki.Nama_Bahan = n.Bahan;
+        	 	bpki.Stock = n.Jumlah * p.Jumlah_Pesan;
+        	 	bpki.Tanggal_Pakai = new Date();
+        	 	bpki.oleh = x.Nama_Pesanan;
+        	 	bpki.save();
+        	  }
+			  p.cek = 1;
+			}
+			p.save();
+			untung += p.Untung;
+			harga += p.Harga;
+		}
+		x.tagihan = harga ;
+		x.Untung = untung;
+		x.save();
+		render(m,a);
+	}
 }
