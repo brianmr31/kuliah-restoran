@@ -1,0 +1,17 @@
+<table border=1>
+	<form method="GET" action="@{admins.saveRealResep()}" >
+	<tr> <td> Nama Resep </td> <td> : </td> <td> <input type="text" name="a.Nama_Resep" > </td> </tr>
+	<tr> <td> <input type="submit" value="save" > </td> </tr> 
+	</form>
+</table>  
+<hr>
+<table border=1>
+<tr> <td> Nama_Resep </td> <td> Harga </td> <td> Action </td> </tr>
+#{list items:m, as:'m'}
+	<tr> <td> ${m.Nama_Resep} </td> <td> ${m.Harga_menu} </td> <td>
+		<a href="@{admins.tambahBahanR(m.id)}" > tambah </a>
+		<a href="@{admins.hapusResep(m.id)}"> hapus </a> 
+		<a href="@{admins.lihatBahanR(m.id)}"> lihat </a>
+	</td> </tr>
+#{/list}
+<table>

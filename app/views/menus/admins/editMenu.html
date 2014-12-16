@@ -1,0 +1,22 @@
+<h1> Tambah Edit Menu</h1>
+<a href="@{admins.lihatMenu()}" > back </a>
+<form method="post" action="@{admins.saveMenu()}" enctype="multipart/form-data">
+<table border=1>
+<input type="text" name="c.id" value="${m.id}">
+<tr> <td> Nama Menu </td> <td> : </td> <td> <input type="text" name="c.Nama_Menu" value="${m.Nama_Menu}" > </td> </tr>
+<tr> <td> Keterang </td> <td> : </td> <td> <input type="text" name="c.Keterangan" value="${m.Keterangan}" > </td> </tr>
+<tr> <td> Resep yang digunakan </td> <td> : </td> <td>
+		<select name="c.Nama_Resep.id">
+		<option value="${m.Nama_Resep.id}"> ${m.Nama_Resep.Nama_Resep}: Rp. ${m.Nama_Resep.Harga_menu}</option>
+		#{list items:aa,as:'x'}
+			<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
+		#{/list}
+		</select>
+		</td> </tr>
+<tr> <td> Harga Jual </td> <td> : </td> <td> <input type="text" name="c.HargaUntung" value="${m.HargaUntung}" > </td> </tr>
+<tr> <td> File </td> <td> : </td> <td> <input type="file" name="c.gambar" /> </td> </tr>
+<tr> <td> Gambar </td> <td> : </td> <td> <img src="@{admins.getPicture(m.id)}" width="150px" height="150px"/> </td> </tr>
+<tr> <td> <input type="submit" value="save" > </td> </tr> 
+</table> 
+</form> 
+ 
