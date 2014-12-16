@@ -602,10 +602,11 @@ public class admins extends Controller {
 		render(awal);
 	}
 	public static void menufavorit(){ 
+		//Map<String, String> mf =new HashMap<String, String>();
 		List<pembelian> pbl = pembelian.findAll();
 		List<realresep> rr	= realresep.findAll();
 		String[] daftar = new String[rr.size()];
-		String[] menu = new String[rr.size()];
+		String[][] menu = new String[rr.size()][2];
 		int[] jmlDaftar = new int[rr.size()];
 		int i = 0,j= 0 ;
 		int pri = 0 ;
@@ -636,12 +637,15 @@ public class admins extends Controller {
 					pri += 1;
 				}
 			}
-			menu[jmlDaftar.length-pri] = daftar[i];
+			menu[jmlDaftar.length-pri][0] = daftar[i];
+			menu[jmlDaftar.length-pri][1] = String.valueOf(jmlDaftar[i]);
 			pri=0;
 		}
 		a.clear();
 		for(i = 0 ; i < menu.length;i++){
-			b.add(menu[i]);
+			b.add(menu[i][0]);
+			//b.add(menu[i][1]);
+			//mf.put(menu[i][0], String.valueOf(menu[i][1]));
 		}
 		render(b);
 	}

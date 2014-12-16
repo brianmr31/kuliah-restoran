@@ -1,5 +1,4 @@
 #{extends 'temapelayan.html' /}
-
 <a href="@{pelayan.index()}"> Back </a> 
 <hr>
 <form method="GET" action="@{pelayan.savePesanan()}">
@@ -26,7 +25,6 @@
 				<option value="${x.id}">${x.No_Meja}</option>
 			#{/list}
 			</select> </td> </tr>
-			
 <tr> <td> <input type="submit" value="Save" > </td> </tr> 
 </table> 
 </form> 

@@ -42,25 +42,30 @@ public class pelayan extends Controller {
 	}
 	public static void savePesanan(realpesanan a){
 		a.tanggal = new Date();
+		a.Nama_Orang = Orang.findById((long)4);
+		a.Status_Pesan = status.findById((long)2);
 		a.save();
 		menu(a.id);
 	}
 	public static void menu(long a ){
 		List<menu> r = menu.findAll();
+		List nm = meja.findAll();
         for(menu n : r){
   	  		n.Harga = n.Nama_Resep.Harga_menu ;
   	  		n.save();
   	    }
 		List m = menu.findAll();
-		render(m,a);
+		render(m,a,nm);
 	}
 	public static void lihat(long a){
 		// Looping list pesanan terus ditambah harga menu 
 		double harga = 0;
+		double untung= 0;
 		realpesanan x = realpesanan.find("id=?",a).first();
 		List<pesanan> m = pesanan.find("Nama_pesanannya=?", x).fetch();
 		for(pesanan p : m){
 			p.Harga = p.Jumlah_Pesan * p.menu_pesan.HargaUntung;
+			p.Untung= p.Jumlah_Pesan * p.menu_pesan.Untung;
 			if(p.cek == 0){
 			  for(resep n: p.menu_pesan.Nama_Resep.idresep){
 				bahanpakai bpki = new bahanpakai() ;
@@ -75,9 +80,11 @@ public class pelayan extends Controller {
 			  p.cek = 1;
 			}
 			p.save();
-			harga = harga+ p.Harga;
+			untung += p.Untung;
+			harga += p.Harga;
 		}
 		x.tagihan = harga ;
+		x.Untung = untung;
 		x.save();
 		render(m,a);
 	}

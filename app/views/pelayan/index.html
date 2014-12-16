@@ -44,12 +44,6 @@
     <td> &nbsp ${m.Status_Pesan.Nama_Status} &nbsp </td>
 	<td> &nbsp ${m.Nama_Orang.Nama} &nbsp </td> 
 	<td> &nbsp ${m.tagihan} &nbsp </td>
-<<<<<<< HEAD
-	<td> &nbsp ${m.No_Meja.No_Meja} &nbsp </td> 
-	<td> &nbsp <a class="btn btn-success"  href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
-		&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
-		&nbsp <a class="btn btn-danger" href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
-=======
 	<td>
 	#{if  m.No_Meja.No_Meja > 0 }
 		&nbsp ${m.No_Meja.No_Meja} &nbsp
@@ -60,16 +54,12 @@
 	</td> 
 	<td> 
 	#{if m.Status_Pesan.id != 1 }
-		&nbsp <a href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
+		&nbsp <a class="btn btn-success" href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
 	#{/if}
-	&nbsp <a href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
-	&nbsp <a href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
->>>>>>> origin/master
+	&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
+	&nbsp <a class="btn btn-danger" href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
 	</tr>
 #{/list}
-   
-   
-   
     </tbody>
     </table>
     </div>
