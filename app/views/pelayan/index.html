@@ -7,7 +7,7 @@
             <a href="@{pelayan.index()}">Home</a>
         </li>
         <li>
-            <a href="@{pelayan.menu()}">Lihat menu</a>
+            <a href="@{pelayan.menu()}">Lihat Menu</a>
         </li>
     </ul>
 </div>
@@ -33,7 +33,7 @@
         <th>Status</th>
         <th> Orang</th>
         <th>Tagihan</th>
-        <th>meja</th>
+        <th>Meja</th>
         <th>Aksi</th>
     </tr>
     </thead>
@@ -54,9 +54,9 @@
 	</td> 
 	<td> 
 	#{if m.Status_Pesan.id != 1 }
-		&nbsp <a class="btn btn-success" href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp 
+		&nbsp <a class="btn btn-success" href="@{pelayan.menu(m.id)}"> Tambah </a>  &nbsp 
 	#{/if}
-	&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
+	&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> Lihat </a>  &nbsp 
 	&nbsp <a class="btn btn-danger" href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp </td>
 	</tr>
 #{/list}
