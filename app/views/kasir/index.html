@@ -7,7 +7,7 @@
             <a href="#">Home</a>
         </li>
         <li>
-            <a href="@{kasir.index()}">kelola kasir</a>
+            <a href="@{kasir.index()}">Kelola Kasir</a>
         </li>
     </ul>
 </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                   
-                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                    <button type="submit" class="btn btn-default btn-sm" value="pesan">Pesan</button>
                 </form>
 
             </div>
@@ -60,7 +60,7 @@
 <div class="box col-md-8">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-th"></i> Daftar pesanan</h2>
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Pesanan</h2>
 
         <div class="box-icon">
            
@@ -77,8 +77,8 @@
 	        <th>Nama Pesanan</th>
 	        <th>Status Pesan</th>
 	        <th>Nama Orang</th>
-	        <th>no meja</th>
-	        <th>tanggal</th>
+	        <th>No Meja</th>
+	        <th>Tanggal</th>
 	        <th>&nbsp&nbsp&nbsp&nbsptagihan&nbsp&nbsp&nbsp&nbsp</th>       
 	        <th>Aksi</th>
 	    </tr>
@@ -106,10 +106,10 @@
 			<td>Rp ${a.tagihan} ,-- </td>
 			<td class="center">
 			#{if a.Status_Pesan.id == 1 } 
-				<a class="btn btn-default"  href="@{kasir.menu(a.id)}"> Pesanan </a> <br>
+				<a class="btn btn-default btn-sm"  href="@{kasir.menu(a.id)}"> Pesanan </a> <br>
 			#{/if} 
-				<a class="btn btn-default" href="@{kasir.lihat(a.id)}"> Lihat </a> <br>
-			 	<a class="btn btn-default" href="@{kasir.bayar(a.id)}"> bayar </a> </td> 
+				<a class="btn btn-info btn-sm" href="@{kasir.lihat(a.id)}"> Lihat </a> <br>
+			 	<a class="btn btn-success btn-sm" href="@{kasir.bayar(a.id)}"> Bayar </a> </td> 
 		</tr>
 	#{/list}
     </tbody>
