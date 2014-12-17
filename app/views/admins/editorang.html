@@ -1,0 +1,69 @@
+ #{extends 'tema.html' /}
+ <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.index()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.tambahorang()}">Tambah Orang</a>
+        </li>
+    </ul> 
+</div>
+<div class="box col-md-4">
+<a href="@{admins.tambahorang()}"> Back </a>
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Menu Edit Orang</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div> 
+                 <div class="box-content"> 
+ <form role="form"  method="get" action="@{admins.simpanorang()}">
+                <input type="hidden" name="o.id" value="${id}">
+                    <div class="form-group">
+                        <label >Nama </label>
+                        <input type="text" class="form-control"  name="o.Nama" value="${x.Nama}" >
+                    </div>
+                     <div class="form-group">
+                        <label >Alamat </label>
+                        <input type="text" class="form-control"  name="o.Alamat" value="${x.Alamat}" >
+                    </div>
+                     <div class="form-group">
+                        <label >Kontak </label>
+                        <input type="text" class="form-control"  name="o.Kontak" value="${x.Kontak}" >
+                    </div>
+                    <div class="form-group">
+                    	<label > Jenis Kelamin </label>
+	                    <select name="o.Jenis_Kelamin.id" >
+	                    <option value=${x.id}> ${x.Jenis_Kelamin}</option>
+	                    #{list items:j, as:'xx'}
+	                    	<option value=${xx.id}> ${xx.Nama_Jeniskelamin}</option>
+	                    #{/list}
+	                    </select> 
+                    </div>
+                    <div class="form-group">
+                    	<label > Nama Akses </label>
+	                    <select name="o.Nama_Akses.id" >
+	                    <option value=${x.id}> ${x.Nama_Akses}</option>
+	                    #{list items:h, as:'y'}
+	                    	#{if y.id == 2 }
+	                    	#{/if}
+	                    	#{else}
+	                    	<option value=${y.id}> ${y.Nama_Akses}</option>
+	                    	#{/else}
+	                    #{/list}
+                    </select> 
+                    </div>
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+                
+            </div>
+            </div>
+        </div>
