@@ -12,13 +12,12 @@
     </ul>
 </div>
 <table border=1> 
-<tr> <td> Id </td> <td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> tanggal </td><td> aksi</td> </tr>  
+<tr> <td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> tanggal </td> </tr>  
 #{list items:m, as:"m"}
-	<tr> <td> ${m.id} </td> 
+	<tr>  
 	<td> ${m.menu_pesan} </td>
 	<td> ${m.Nama_pesanannya} </td>  
 	<td> ${m.Jumlah_Pesan} </td> 
 	<td> ${m.Harga} </td> 
-	<td> &nbsp ${m.Tanggal_Pesan} &nbsp </td>
-	<td> <a href="@{kasir.hapuspesanan(m.id,a)}"> hapus </a> </td></tr>
+	<td> &nbsp ${m.Tanggal_Pesan} &nbsp </td></tr>
 #{/list}
