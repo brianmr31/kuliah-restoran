@@ -53,11 +53,11 @@
 	#{/else}
 	</td> 
 	<td> 
+	&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
 	#{if m.Status_Pesan.id != 1 }
 		&nbsp <a class="btn btn-success" href="@{pelayan.menu(m.id)}"> tambah </a>  &nbsp
 		&nbsp <a class="btn btn-danger" href="@{pelayan.hapusrealpesanan(m.id)}"> Batal </a>  &nbsp 
 	#{/if}
-	&nbsp <a class="btn btn-default" href="@{pelayan.lihat(m.id)}"> lihat </a>  &nbsp 
 	 </td>
 	</tr>
 #{/list}
