@@ -27,8 +27,6 @@
                         
                         <a href="#" class="btn btn-minimize btn-round btn-default"><i
                                 class="glyphicon glyphicon-chevron-up"></i></a>
-                        <a href="#" class="btn btn-close btn-round btn-default"><i
-                                class="glyphicon glyphicon-remove"></i></a>
                     </div>
                 </div>
               
@@ -81,7 +79,6 @@
            
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
                     class="glyphicon glyphicon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
         </div>
     </div>
     <div class="box-content">
@@ -101,10 +98,6 @@
     </tr>
     </thead>
     <tbody>
-   
-   
-   
-   
        #{list items:m, as:"m"}
 	<tr> <td> ${m.id} </td>
 	<td> <img src="@{admins.getPicture(m.id)}" width="100px" height="100px"/> </td>	
