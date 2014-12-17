@@ -11,13 +11,15 @@
         </li>
     </ul>
 </div>
-<a class="btn btn-warning btn-md" href="@{pelayan.index()}"> Back </a> 
-<a class="btn btn-success btn-md" href="@{pelayan.menu(a)}"> Tambah  </a>
+<a class="btn btn-warning btn-md" href="@{pelayan.index()}"> <i
+                                class="glyphicon glyphicon-circle-arrow-left"></i> Back </a> 
+<a class="btn btn-success btn-md" href="@{pelayan.menu(a)}"> <i
+                                class="glyphicon glyphicon-shopping-cart"></i>  Pesan  </a>
 <div class="row">
     <div class="box col-md-4">
         <div class="box-inner">
 			<table class="table table-striped table-bordered bootstrap-datatable datatable responsive" border=1> 
-			<tr> <td> Id </td> <td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> Tanggal </td><td> Aksi</td> </tr>  
+			<tr><td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> Tanggal </td><td> Aksi</td> </tr>  
 			#{list items:m, as:"m"}
 				<tr> 
 				<td> ${m.menu_pesan} </td>
@@ -25,7 +27,8 @@
 				<td> ${m.Jumlah_Pesan} </td> 
 				<td> ${m.Harga} </td> 
 				<td> &nbsp ${m.Tanggal_Pesan} &nbsp </td>
-				<td> <a class="btn btn-danger btn-sm" href="@{pelayan.hapuspesanan(m.id,a)}"> Hapus </a> </td></tr>
+				<td> <a class="btn btn-danger btn-sm" href="@{pelayan.hapuspesanan(m.id,a)}"> <i
+                                class="glyphicon glyphicon-remove"></i> Hapus </a> </td></tr>
 			#{/list}
 			</table>
         </div>
