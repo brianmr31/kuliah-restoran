@@ -4,10 +4,10 @@
             <div>
     <ul class="breadcrumb">
         <li>
-            <a href="@{kasir.index()}">Home</a>
+            <a href="@{pelayan.index()}">Home</a>
         </li>
         <li>
-            <a href="@{kasir.menu()}">Lihat menu</a>
+            <a href="@{pelayan.menu()}">Lihat menu</a>
         </li>
     </ul>
 </div>
@@ -25,12 +25,11 @@
 				<option value="${x.id}">${x.No_Meja}</option>
 			#{/list}
 			</select> </td> </tr>
-			
 <tr> <td> <input type="submit" value="Save" > </td> </tr>
+#{/if} 
 </table> 
 </form> 
 <hr>
-#{/if} 
 <div class="row">
     #{list items:m,as:'m'}
     <div class="box col-md-4">

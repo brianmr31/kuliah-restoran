@@ -70,11 +70,11 @@ public class kasir extends Controller {
 	}
 	public static void tambahorang(Orang x,long id){
 		List<Orang> o= Orang.findAll();
-		List j= jenisKelamin.findAll();
-		List h= HakAkses.findAll();
-		render(o,j,h,x,id);
+		render(o,x,id);
 	}
 	public static void simpanorang(Orang o,long id){
+		o.Jenis_Kelamin = jenisKelamin.findById((long)1);
+		o.Nama_Akses = HakAkses.findById((long)2);
 		o.save();
 		tambahorang(null,0);
 	}

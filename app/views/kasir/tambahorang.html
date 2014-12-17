@@ -28,7 +28,6 @@
                 </div>
               
                  <div class="box-content">
-                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
                 <form role="form"  method="get" action="@{kasir.simpanorang()}">
                 <input type="hidden" name="o.id" value="${id}">
                
@@ -44,29 +43,6 @@
                         <label >Kontak </label>
                         <input type="text" class="form-control"  name="o.Kontak" value="${x.Kontak}" >
                     </div>
-                    
-                  
-                    <div class="control-group">
-                    
-
-                    <div class="controls"><label > Jenis Kelamin :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
-                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
-			#{list items:j, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
-			#{/list}
-			</select> 
-                        
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls"><label > Hak Akses :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
-            <select name="o.Hak_Akses.id" data-rel="chosen" >
-				<option value=2> Pelanggan </option>
-			</select> 
-                        
-                    </div>
-                </div>
-                  
                     <button type="submit" class="btn btn-default" value="pesan">pesan</button>
                 </form>
 
@@ -90,7 +66,6 @@
                 </div>
               
                  <div class="box-content">
-                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
                 <form role="form" method="get" action="@{kasir.simpanorang()}">
                
                     <div class="form-group">
@@ -105,31 +80,6 @@
                         <label >Kontak </label>
                         <input type="text" class="form-control"  name="o.Kontak"  >
                     </div>
-                    
-                  
-                    <div class="control-group">
-                    
-
-                    <div class="controls"><label > Jenis Kelamin :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
-                       <select name="o.Jenis_Kelamin.id" data-rel="chosen" >
-			#{list items:j, as:'x'}
-				<option value="${x.id}"> ${x.Nama_Jeniskelamin} </option>
-			#{/list}
-			</select> 
-                        
-                    </div>
-                </div>
-                <div class="control-group">
-                    
-
-                    <div class="controls"><label > Hak Akses :</label>&nbsp&nbsp&nbsp&nbsp&nbsp
-                    <select name="o.Hak_Akses.id" data-rel="chosen" >
-						<option value=2> Pelanggan </option>
-					</select>  
-                        
-                    </div>
-                </div>
-                  
                     <button type="submit" class="btn btn-default" value="pesan">pesan</button>
                 </form>
 
@@ -150,6 +100,7 @@
             
         </div>
     </div>
+   
     <div class="box-content">
    
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
@@ -158,8 +109,7 @@
         <th>Nama </th>
         <th>Alamat</th>
         <th>kontak</th>
-        <th>jenis kelamin</th>
-        <th>tagihan</th>       
+        <th>jenis kelamin</th>     
         <th>Aksi</th>
     </tr>
     </thead>
@@ -167,13 +117,14 @@
    
    
    #{list items:o,as:'a'}
+    #{if a.Nama_Akses.id == 2}
 	<tr> <td>${a.Nama}</td>
 	<td>${a.Alamat}</td>
 	<td>${a.Kontak}</td>
 	<td>${a.Jenis_Kelamin}</td>
-	<td>${a.Nama_Akses}</td> 
 	<td> <a class="btn btn-default" href="@{kasir.hapusorang(a.id)}"> hapus </a> <a href="@{kasir.editorang(a.id)}"> Edit </a></td> </tr>
-#{/list}
+    #{/if}
+	#{/list}
    
       
     </tbody>

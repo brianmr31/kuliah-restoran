@@ -680,4 +680,24 @@ public class admins extends Controller {
 		x.save();
 		render(m,a);
 	}
+	public static void tambahorang(Orang x,long id){
+		long idx = 0 ;
+		idx = id ;
+		List<Orang> o= Orang.findAll();
+		List<HakAkses> h = HakAkses.findAll();
+		List<jenisKelamin> j = jenisKelamin.findAll() ;
+		render(o,h,j,x,idx);
+	}
+	public static void simpanorang(Orang o,long id){
+		o.save();
+		tambahorang(null,0);
+	}
+	public static void hapusorang(long id){
+		Orang.delete("id=?", id);
+		tambahorang(null,0);
+	}
+	public static void editorang(long id){
+		Orang x = Orang.find("id=?", id).first();
+		render(x,id);
+	}
 }

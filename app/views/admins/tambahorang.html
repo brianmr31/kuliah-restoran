@@ -1,55 +1,117 @@
 #{extends 'tema.html' /}
-
 <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
             <div>
     <ul class="breadcrumb">
         <li>
-            <a href="@{admins.awal()}">Home</a>
+            <a href="@{admins.index()}">Home</a>
         </li>
         <li>
-            <a href="@{admins.tambahorang()}">Lihat Pelanggan</a>
+            <a href="@{admins.tambahorang()}">Tambah Orang</a>
         </li>
     </ul>
+    <form method="get" action="@{admins.sendmail()}" >  
+	  <input type="hidden" name="a" value="${pesan}" >
+	  <input type="hidden" name="b" value="${subject}" >
+	  <input class="btn  btn-default" type="submit" value="send mail" >
+	</form>  
 </div>
-	    <div  style="padding:5px 10px 5px 5px;">
-			<form method="get" action="@{admins.sendmail()}" >  
-			   <input type="hidden" name="a" value="${pesan}" >
-			   <input type="hidden" name="b" value="${subject}" >
-			   <input class="btn  btn-default" type="submit" value="send mail" >
-			</form>  
-		</div>
-<!-- <a class="btn btn-default" href="@{admins.index()}">
-                <i class="glyphicon glyphicon-chevron-left icon-white"></i>
-               Back
-               </a>
-<br/> -->
+<div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Menu Tambah Pegawai</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div> 
+                 <div class="box-content">           
+                <form role="form"  method="get" action="@{admins.simpanorang()}">
+                <input type="hidden" name="o.id" value="${id}">
+                    <div class="form-group">
+                        <label >Nama </label>
+                        <input type="text" class="form-control"  name="o.Nama"  >
+                    </div>
+                     <div class="form-group">
+                        <label >Alamat </label>
+                        <input type="text" class="form-control"  name="o.Alamat" >
+                    </div>
+                     <div class="form-group">
+                        <label >Kontak </label>
+                        <input type="text" class="form-control"  name="o.Kontak"  >
+                    </div>
+                    <div class="form-group">
+                    	<label > Jenis Kelamin </label>
+	                    <select name="o.Jenis_Kelamin.id" >
+	                    #{list items:j, as:'xx'}
+	                    	<option value=${xx.id}> ${xx.Nama_Jeniskelamin}</option>
+	                    #{/list}
+	                    </select> 
+                    </div>
+                    <div class="form-group">
+                    	<label > Nama Akses </label>
+	                    <select name="o.Nama_Akses.id" >
+	                    #{list items:h, as:'y'}
+	                    	#{if y.id == 2 }
+	                    	#{/if}
+	                    	#{else}
+	                    	<option value=${y.id}> ${y.Nama_Akses}</option>
+	                    	#{/else}
+	                    #{/list}
+                    </select> 
+                    </div>
+                    <button type="submit" class="btn btn-default" value="pesan">pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
 <div class="box col-md-8">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i> Daftar Pelanggan</h2>
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Pegawai </h2>
 
         <div class="box-icon">
            
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
                     class="glyphicon glyphicon-chevron-up"></i></a>
-            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+            
         </div>
     </div>
+   
     <div class="box-content">
-<table border="1" class="table table-striped table-bordered bootstrap-datatable datatable responsive">
-<tr><td>Nama</td><td>Alamat</td><td>Kontak </td><td> Jenis Kelamin</td><td>tagihan</td></tr>
-#{list items:o,as:'a'}
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Nama </th>
+        <th>Alamat</th>
+        <th>kontak</th>
+        <th>jenis kelamin</th>     
+        <th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   #{list items:o,as:'a'}
+    #{if a.Nama_Akses.id != 2}
 	<tr> <td>${a.Nama}</td>
 	<td>${a.Alamat}</td>
 	<td>${a.Kontak}</td>
 	<td>${a.Jenis_Kelamin}</td>
-	<td>${a.Nama_Akses}</td> </tr>
-#{/list}
-</table>
-
-</div>
+	<td> <a class="btn btn-default" href="@{admins.hapusorang(a.id)}"> hapus </a> 
+	<a href="@{admins.editorang(a.id)}"> Edit </a></td> </tr>
+    #{/if}
+	#{/list}
+   
+      
+    </tbody>
+    </table>
     </div>
     </div>
-
+    </div>
 </div>
