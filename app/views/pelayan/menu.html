@@ -11,26 +11,66 @@
         </li>
     </ul>
 </div>
+ #{if a == 0}
+<div class="box col-md-9">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Pemesan</h2>
 
-<a href="@{pelayan.index()}"> Back </a> 
-<hr>
-<form method="GET" action="@{pelayan.savePesanan()}">
-<table border=0>
-#{if a == 0}
-<tr> <td> Nama Pesanan </td> <td> : </td> <td> <input type="text" name="a.Nama_Pesanan" > </td> </tr>
-<tr> <td> No_Meja </td> <td> : </td> <td>
-			<select name="a.No_Meja.id">
-			<option>Pilih</option>
+                    <div class="box-icon">
+                        
+                        
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+               
+                <form role="form" method="GET" action="@{pelayan.savePesanan()}">
+               
+               
+                    <div class="form-group">
+                        <label >Nama Pesanan</label>
+                        <input type="text" class="form-control"  name="a.Nama_Pesanan" placeholder="Nama Pemesan">
+                    </div>
+                    
+                     <div class="control-group">
+                    
+
+                    <div class="controls"><label >No Meja:</label>&nbsp
+                        <select name="a.No_Meja.id" data-rel="chosen">
+                            <option>Pilih</option>
 			#{list items:nm, as:"x"}
 				<option value="${x.id}">${x.No_Meja}</option>
 			#{/list}
-			</select> </td> </tr>
-<tr> <td> <input type="submit" value="Save" > </td> </tr>
+
+                        </select>
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="simpan">Simpan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+
 #{/if} 
-</table> 
-</form> 
-<hr>
-<div class="row">
+<div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Daftar Menu</h2>
+
+                    <div class="box-icon">
+                        
+                        
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                 <div class="box-content">
+              
     #{list items:m,as:'m'}
     <div class="box col-md-4">
         <div class="box-inner">

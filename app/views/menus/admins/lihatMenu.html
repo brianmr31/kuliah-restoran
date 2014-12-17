@@ -1,0 +1,120 @@
+#{extends 'tema.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.lihatMenu()}">Lihat Menu</a>
+        </li>
+    </ul>
+</div>
+<div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Tambah Menu </h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="GET" action="@{admins.saveMenu()}">
+                <div class="control-group">
+                    
+
+                   
+                </div>
+                    <div class="form-group">
+                        <label >Nama Menu</label>
+                        <input type="text" class="form-control"  name="c.Nama_Menu" placeholder="Nama Menu">
+                    </div>
+                    <div class="form-group">
+                        <label >Keterangan</label>
+                        <input type="text" class="form-control" name="c.Keterangan" placeholder="Keterangan">
+                    </div>
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label >Resep :</label>
+                        <select name="c.Nama_Resep.id" data-rel="chosen">
+                           #{list items:aa,as:'x'}
+			<option value="${x.id}"> ${x.Nama_Resep}: Rp. ${x.Harga_menu}</option>
+		#{/list}
+		
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label >Harga Jual</label>
+                        <input type="text" class="form-control" name="c.HargaUntung" placeholder="Harga Jual">
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default" value="Save">simpan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+<div class="box col-md-9">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Log Menu</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+   
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nama Menu</th>
+        <th>Keterangan</th>
+        <th>Harga Estimasi</th>
+        <th>Harga Jual</th>
+        <th>Nama Resep</th>
+        <th>aksi</th>
+    </tr>
+    </thead>
+    <tbody>
+   
+   
+   
+   
+       #{list items:m, as:"m"}
+	<tr> <td> ${m.id} </td> 
+	<td>  ${m.Nama_Menu} </a> </td>
+	<td> ${m.Keterangan} </td>  
+	<td> ${m.Harga} </td> 
+	<td> ${m.HargaUntung} </td>
+	<td> ${m.Nama_Resep} </td>  
+	<td> <a class="btn btn-danger"  
+	href="@{admins.hapusMenu(m.id)}">
+	<i class="glyphicon glyphicon-trash icon-white"></i>hapus </a>
+	<a class="btn btn-default"  
+	 href="@{admins.editMenu(m.id)}" >
+	<i class=" glyphicon glyphicon-pencil icon-white"></i>edit </a> </td></tr>
+#{/list}
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+ 
+ 
+

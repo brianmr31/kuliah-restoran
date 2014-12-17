@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Welcome!</title>
+<link rel="shortcut icon" type="image/png" href="@{'/public/images/logo.ico'}">
+<style type="text/CSS">
+body {background-color: #DCDCDC; text-align: center;}
+</style>
+<script type="text/javascript">
+window.onload=timeout;
+function timeout(){
+window.setTimeout("redirect()",3000)}
+
+function redirect(){
+window.location="@{Restoran.index()}";
+return}
+</script>
+</head>
+<body onload="timeout()">
+<br><br>
+<img src="@{'/public/images/splash.png'}" width="200" height="200"><br>
+<i>version 1.0.0 Gege&copy;</i>
+</body>
+</html>
