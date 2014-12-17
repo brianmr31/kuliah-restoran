@@ -11,11 +11,13 @@
         </li>
     </ul>
 </div>
-
+<a class="btn btn-warning btn-md" href="@{pelayan.index()}"> Back </a> 
+<br> 
+<a class="btn btn-success btn-md" href="@{pelayan.menu(a)}"> Tambah  </a>
 <div class="row">
     <div class="box col-md-4">
         <div class="box-inner">
-			<a class="btn btn-warning btn-md" href="@{pelayan.index()}"> Back </a> <br> <a class="btn btn-succsess btn-md" href="@{pelayan.menu(a)}"> Tambah  </a> 
+			 
 			<table border=1> 
 			<tr> <td> Id </td> <td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> Tanggal </td><td> Aksi</td> </tr>  
 			#{list items:m, as:"m"}
@@ -27,6 +29,8 @@
 				<td> &nbsp ${m.Tanggal_Pesan} &nbsp </td>
 				<td> <a class="btn btn-danger btn-sm" href="@{pelayan.hapuspesanan(m.id,a)}"> Hapus </a> </td></tr>
 			#{/list}
+			</table>
         </div>
     </div>
+</div>
 </div>
