@@ -12,13 +12,12 @@
     </ul>
 </div>
 <a class="btn btn-warning btn-md" href="@{pelayan.index()}"> Back </a> 
-<br> 
 <a class="btn btn-success btn-md" href="@{pelayan.menu(a)}"> Tambah  </a>
 <div class="row">
     <div class="box col-md-4">
         <div class="box-inner">
 			 
-			<table border=1> 
+			<table class="table table-striped table-bordered bootstrap-datatable datatable responsive" border=1> 
 			<tr> <td> Id </td> <td> Nama Menu </td> <td> Nama Pesanan </td> <td> Jumlah </td><td> Harga </td><td> Tanggal </td><td> Aksi</td> </tr>  
 			#{list items:m, as:"m"}
 				<tr> <td> ${m.id} </td> 
