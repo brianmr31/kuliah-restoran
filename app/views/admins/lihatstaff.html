@@ -75,7 +75,8 @@
 	<tr> <td> ${m.nama} </td>
 	<td> ${m.email}</td> 
 	
-	<td> <a class="btn btn-default" href="@{admins.editstaff(m.id)}">edit</a> | <a class="btn btn-danger" href="@{admins.hapusStaff(m.id)}"> hapus </a></td></tr>
+	<td><a class="btn btn-default" href="@{admins.editstaff(m.id)}"><i class=" glyphicon glyphicon-pencil icon-white"> edit </i> </a> |
+   <a class="btn btn-danger" href="@{admins.hapusStaff(m.id)}"><i class=" glyphicon glyphicon-remove-sign icon-white"> hapus </i></a></td></tr>
 #{/list}
     </tbody>
     </table>

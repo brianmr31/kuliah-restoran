@@ -103,8 +103,11 @@
 	<td>${a.Alamat}</td>
 	<td>${a.Kontak}</td>
 	<td>${a.Jenis_Kelamin}</td>
-	<td> <a class="btn btn-default" href="@{admins.hapusorang(a.id)}"> hapus </a> 
-	<a href="@{admins.editorang(a.id)}"> Edit </a></td> </tr>
+	<td> 	<a class="btn btn-warning" href="@{admins.editorang(a.id)}">
+	<i class=" glyphicon glyphicon-pencil icon-white"></i>&nbspEdit </a>
+	 <a class="btn btn-danger" href="@{admins.hapusorang(a.id)}"> 
+	<i class=" glyphicon glyphicon-remove-sign icon-white"></i>&nbsphapus </a> </td> 
+	</tr>
     #{/if}
 	#{/list}
    
