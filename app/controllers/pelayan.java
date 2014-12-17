@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import models.bahan;
 import models.bahanpakai;
 import models.meja;
 import models.menu;
+import models.pembelian;
 import models.pesanan;
 import models.realpesanan;
 import models.realresep;
@@ -139,5 +141,53 @@ public class pelayan extends Controller {
 	    notFoundIfNull(Menu);
 	    response.setContentTypeIfNotSet(Menu.gambar.type());
 	    renderBinary(Menu.gambar.get());
+	}
+	public static void menufavorit(){ 
+		//Map<String, String> mf =new HashMap<String, String>();
+		List<pembelian> pbl = pembelian.findAll();
+		List<realresep> rr	= realresep.findAll();
+		String[] daftar = new String[rr.size()];
+		String[][] menu = new String[rr.size()][2];
+		int[] jmlDaftar = new int[rr.size()];
+		int i = 0,j= 0 ;
+		int pri = 0 ;
+		List<String> a = new ArrayList<String>();
+		List<String> b = new ArrayList<String>();
+		for(realresep r : rr){
+			daftar[i] = r.Nama_Resep;
+			a.add(daftar[i]);
+			i++;
+		}
+		String[] aa = null ; 
+		for(pembelian p : pbl){
+			aa = p.pesanannya.split(" ,");
+			for(String a1 : aa){
+				a.add(a1);
+			}
+		}
+		for(i = 0 ; i < rr.size(); i++){
+			for(j = 0 ; j < a.size() ; j++ ){
+				if(daftar[i].equals(a.get(j))){
+					jmlDaftar[i] += 1 ;
+				}
+			}
+		}
+		for(i = 0 ;i < jmlDaftar.length;i++){
+			for(j = 0 ;j < jmlDaftar.length;j++){
+				if(jmlDaftar[i] >= jmlDaftar[j]){
+					pri += 1;
+				}
+			}
+			menu[jmlDaftar.length-pri][0] = daftar[i];
+			menu[jmlDaftar.length-pri][1] = String.valueOf(jmlDaftar[i]);
+			pri=0;
+		}
+		a.clear();
+		for(i = 0 ; i < menu.length;i++){
+			b.add(menu[i][0]);
+			//b.add(menu[i][1]);
+			//mf.put(menu[i][0], String.valueOf(menu[i][1]));
+		}
+		render(b);
 	}
 }
