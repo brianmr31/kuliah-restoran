@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+#{extends 'temakeuntungan.html' /}
 
-body {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-</style>
-<body>
+<div id="content" class="col-lg-10 col-sm-10">
+    <!-- content starts -->
+    <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{admins.awal()}">Home</a>
+        </li>
+        <li>
+            <a href="@{admins.TotalSekarang()}">Keuntungan</a>
+        </li>
+    </ul>
+    </div>   
+<div class="box col-md-12">
+	<div class="box-inner">
+    	<div class="box-header well" data-original-title="">
+			<h2><i class="glyphicon glyphicon-th"></i> Keuntungan semua</h2>
+			<div class="box-icon">
+				 <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                 class="glyphicon glyphicon-chevron-up"></i></a>
+                 <a href="#" class="btn btn-close btn-round btn-default"><i
+                 class="glyphicon glyphicon-remove"></i></a>
 <script src="@{'/public/javascripts/d3.js'}"></script>
 <script>
 
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 10, right: 20, bottom: 30, left: 100},
+width = 510 - margin.left - margin.right,
+height = 400 - margin.top - margin.bottom;
+
 
 var parseDate = d3.time.format("%Y-%b").parse;
 
