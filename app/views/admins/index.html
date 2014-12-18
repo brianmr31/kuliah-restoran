@@ -1,78 +1,121 @@
-#{extends 'tema.html' /}
+#{extends 'temakasir.html' /}
 <div id="content" class="col-lg-10 col-sm-10">
             <!-- content starts -->
             <div>
     <ul class="breadcrumb">
         <li>
-            <a href="@{admins.awal()}">Home</a>
+            <a href="#">Home</a>
         </li>
         <li>
-            <a href="@{admins.bahanBeli()}">Pembelian Bahan</a>
+            <a href="@{kasir.index()}">Kelola Kasir</a>
         </li>
     </ul>
-	    <div  style="padding:5px 10px 5px 5px;">
-			<form method="get" action="@{admins.sendmail()}" >  
-			   <input type="hidden" name="a" value="${pesan}" >
-			   <input type="hidden" name="b" value="${subject}" >
-			   <input class="btn  btn-default" type="submit" value="send mail" >
-			</form>  
-		</div>
 </div>
+<div class="box col-md-4">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-th"></i> Kelola Kasir</h2>
+
+                    <div class="box-icon">
+                        
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        
+                    </div>
+                </div>
+              
+                 <div class="box-content">
+                <!-- <a href="@{admins.lihatBahan(" Hello World ")}"> Stok Bahan </a> --> 
+                <form role="form" method="get" action="@{kasir.antarsave()}">
+               
+                    <div class="form-group">
+                        <label >Nama Pemesan </label>
+                        <input type="text" class="form-control"  name="c.Nama_Pesanan" placeholder="nama pemesan">
+                    </div>
+                  
+                    <div class="control-group">
+                    
+
+                    <div class="controls"><label > Nama Orang :</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                       
+                        <select name="c.Nama_Orang.id" data-rel="chosen" >
+		#{list items:o, as:'x'}
+			#{if x.Nama == "makan ditempat" }
+			#{/if}
+			#{else}
+				<option value="${x.id}"> ${x.Nama} </option>
+			#{/else}
+		#{/list}
+		</select>
+                    </div>
+                </div>
+                  
+                    <button type="submit" class="btn btn-default btn-sm" value="pesan">Pesan</button>
+                </form>
+
+            </div>
+            </div>
+        </div>
+        <!--/span-->
 <div class="box col-md-8">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-th"></i> delivery order</h2>
+        <h2><i class="glyphicon glyphicon-th"></i> Daftar Pesanan</h2>
 
         <div class="box-icon">
            
             <a href="#" class="btn btn-minimize btn-round btn-default"><i
                     class="glyphicon glyphicon-chevron-up"></i></a>
+            
         </div>
     </div>
     <div class="box-content">
+   
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
-    <tr>
-        <th>Nama Pesanan</th>
-        <th>Status Pesan</th>
-        <th>Nama Orang</th>
-        <th>No meja</th>
-        <th>Tanggal</th>
-        <th>Tagihan</th>
-        <th>aksi</th>
-    </tr>
+	    <tr>
+	        <th>Nama Pesanan</th>
+	        <th>Status Pesan</th>
+	        <th>Nama Orang</th>
+	        <th>No Meja</th>
+	        <th>Tanggal</th>
+	        <th>Tagihan</th>       
+	        <th>Aksi</th>
+	    </tr>
     </thead>
     <tbody>
-   
-   
-   #{list items:m,as:'a'}
-
-	<tr> <td>${a.Nama_Pesanan}</td>
-	<td>${a.Status_Pesan}</td>
-	<td>${a.Nama_Orang}</td>
-	<td>
-		#{if a.No_Meja.id == 1}
-			Diantar 
-		#{/if}
-		#{else}
-			#{if a.No_Meja.id == 6}
-				Dibawa
+   	#{list items:m,as:'a'}
+		<tr> 
+			<td>${a.Nama_Pesanan}</td>
+			<td>${a.Status_Pesan}</td>
+			<td>${a.Nama_Orang}</td>
+			<td>
+			#{if a.No_Meja.id == 1}
+				Diantar 
 			#{/if}
 			#{else}
-				${a.No_Meja}
+				#{if a.No_Meja.id == 6}
+					Dibawa
+				#{/if}
+				#{else}
+					${a.No_Meja}
+				#{/else}
 			#{/else}
-		#{/else}
-	</td>
-	<td>${a.tanggal}</td>
-	<td> Rp ${a.tagihan},-- </td> 
-	<td> <a class="btn btn-info"  href="@{admins.lihat(a.id)}"> <i
-                    class="glyphicon glyphicon-eye-open">&nbspLihat</i> </a> </td> </tr>
-#{/list}
-   
-      
+			</td>
+			<td>${a.tanggal}</td>
+			<td>Rp ${a.tagihan} ,-- </td>
+			<td class="center">
+			#{if a.Status_Pesan.id == 1 } 
+				<a class="btn btn-default btn-sm"  href="@{kasir.menu(a.id)}"> Pesanan </a> <br>
+			#{/if} 
+				<a class="btn btn-info btn-sm" href="@{kasir.lihat(a.id)}"> &nbsp&nbsp&nbsp&nbspLihat&nbsp&nbsp&nbsp </a> <br>
+			 	<a class="btn btn-success btn-sm" href="@{kasir.pembayaran(a.id)}"> &nbsp&nbsp&nbspBayar&nbsp&nbsp </a> </td> 
+		</tr>
+	#{/list}
     </tbody>
     </table>
     </div>
     </div>
     </div>
-        </div>
+<hr>
+</div>
