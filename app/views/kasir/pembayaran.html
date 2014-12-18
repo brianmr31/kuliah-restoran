@@ -1,0 +1,82 @@
+#{extends 'temakasir.html' /}
+<div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="@{kasir.index()}">Home</a>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+    </ul>
+</div>
+		
+<div class="box col-md-4">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-th"></i> Bon Pembayaran</h2>
+
+        <div class="box-icon">
+           
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+		<a class="btn btn-warning btn-md" href="@{kasir.index()}"><i class="glyphicon glyphicon-circle-arrow-left"></i>  Back </a> 
+		<br>
+		<table class="col-md-12" border=0> 
+		<tr>
+		<td width="50%">Nama Pemesan</td><td>:</td><td>${nama}</td>
+		</tr>
+		<tr>
+		<td>Tanggal</td><td>:</td><td>${tgl}</td></tr>
+		</table>
+		<br>
+		<table border=0>
+		<tr>
+			<td colspan="3">Daftar Menu</td> 
+		</tr>
+		<tr>
+			<th>Menu</th>
+			<th>Jumlah</th>
+			<th>Total Harga</th>
+		</tr>
+		#{list items:m, as:"m"}
+		<tr>
+			<td> ${m.menu_pesan} </td>  
+			<td> ${m.Jumlah_Pesan} </td> 
+			<td> ${m.Harga} </td> 
+		</tr>
+		#{/list}
+		<tr>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Total</td>
+			<td>${harga}</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;
+				Ppn (10%)</td>
+			<td>${ppn}</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;
+				Total Bayar</td>
+			<td>${total}</td>
+		</tr>
+		</table>
+		<button class="btn btn-lg btn-default" type="button" onClick="
+		s=prompt('Masukan Uang Pembayaran');
+		var c= s-${total};
+		alert('Kembalian Anda Rp. '+c)">
+		<a href="@{kasir.bayar(a)}" style="text-decoration:none;font-color:white">Bayar</a>
+	</div>
+	</div>
+</div>
