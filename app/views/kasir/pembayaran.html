@@ -24,43 +24,59 @@
         </div>
     </div>
     <div class="box-content">
-		<a class="btn btn-warning btn-md" href="@{kasir.index()}"><i class="glyphicon glyphicon-circle-arrow-left"></i>  back </a> 
+		<a class="btn btn-warning btn-md" href="@{kasir.index()}"><i class="glyphicon glyphicon-circle-arrow-left"></i>  Back </a> 
 		<br>
-		<table> 
+		<table class="col-md-12" border=0> 
 		<tr>
-		<td>Nama Pemesan</td><td>:</td><td>${nama}</td>
+		<td width="50%">Nama Pemesan</td><td>:</td><td>${nama}</td>
 		</tr>
 		<tr>
 		<td>Tanggal</td><td>:</td><td>${tgl}</td></tr>
 		</table>
 		<br>
-		<table>
+		<table border=0>
 		<tr>
-		<td colspan="3">Daftar Menu</td> 
+			<td colspan="3">Daftar Menu</td> 
 		</tr>
-		<tr><th>Menu</th><th>Jumlah</th><th>Total Harga</th></tr>
+		<tr>
+			<th>Menu</th>
+			<th>Jumlah</th>
+			<th>Total Harga</th>
+		</tr>
 		#{list items:m, as:"m"}
 		<tr>
-		<td> ${m.menu_pesan} </td>  
-		<td> ${m.Jumlah_Pesan} </td> 
-		<td> ${m.Harga} </td> 
+			<td> ${m.menu_pesan} </td>  
+			<td> ${m.Jumlah_Pesan} </td> 
+			<td> ${m.Harga} </td> 
 		</tr>
 		#{/list}
 		<tr>
-		<td colspan="2">Total</td><td>${harga}</td>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Total</td>
+			<td>${harga}</td>
 		</tr>
 		<tr>
-		<td colspan="2">Ppn (10%)</td><td>${ppn}</td>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;
+				Ppn (10%)</td>
+			<td>${ppn}</td>
 		</tr>
 		<tr>
-		<td colspan="2">Total Bayar</td><td>${total}</td>
+			<td colspan="2">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;
+				Total Bayar</td>
+			<td>${total}</td>
 		</tr>
 		</table>
-		<button class="btn btn-lg" type="button" onClick="
+		<button class="btn btn-lg btn-default" type="button" onClick="
 		s=prompt('Masukan Uang Pembayaran');
 		var c= s-${total};
 		alert('Kembalian Anda Rp. '+c)">
-		<a href="@{kasir.bayar(a)}">Bayar</a>
+		<a href="@{kasir.bayar(a)}" style="text-decoration:none;font-color:white">Bayar</a>
 	</div>
 	</div>
 </div>
